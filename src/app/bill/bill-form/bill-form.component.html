@@ -1,0 +1,11 @@
+<form [formGroup]="billForm" (ngSubmit)="onSubmit(billForm.value)">
+
+<label for="quantity">consumed quantity</label>
+<input type="text" id="quantity" formControlName="quantity">
+
+<label for="price">price per ton</label>
+<input type="text" id="price" formControlName="price">
+
+<input type="submit" value="calculate">
+
+</form>
