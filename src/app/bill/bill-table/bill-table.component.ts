@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { BillingService } from 'src/app/services/billing.service';
+
 
 @Component({
   selector: 'app-bill-table',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillTableComponent implements OnInit {
 
-  constructor() { }
+  @Input() data;
+  price:number;
+  fees:number;
+
+  constructor(
+    private billing:BillingService
+  ) { }
 
   ngOnInit(): void {
+    this.price = this.billing.price;
+    this.fees = this.billing.fees;
   }
 
 }

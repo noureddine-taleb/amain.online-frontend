@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BillFormComponent } from './bill/bill-form/bill-form.component';
 import { BillTableComponent } from './bill/bill-table/bill-table.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -13,7 +15,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     BillFormComponent,
-    BillTableComponent
+    BillTableComponent,
+    LoginFormComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

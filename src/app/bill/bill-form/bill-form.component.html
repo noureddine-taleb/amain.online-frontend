@@ -1,11 +1,21 @@
+<!-- billing form -->
 <form [formGroup]="billForm" (ngSubmit)="onSubmit(billForm.value)">
 
+<!-- quantity input -->
 <label for="quantity">consumed quantity</label>
 <input type="text" id="quantity" formControlName="quantity">
 
-<label for="price">price per ton</label>
-<input type="text" id="price" formControlName="price">
+<!-- name input -->
+<label for="name">subscriber name</label>
+<select formControlName="name" id="name">
+    <option *ngFor="let name of names" [value]="name">{{name}}</option>
+</select>
+
 
 <input type="submit" value="calculate">
 
 </form>
+
+<div *ngIf="isSubmitted">
+<app-bill-table [data]="billForm.value"></app-bill-table>
+</div>

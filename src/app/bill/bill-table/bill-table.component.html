@@ -1,1 +1,18 @@
-<p>bill-table works!</p>
+<table>
+    <tr>
+        <th>name</th>
+        <th>quantity</th>
+        <th>price per ton</th>
+        <th>raw total</th>
+        <th>fees</th>
+        <th>total sum</th>
+    </tr>
+    <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.quantity}}</td>
+        <td>{{price}}</td>
+        <td>{{data.quantity * price}}</td>
+        <td>{{fees}}</td>
+        <td>{{data.quantity * price + fees}}</td>
+    </tr>
+</table>
