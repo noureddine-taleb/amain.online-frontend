@@ -4,3 +4,5 @@ before_script:
   - apt update  && apt install -y  nodejs
   - node -v
   - which node
+build:
+    -node -v
