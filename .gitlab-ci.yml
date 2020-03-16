@@ -1,0 +1,6 @@
+image: "ubuntu"
+
+before_script:
+  - apt update  && apt install -y  nodejs
+  - node -v
+  - which node
