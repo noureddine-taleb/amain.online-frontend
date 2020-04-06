@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { BillFormComponent } from './bill/bill-form/bill-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 const routes: Routes = [
   { path: '', component : HomeComponent },
   { path: 'login', component : LoginFormComponent },
+  { path: 'register', component : RegisterFormComponent },
   { path: 'bill', component : BillFormComponent }
 ];
 
