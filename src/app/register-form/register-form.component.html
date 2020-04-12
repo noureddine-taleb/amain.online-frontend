@@ -1,0 +1,30 @@
+<form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Full Name</label>
+      <input type="text" class="form-control" aria-describedby="phoneHelp" formControlName="name" required>
+      <small class="form-text text-muted">We'll never share your phone with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Phone Number</label>
+      <input type="text" class="form-control" aria-describedby="phoneHelp" formControlName="phone" required>
+      <small class="form-text text-muted">We'll never share your phone with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Image</label>
+        <input type="file" class="form-control-file" formControlName="image">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Date</label>
+        <input type="date" class="form-control" formControlName="dob">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" formControlName="password" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password Confirmation</label>
+      <input type="password" class="form-control" formControlName="password_confirmation" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

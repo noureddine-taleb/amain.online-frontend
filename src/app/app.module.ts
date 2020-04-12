@@ -9,6 +9,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,10 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
