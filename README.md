@@ -1,4 +1,5 @@
 coding convention:
+    - DRY code
     - separate all configuration in environement folder
     - define exception handler in specific location
     - route names should be compatible with components's one
