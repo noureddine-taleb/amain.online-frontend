@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BillFormComponent } from './dashboard/bill-form/bill-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginFormComponent } from './auth/login-form/login-form.component';
+import { RegisterFormComponent } from './auth/register-form/register-form.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { BillListComponent } from './dashboard/bill-list/bill-list.component';
 import { PaymentFormComponent } from './dashboard/payment-form/payment-form.component';
