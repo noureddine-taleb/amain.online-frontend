@@ -1,0 +1,26 @@
+# image: "ubuntu"
+
+# before_script:
+#   - apt update  && apt install -y  nodejs
+#   - node -v
+#   - which node
+
+# test:app:
+#   script:
+#   - node -v
+
+image: trion/ng-cli-karma
+
+cache:
+  paths:
+    - node_modules/
+
+deploy_stage:
+  stage: deploy
+  environment: Stage
+  only:
+    - master
+  script:
+    - rm ./package-lock.json
+    - npm install
+    - ./node_modules/@angular/cli/bin/ng build
