@@ -8,29 +8,22 @@
 # test:app:
 #   script:
 #   - node -v
-  
-  build:
 
- stage: build
+image: trion/ng-cli-karma
 
- image: trion/ng-cli
-
- before_script:
-
-  - npm ci
-
- script:
-
-  - ng build
-
- artifacts:
-
-  expire_in: 1 day
-
+cache:
   paths:
+    - node_modules/
 
-   - dist/
-
- tags:
-
-  - docker
+deploy_stage:
+  stage: deploy
+  environment: Stage
+  only:
+    - master
+  script:
+    - rm ./package-lock.json
+    - npm install
+    - ./node_modules/@angular/cli/bin/ng test --progress false --single-run=true --watch=false
+    - ./node_modules/@angular/cli/bin/ng e2e --progress false --watch=false
+    - ./node_modules/@angular/cli/bin/ng build --progress false --prod --base-href XXX-stage.surge.sh
+    - ./node_modules/.bin/surge -p dist/ --domain XXX-stage.surge.sh
