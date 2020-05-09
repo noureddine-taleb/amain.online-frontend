@@ -1,21 +1,34 @@
 <app-nav-bar></app-nav-bar>
-<form>
+<form [formGroup]="billForm" (ngSubmit)="submit(billForm.value)">
     <div class="form-group">
-      <label for="exampleFormControlInput1">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Example select</label>
-      <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+      <label for="project">Select User</label>
+      <select class="form-control" id="user" formControlName="user_id">
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
       </select>
+      <div *ngIf="billForm.controls.user_id.errors?.required" class="invalid-feedback">user is required</div>
     </div>
     <div class="form-group">
-      <label for="exampleFormControlTextarea1">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <label for="project">Select Project</label>
+      <select class="form-control" id="project" formControlName="project_id">
+        <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+      </select>
+      <div *ngIf="billForm.controls.project_id.errors?.required" class="invalid-feedback">project is required</div>
+    </div>
+    <div class="form-group">
+      <label for="weight">Quantity</label>
+      <input type="number" class="form-control" id="weight" placeholder="2.5" formControlName="weight">
+      <div *ngIf="billForm.controls.weight.errors?.required" class="invalid-feedback">Quantity is required</div>
+      <div *ngIf="billForm.controls.weight.errors?.min" class="invalid-feedback">Quantity should be greater than 0</div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="billForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': billForm.invalid, 'btn-success': billForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
     </div>
   </form>
+  <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors.length">
+    <ul>
+      <li *ngFor="let error of errors"> {{ error }} </li>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

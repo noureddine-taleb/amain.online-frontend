@@ -1,0 +1,36 @@
+TODO :
+    - error handling
+
+IN PROGRESS :
+    - fix file upload bug still show err
+    - progress bar to upload file
+    - add loader whenever you send some data to server
+
+DONE :
+    - terms and conditions check box
+    - connect to db
+    - make resource models
+    - make basic UI
+    - error/feedback messages
+
+COMPLEMENT :
+    - terms and conditions page
+    - resource res should be of type of models
+    - lint and code style
+    - dont show form errors on first load
+    - gravatar
+    - support social media auth
+    - captcha
+    - make it pretty at the very end
+    - support live chat with ws (handled by node)
+    - e2e/karma testing
+    - ci/branch features
+    - online payment (cmi)
+    - utms
+    - google analytics
+    - ads
+    - tawk.to
+    - amp
+    - pwa
+    - use unDraw open source illustrations
+    - service worker (workbox)

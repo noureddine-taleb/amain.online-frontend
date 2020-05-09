@@ -11,3 +11,11 @@ coding convention:
     - component names should reference the manipulated resource : words are seperated with "-"
     - resource name should be the var
     - test everythink with e2e and karma
+    - use child routes
+    - guard routes that require auth and routes that are only valid in login
+    - use interceptor to listen for 'anauthorized' response then clear the token
+    - use form validation in angular form and ng classes (ng-valid,ng-dirty...) and display errors
+    - don't send anythink to the server intel you validate it
+    - make a centralized validation unit (define custom validation)
+    - use typescript types on function types and arguments
+    - use const,let

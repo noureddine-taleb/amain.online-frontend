@@ -1,16 +1,36 @@
-<form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Phone Number</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="phoneHelp" formControlName="phone" required>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+<ngx-alerts></ngx-alerts>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+            <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback">phone number is required</div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" formControlName="password">
+            <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback">password is required</div>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="remember-me" formControlName="rememberme">
+            <label class="form-check-label" for="remember-me">Remember me</label>
+          </div>
+          <button [disabled]="loginForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
+          <a routerLink="/auth/register-form"><button type="button" class="btn btn-primary">Register</button></a>
+      </form>
+      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors.length">
+        <ul>
+          <li *ngFor="let error of errors"> {{ error }} </li>
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" formControlName="password" required>
+    <div class="col-lg-6" [ngStyle]="{'backgroundImage': 'url(../../../assets/login.svg)', 'backgroundSize': '400px 350px', 'backgroundRepeat': 'no-repeat'}">
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Remember me</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  </div>
+</div>

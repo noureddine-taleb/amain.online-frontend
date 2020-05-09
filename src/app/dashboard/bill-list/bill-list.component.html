@@ -1,31 +1,35 @@
 <app-nav-bar></app-nav-bar>
+
+<ng-container *ngIf="bills.length; else elseTemplate">
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Payed</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+      <tr *ngFor="let bill of bills">
+        <th scope="row">{{bill.id}}</th>
+        <td>{{bill.user_id?.name}}</td>
+        <td>{{bill.project_id?.name}}</td>
+        <td>{{bill.created_at}}</td>
+        <td>{{bill.weight * bill.project_id?.fees}}</td>
+        <td>{{bill.payment_id ? 'yes' : 'no'}}</td>
       </tr>
     </tbody>
   </table>
+</ng-container>
+<ng-template #elseTemplate>
+  <div  class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Empty!</strong> there is no bills.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
+
