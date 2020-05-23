@@ -14,10 +14,8 @@ export class CanActivateGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
       if(this.userService.isAuth()){
-        
         return true;
       }else{
-        
         this.router.navigate(["/auth/login-form"]);
         return false;
       }

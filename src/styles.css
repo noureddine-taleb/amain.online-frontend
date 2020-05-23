@@ -35,3 +35,7 @@ form.ng-valid {
 .container {
     padding-top: 15px;
 }
+
+.spinner-border {
+    margin-left: 15px;
+}

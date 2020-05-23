@@ -8,11 +8,15 @@ export class BillService {
 
   constructor(private http: HttpClient) { }
 
-  index(){
+  public index(){
     return this.http.get('/bills');
   }
 
-  create(data){
+  public create(data){
     return this.http.post('/bills', data);
+  }
+
+  public download(id){
+    return this.http.get(`/bills/${id}?pdf=true`,{ responseType : 'blob' });
   }
 }

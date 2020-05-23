@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project.service';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-form',
@@ -13,8 +14,9 @@ export class ProjectFormComponent implements OnInit {
 
   projectForm: FormGroup;
   errors:any[] = [];
+  loading = false;
 
-  constructor(private formBuilder: FormBuilder,private projectService: ProjectService,private alertService:AlertService ) { }
+  constructor(private formBuilder: FormBuilder,private projectService: ProjectService,private alertService:AlertService, private router: Router ) { }
 
   ngOnInit(): void {
     this.projectForm = this.formBuilder.group({
@@ -34,14 +36,26 @@ export class ProjectFormComponent implements OnInit {
   }
 
   submit(data){
+    this.showLoader();
     this.projectService.create(data).subscribe(res => {
-      this.alertService.success("project added successfully");
+      this.hideLoader();
+      this.alertService.success(res["feedback"]);
+      setTimeout(() => this.router.navigate(["/dashboard/project-list"]), 2000);
     },(err:HttpErrorResponse) => {
+      this.hideLoader();
       this.alertService.danger('error occured');
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
     });
+  }
+
+  showLoader(){
+    this.loading = true;
+  }
+
+  hideLoader(){
+    this.loading = false;
   }
 
 }

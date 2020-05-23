@@ -1,12 +1,32 @@
 TODO :
     - error handling
+    - img problem xss
+    - use injector
+    - deprecate angular fa icons and use native ones
+    - define home route
+    - define models
+    - pagination
+    - undraw images in forms
+    - change default 404 behavior
 
 IN PROGRESS :
-    - fix file upload bug still show err
-    - progress bar to upload file
-    - add loader whenever you send some data to server
+    - add pdf of bills add download
+    - write all conf in host.ts and spread it in env file
+    - show loader as placeholder when data doesnt arrived yet
+    - add chart dashboard
+    - add more helpfull info to project table
+    - optimize boiler plate (dry code)
+    - propagate ui elements throgh out the app [alerts, spinner, error messages, progress bars]
 
 DONE :
+    - add payment form to bills form
+    - add loader whenever you send some data to server
+    - when you register a user redirect to login page
+    - show notification on success
+    - progress bar to upload file
+    - fix file upload bug still show err
+    - allow space in name
+    - logout button
     - terms and conditions check box
     - connect to db
     - make resource models
@@ -14,6 +34,7 @@ DONE :
     - error/feedback messages
 
 COMPLEMENT :
+    - access location
     - terms and conditions page
     - resource res should be of type of models
     - lint and code style
@@ -26,6 +47,7 @@ COMPLEMENT :
     - e2e/karma testing
     - ci/branch features
     - online payment (cmi)
+    - sms phone verification
     - utms
     - google analytics
     - ads

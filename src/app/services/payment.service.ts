@@ -11,4 +11,12 @@ export class PaymentService {
   public index(){
     return this.http.get('/payments');
   }
+
+  public create(data){
+    return this.http.post('/payments',data);
+  }
+
+  public delete(id){
+    return this.http.delete(`/payments/${id}`);
+  }
 }
