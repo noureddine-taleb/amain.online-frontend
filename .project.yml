@@ -8,17 +8,20 @@ TODO :
     - pagination
     - undraw images in forms
     - change default 404 behavior
+    - pwa
+    - user profile
+    - badge of n of new  bill on user profile icon
+    - delay file upload until user click register
 
 IN PROGRESS :
-    - add pdf of bills add download
-    - write all conf in host.ts and spread it in env file
-    - show loader as placeholder when data doesnt arrived yet
     - add chart dashboard
     - add more helpfull info to project table
-    - optimize boiler plate (dry code)
-    - propagate ui elements throgh out the app [alerts, spinner, error messages, progress bars]
 
 DONE :
+    - propagate ui elements throgh out the app [alerts, spinner, error messages, progress bars]
+    - show loader as placeholder when data doesnt arrived yet
+    - write all conf in host.ts and spread it in env file
+    - add pdf of bills add download
     - add payment form to bills form
     - add loader whenever you send some data to server
     - when you register a user redirect to login page
@@ -53,6 +56,5 @@ COMPLEMENT :
     - ads
     - tawk.to
     - amp
-    - pwa
     - use unDraw open source illustrations
     - service worker (workbox)

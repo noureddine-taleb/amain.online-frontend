@@ -1,31 +1,36 @@
 <app-nav-bar></app-nav-bar>
 
 <ng-container *ngIf="bills.length; else elseTemplate">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Project</th>
-        <th scope="col">Date</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Functions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bill of bills">
-        <th scope="row">{{bill.id}}</th>
-        <td>{{bill.user_id?.name}}</td>
-        <td>{{bill.project_id?.name}}</td>
-        <td>{{bill.created_at}}</td>
-        <td>{{bill.weight * bill.project_id?.fees}}</td>
-        <td>
-          <fa-icon [icon]="faPrint" (click)="downloadBill(bill)" data-toggle="modal" data-target="#bill-pdf" class="mr-3"></fa-icon>
-          <fa-icon [icon]="faMoneyBillAlt" *ngIf="!bill.payment_id" (click)="saveBill(bill)" data-toggle="modal" data-target="#payment-form"></fa-icon>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr class="table-warning">
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Project</th>
+          <th scope="col">Date</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Functions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills | paginate: { itemsPerPage: 7, currentPage: p}">
+          <th scope="row">{{bill.id}}</th>
+          <td>{{bill.user_id?.name}}</td>
+          <td>{{bill.project_id?.name}}</td>
+          <td>{{bill.created_at}}</td>
+          <td>{{bill.weight * bill.project_id?.fees}}</td>
+          <td class="functions">
+            <fa-icon [ngStyle]="{'cursor': 'pointer'}" [icon]="faPrint" (click)="downloadBill(bill)" data-toggle="modal" data-target="#bill-pdf" class="mr-3"></fa-icon>
+            <fa-icon [ngStyle]="{'cursor': 'pointer'}" [icon]="faMoneyBillAlt" *ngIf="!bill.payment_id" (click)="saveBill(bill)" data-toggle="modal" data-target="#payment-form"></fa-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-div">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </ng-container>
 <ng-template #elseTemplate>
   <div  class="alert alert-info alert-dismissible fade show" role="alert">

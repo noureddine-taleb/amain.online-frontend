@@ -12,21 +12,31 @@ export class UserService {
   constructor(private http: HttpClient, private injector: Injector) { }
 
   login(data){
-    return this.http.post('/login',data).pipe( tap(res => {
-      localStorage.setItem('token',res["data"]);
-    }) );
+    return this.http.post('/login', data).pipe( tap(res => {
+      localStorage.setItem('token',  res["data"]["token"] );
+      localStorage.setItem('user', JSON.stringify( res["data"]["user"] ));
+    })
+    );
   }
 
   create(data){
     return this.http.post('/users',data);
   }
 
-  isAuth(){
+  isAuth(): boolean{
     return this.getAuthorizationToken() ? true : false;
   }
   
+  isAdmin(): boolean{
+    return !! JSON.parse(localStorage.getItem('user')).is_admin;
+  }
+
+  getUser(){
+    return JSON.parse(localStorage.getItem('user'));
+  }
+  
   logout(){
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.injector.get(Router).navigate(["/auth", "login-form"]);
   }
 
@@ -63,5 +73,10 @@ export class UserService {
 
       return (RegExp.test( control.value ) ? null : {"type" : true});
     }
+  }
+
+  public getImage(url){
+    
+    return this.http.get(url,{ responseType: 'blob'});
   }
 }

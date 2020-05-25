@@ -10,6 +10,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class ProjectListComponent implements OnInit {
 
   projects: any[] = [];
+  p: number = 1;
+  
   constructor(private projectService: ProjectService, private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {

@@ -1,0 +1,63 @@
+<app-nav-bar></app-nav-bar>
+
+<ng-container *ngIf="bills.length; else elseTemplate">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Project</th>
+        <th scope="col">Date</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Functions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of bills | paginate: { itemsPerPage: 7, currentPage: p}">
+        <th scope="row">{{bill.id}}</th>
+        <td>{{bill.user_id?.name}}</td>
+        <td>{{bill.project_id?.name}}</td>
+        <td>{{bill.created_at}}</td>
+        <td>{{bill.weight * bill.project_id?.fees}}</td>
+        <td class="functions">
+          <fa-icon [icon]="faPrint" (click)="downloadBill(bill)" data-toggle="modal" data-target="#bill-pdf" class="mr-3"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination-div">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div  class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>Empty! </strong> there is no bills.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</ng-template>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="bill-pdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Download pdf</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">      
+          <iframe *ngIf="url" style="width: 100%;" [src]="url" frameborder="0"></iframe>
+      </div>
+      <div class="modal-footer">
+        <div *ngIf="loading" class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <a [href]="url" download="facture.pdf"><button type="button" class="btn btn-success">Download</button></a>
+        <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>
+</div>

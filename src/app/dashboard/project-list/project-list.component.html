@@ -1,35 +1,39 @@
 <app-nav-bar></app-nav-bar>
 
 <ng-container *ngIf="projects.length; else elseTemplate">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Desc</th>
-        <th scope="col">Date</th>
-        <th scope="col">Fees</th>
-        <th scope="col">Bills N</th>
-        <!-- <th scope="col">Payments N</th>
-        <th scope="col">Credit</th>
-        <th scope="col">Debit</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let project of projects">
-        <th scope="row">{{ project.id }}</th>
-        <td>{{ project.name }}</td>
-        <td>{{ project.desc }}</td>
-        <td>{{ project.created_at }}</td>
-        <td>{{ project.fees }}</td>
-        <td>{{ project.bills_count }}</td>
-        <!-- <td>{{ project.payments_count }}</td> -->
-        <!-- <td style="color: green;">Dh{{ project.credit }}</td> -->
-        <!-- <td style="color: red;">Dh{{ project.debit }}</td> -->
-      </tr>
-    </tbody>
-  </table>
-  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-danger">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Desc</th>
+          <th scope="col">Date</th>
+          <th scope="col">Fees</th>
+          <th scope="col">Bills N</th>
+          <!-- <th scope="col">Payments N</th>
+          <th scope="col">Credit</th>
+          <th scope="col">Debit</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects | paginate: { itemsPerPage: 5, currentPage: p}">
+          <th scope="row">{{ project.id }}</th>
+          <td>{{ project.name }}</td>
+          <td>{{ project.desc }}</td>
+          <td>{{ project.created_at }}</td>
+          <td>{{ project.fees }}</td>
+          <td>{{ project.bills_count }}</td>
+          <!-- <td>{{ project.payments_count }}</td> -->
+          <!-- <td style="color: green;">Dh{{ project.credit }}</td> -->
+          <!-- <td style="color: red;">Dh{{ project.debit }}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-div">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
 </ng-container>
 
 <ng-template #elseTemplate>

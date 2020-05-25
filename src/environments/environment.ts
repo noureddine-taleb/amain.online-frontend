@@ -5,11 +5,8 @@
 import { host } from 'host';
 
 export const environment = {
-  production: false,
-  api : host.api,
-  apiVersion : host.apiVersion,
-  elastic : host.elastic,
-  node : host.node,
+  ...host,
+  production: false
 };
 
 /*

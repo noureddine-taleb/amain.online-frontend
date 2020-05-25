@@ -15,8 +15,4 @@ export class PaymentService {
   public create(data){
     return this.http.post('/payments',data);
   }
-
-  public delete(id){
-    return this.http.delete(`/payments/${id}`);
-  }
 }

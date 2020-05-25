@@ -31,6 +31,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AlertModule } from 'ngx-alerts';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProfileComponent } from './dashboard/profile/profile.component'; 
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { RouterModule } from '@angular/router';
     ProjectListComponent,
     Page404Component,
     Page500Component,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -56,6 +59,7 @@ import { RouterModule } from '@angular/router';
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     NgxSpinnerModule,
     RouterModule,
+    NgxPaginationModule,
   ],
   providers: [
     UserService,

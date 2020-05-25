@@ -9,6 +9,7 @@ import { BillService } from 'src/app/services/bill.service';
 import { AlertService } from 'ngx-alerts';
 import { ProjectService } from 'src/app/services/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-user-list',
@@ -24,6 +25,8 @@ export class UserListComponent implements OnInit {
   errors:any[] = [];
   projects:any[] = [];
   loading = false;
+  p:number = 1;
+  prefix = `${environment.api}${environment.imgPrefix}`;
 
   constructor(private projectService: ProjectService, private billService: BillService, private formBuilder: FormBuilder, private userService: UserService, private router: Router,private sanitizer: DomSanitizer,private alertService: AlertService, private spinnerService: NgxSpinnerService) { }
 
@@ -32,12 +35,11 @@ export class UserListComponent implements OnInit {
     this.userService.index().subscribe(res => {
     this.spinnerService.hide();
       this.users = res['data'];
-      this.users = this.users.map(el => {
-        el.image = this.sanitizer.bypassSecurityTrustResourceUrl(el.image);
-        return el;
-      });
-      this.users = this.users.map(el => ({ ...el, image: (this.sanitizer.bypassSecurityTrustResourceUrl(el.image)) })
-      );
+      // this.users = this.users.map(el => {
+      //   el.image = this.sanitizer.bypassSecurityTrustResourceUrl(el.image);
+      //   return el;
+      // });
+      // this.users = this.users.map(el => ({ ...el, image: (this.sanitizer.bypassSecurityTrustResourceUrl(el.image)) }) );
     },() => this.spinnerService.hide());
 
     this.projectService.index().subscribe(res => (this.projects = res['data']) )
@@ -92,4 +94,12 @@ export class UserListComponent implements OnInit {
     this.loading = false;
   }
 
+  getSafeUrl(user){
+    // this.userService.getImage(`${this.prefix}${user.image}`).subscribe(res => {
+    //   let blob = new Blob([res]);
+    //   let url = this.sanitizer.bypassSecurityTrustResourceUrl( URL.createObjectURL(blob) );
+    //   this.blob = url;
+    // })
+    return this.sanitizer.bypassSecurityTrustUrl(`${this.prefix}${user.image}`);
+  }
 }

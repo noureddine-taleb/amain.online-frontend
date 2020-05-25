@@ -4,7 +4,6 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { AlertService } from 'ngx-alerts';
 import { faMoneyBillAlt,faPrint } from '@fortawesome/free-solid-svg-icons';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Url } from 'url';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -24,7 +23,8 @@ export class BillListComponent implements OnInit {
   url;
   userId;
   loading = false;
-
+  p: number = 1;
+  
   constructor(private billService: BillService, private userService: UserService, private paymentService: PaymentService, private alertService: AlertService,private sanitizer: DomSanitizer, private route: ActivatedRoute, private spinnerService: NgxSpinnerService) 
   {}
 

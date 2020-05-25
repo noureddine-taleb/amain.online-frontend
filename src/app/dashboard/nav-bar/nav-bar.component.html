@@ -8,7 +8,7 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <li *ngIf="userService.isAdmin()" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="projectNavbar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Project
           </a>
@@ -17,7 +17,7 @@
             <a class="dropdown-item" routerLink="/dashboard/project-form">insert project</a>
           </div>
         </li>
-        <li class="nav-item">
+        <li *ngIf="userService.isAdmin()" class="nav-item">
           <a class="nav-link" routerLink="/dashboard/user-list" id="userNavbar" role="button" >
             Users
           </a>
