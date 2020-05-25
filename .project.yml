@@ -1,23 +1,23 @@
 TODO :
     - error handling
-    - img problem xss
     - use injector
     - deprecate angular fa icons and use native ones
-    - define home route
     - define models
-    - pagination
-    - undraw images in forms
     - change default 404 behavior
     - pwa
-    - user profile
     - badge of n of new  bill on user profile icon
     - delay file upload until user click register
-
-IN PROGRESS :
     - add chart dashboard
     - add more helpfull info to project table
 
+IN PROGRESS :
+
 DONE :
+    - define home route
+    - img problem xss
+    - undraw images in forms
+    - pagination
+    - user profile
     - propagate ui elements throgh out the app [alerts, spinner, error messages, progress bars]
     - show loader as placeholder when data doesnt arrived yet
     - write all conf in host.ts and spread it in env file
