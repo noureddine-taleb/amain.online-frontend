@@ -33,7 +33,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './dashboard/profile/profile.component';
-import { DashboardComponent } from './dashboard/dashboard.component'; 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment'; 
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NgxSpinnerModule,
     RouterModule,
     NgxPaginationModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     UserService,
