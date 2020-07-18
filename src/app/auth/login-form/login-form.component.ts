@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login-form',
@@ -23,7 +24,7 @@ export class LoginFormComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       phone : [
         '',
-        Validators.required
+        [Validators.required, Validators.pattern(this.userService.phoneRegexp)]
       ],
       password : [
         '',
@@ -35,11 +36,10 @@ export class LoginFormComponent implements OnInit {
     });
   }
       
-  submit(data: any){
+  submit(data: User){
     if(this.loginForm.invalid) return;
     this.showLoader();
     this.userService.login(data).subscribe( res => {
-      this.hideLoader();
       this.alertService.success(res["feedback"]);
       setTimeout(() => {
         this.router.navigate(["/"]);
@@ -50,6 +50,8 @@ export class LoginFormComponent implements OnInit {
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
+    },() => {
+      this.hideLoader();
     });
   }
 

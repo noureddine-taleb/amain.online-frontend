@@ -7,7 +7,7 @@ import { LoginFormComponent } from './auth/login-form/login-form.component';
 import { RegisterFormComponent } from './auth/register-form/register-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NavBarComponent } from './dashboard/nav-bar/nav-bar.component';
+import { NavBarComponent } from './layouts/nav-bar/nav-bar.component';
 import { CanActivateGuard } from './guards/can-activate.guard';
 import { AuthGuard } from './guards/auth.guard';
 
@@ -31,8 +31,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AlertModule } from 'ngx-alerts';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from '@angular/router';
-import {NgxPaginationModule} from 'ngx-pagination';
-import { ProfileComponent } from './dashboard/profile/profile.component'; 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ProfileComponent } from './dashboard/profile/profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component'; 
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ProfileComponent } from './dashboard/profile/profile.component';
     Page404Component,
     Page500Component,
     ProfileComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

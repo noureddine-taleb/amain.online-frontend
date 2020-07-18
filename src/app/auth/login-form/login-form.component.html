@@ -7,6 +7,7 @@
             <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
             <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
             <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback">phone number is required</div>
+            <div *ngIf="loginForm.controls.phone.errors?.pattern" class="invalid-feedback">phone number should look like 0612345678</div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>

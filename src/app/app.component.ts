@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, ActivatedRoute, Data, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, animate, style, query, state, animateChild, group } from '@angular/animations';
 
 @Component({
@@ -64,8 +64,33 @@ import { trigger, transition, animate, style, query, state, animateChild, group 
 })
 export class AppComponent {
 
+  constructor(private _route: ActivatedRoute, private _router: Router){
+
+      this._router.events
+      // .filter(event => event instanceof NavigationEnd)
+       .subscribe(
+          () => {
+             console.log(this._route.snapshot.children);
+          }
+      );
+
+  }
+
+  ngOnInit(): void {
+    // this.route.url.subscribe(() => {
+    //   // this.animation = this.route.snapshot.data;
+    //   // this.animation = this.route.snapshot.firstChild?.data;
+    //   console.log('change');
+    // })
+
+    // this.route.
+  }
+
   prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+
+    // console.log('outlet', this.route.snapshot.url)
+    // return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+    // return this.animation;
   }
 
 }

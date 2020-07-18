@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Project } from '../models/project';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ProjectService {
     return this.http.get('/projects');
   }
 
-  create(data){
+  create(data: Project){
     return this.http.post('/projects',data);
   }
 }

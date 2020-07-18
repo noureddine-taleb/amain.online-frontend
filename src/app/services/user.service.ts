@@ -3,15 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { ValidatorFn, FormGroup, ValidationErrors, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+  public phoneRegexp = /^(05|06|07)(\d{2}){4}$/
+  public nameRegexp = /^[a-zA-Z ]+$/
+  public imageRegexp = /\.jpe?g$/gi
+
   constructor(private http: HttpClient, private injector: Injector) { }
 
-  login(data){
+  login(data: User){
     return this.http.post('/login', data).pipe( tap(res => {
       localStorage.setItem('token',  res["data"]["token"] );
       localStorage.setItem('user', JSON.stringify( res["data"]["user"] ));
@@ -19,7 +24,7 @@ export class UserService {
     );
   }
 
-  create(data){
+  create(data: User){
     return this.http.post('/users',data);
   }
 
@@ -44,8 +49,11 @@ export class UserService {
     return localStorage.getItem('token');
   }
 
-  upload(data){
-    return this.http.post('/upload', data, { reportProgress: true , observe: 'events'});
+  upload(data: File){
+
+    let formData = new FormData();
+    formData.append("image",data);
+    return this.http.post('/upload', formData, { reportProgress: true , observe: 'events'});
   }
 
   public index(){

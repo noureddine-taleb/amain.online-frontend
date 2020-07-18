@@ -35,12 +35,7 @@ export class UserListComponent implements OnInit {
     this.userService.index().subscribe(res => {
     this.spinnerService.hide();
       this.users = res['data'];
-      // this.users = this.users.map(el => {
-      //   el.image = this.sanitizer.bypassSecurityTrustResourceUrl(el.image);
-      //   return el;
-      // });
-      // this.users = this.users.map(el => ({ ...el, image: (this.sanitizer.bypassSecurityTrustResourceUrl(el.image)) }) );
-    },() => this.spinnerService.hide());
+     },() => this.spinnerService.hide());
 
     this.projectService.index().subscribe(res => (this.projects = res['data']) )
     
@@ -95,11 +90,6 @@ export class UserListComponent implements OnInit {
   }
 
   getSafeUrl(user){
-    // this.userService.getImage(`${this.prefix}${user.image}`).subscribe(res => {
-    //   let blob = new Blob([res]);
-    //   let url = this.sanitizer.bypassSecurityTrustResourceUrl( URL.createObjectURL(blob) );
-    //   this.blob = url;
-    // })
     return this.sanitizer.bypassSecurityTrustUrl(`${this.prefix}${user.image}`);
   }
 }

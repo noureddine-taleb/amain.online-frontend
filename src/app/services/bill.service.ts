@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Bill } from '../models/bill';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class BillService {
     return this.http.get('/bills');
   }
 
-  public create(data){
+  public create(data: Bill){
     return this.http.post('/bills', data);
   }
 

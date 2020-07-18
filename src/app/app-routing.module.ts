@@ -15,20 +15,26 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { IsAdminGuard } from './guards/is-admin.guard';
 import { ProfileComponent } from './dashboard/profile/profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo : 'dashboard/profile', pathMatch: 'full', data: {animation: 'homePage' }},
-  { path: 'auth/login-form', component : LoginFormComponent, canActivate : [AuthGuard],   pathMatch : 'full'  , data: {animation: 'loginPage' }},
-  { path: 'auth/register-form', component : RegisterFormComponent, canActivate : [AuthGuard],   pathMatch : 'full'  , data: {animation: 'registerPage' }},
+  { path: '', redirectTo : 'dashboard', pathMatch: 'full', data: {animation: 'homePage' }},
+  { path: 'auth/login-form', component : LoginFormComponent, canActivate : [AuthGuard],   pathMatch : 'full'  /*, data: { animation: 'loginPage' }*/ },
+  { path: 'auth/register-form', component : RegisterFormComponent, canActivate : [AuthGuard],   pathMatch : 'full'  /*, data: { animation: 'registerPage' }*/ },
 
-  { path: 'dashboard/project-form', component : ProjectFormComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: {animation: 'addProjectPage' }},
-  { path: 'dashboard/project-list', component : ProjectListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: {animation: 'listProjectPage' }},
+  // new paths
+  { path: 'dashboard', component : DashboardComponent/*, data: { animation: 'parent dashboard' }*/ , children: [
+    
+    { path: '', component : ProfileComponent , canActivate : [CanActivateGuard],   pathMatch : 'full'  /*, data: { animation: 'profilePage' }*/ },
 
-  { path: 'dashboard/user-list', component : UserListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: {animation: 'userListPage' }},
+    { path: 'project-form', component : ProjectFormComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  /*, data: { animation: 'addProjectPage' } */ },
+    { path: 'project-list', component : ProjectListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  /*, data: { animation: 'listProjectPage' } */ },
   
-  { path: 'dashboard/bill-list/:user-id', component : BillListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: {animation: 'billListPage' }},
-  { path: 'dashboard/profile', component : ProfileComponent , canActivate : [CanActivateGuard],   pathMatch : 'full'  , data: {animation: 'profilePage' }},
+    { path: 'user-list', component : UserListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: { animation: 'userListPage' }},
+    
+    { path: 'bill-list/:user-id', component : BillListComponent , canActivate : [CanActivateGuard, IsAdminGuard],   pathMatch : 'full'  , data: { animation: 'billListPage' }},
+  ]},
   
   { path: '404', component: Page404Component,   pathMatch : 'full' , data: {animation: '404Page' }},
   { path: '500', component: Page500Component,   pathMatch : 'full' , data: {animation: '500Page' }},

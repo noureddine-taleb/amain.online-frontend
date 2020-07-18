@@ -2,7 +2,6 @@ TODO :
     - error handling
     - use injector
     - deprecate angular fa icons and use native ones
-    - define models
     - change default 404 behavior
     - pwa
     - badge of n of new  bill on user profile icon
@@ -13,6 +12,7 @@ TODO :
 IN PROGRESS :
 
 DONE :
+    - define models
     - define home route
     - img problem xss
     - undraw images in forms

@@ -17,6 +17,7 @@ export class RegisterFormComponent implements OnInit
   errors: any[] = [];
   uploadStatus: { status: boolean, progress: number} = {status: false, progress: 0};
   loading = false;
+  image: File;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router:Router,private alertService: AlertService) 
   { }
@@ -27,11 +28,11 @@ export class RegisterFormComponent implements OnInit
     this.registerForm = this.formBuilder.group({
       name: [ 
         '',
-        [Validators.required, Validators.pattern("^[a-zA-Z ]+$") ]
+        [Validators.required, Validators.pattern(this.userService.nameRegexp) ]
        ],
       phone: [ 
         '',
-        [Validators.required, Validators.pattern("^[0-9]{10}$") ]
+        [Validators.required, Validators.pattern(this.userService.phoneRegexp) ]
        ],
       dob: [ 
         '',
@@ -43,7 +44,7 @@ export class RegisterFormComponent implements OnInit
        ],
       image: [
         '',
-        [Validators.required, this.userService.fileValidator(/\.jpe?g$/gi, document.getElementById("image")) ]
+        [Validators.required, this.userService.fileValidator(this.userService.imageRegexp, document.getElementById("image")) ]
        ],
       password: [
         '',
@@ -51,7 +52,7 @@ export class RegisterFormComponent implements OnInit
        ],
       password_confirmation: [ 
         '',
-        [this.userService.matchValues('password')]
+        [ Validators.required, this.userService.matchValues('password') ]
        ],
        terms_and_conditions: [ 
         true,
@@ -61,13 +62,33 @@ export class RegisterFormComponent implements OnInit
     );
   }
   
-  submit(data: any) 
+  async submit(data: any) 
   {
-    if(this.registerForm.invalid) 
-      return;
+    if(this.registerForm.invalid) return;
+
+    //upload file first because i need file path returned in backend
+    // await this.userService.upload(this.image).subscribe(res => {
+    //   console.log(res);
+    //   if(res.type === HttpEventType.UploadProgress){
+        
+    //     this.uploadStatus = { status: true, progress: (res.loaded / res.total) * 100}
+    //   }
+    //   else if(res.type === HttpEventType.Response){
+
+    //     this.uploadStatus.status = false;
+    //     this.registerForm.patchValue({image_path : res["body"]["data"] });
+    //     this.alertService.success('file uploaded successfully');
+    //     return true;
+    //   }
+    // },err => {
+    //   this.alertService.danger('fail to upload file');
+    //   return false;
+    // });
+
+
+    // then upload other user infos
     this.showLoader();
-    this.userService.create(data).subscribe(data => {
-      this.hideLoader();
+    this.userService.create(data).subscribe(async data => {
       this.alertService.success(data["feedback"]);
       setTimeout(() => {
         this.router.navigate(['/auth/login-form']);
@@ -79,16 +100,18 @@ export class RegisterFormComponent implements OnInit
         if(err.status == 422){
           this.errors = err.error['errors'];
         }
+    },() => {
+      this.hideLoader();
     });
   }
 
   upload($event: any)
   {
+    
     if(this.registerForm.get("image").invalid) return;
+    this.image = $event.target.files[0] as File;
 
-    let formData = new FormData();
-    formData.append("image",$event.target.files[0]);
-    this.userService.upload(formData).subscribe(res => {
+    this.userService.upload(this.image).subscribe(res => {
       console.log(res);
       if(res.type === HttpEventType.UploadProgress){
         
