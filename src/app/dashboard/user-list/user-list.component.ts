@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { Component, OnInit, Inject } from '@angular/core';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BillService } from 'src/app/services/bill.service';
+import { BillService } from '../../services/bill.service';
 import { AlertService } from 'ngx-alerts';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../../services/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from '../../../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-user-list',
@@ -26,9 +28,8 @@ export class UserListComponent implements OnInit {
   projects:any[] = [];
   loading = false;
   p:number = 1;
-  prefix = `${environment.api}${environment.imgPrefix}`;
-
-  constructor(private projectService: ProjectService, private billService: BillService, private formBuilder: FormBuilder, private userService: UserService, private router: Router,private sanitizer: DomSanitizer,private alertService: AlertService, private spinnerService: NgxSpinnerService) { }
+  prefix = `${environment.UPLOAD_FOLDER}`;
+  constructor(@Inject(PLATFORM_ID) private platform, private projectService: ProjectService, private billService: BillService, private formBuilder: FormBuilder, private userService: UserService, private router: Router,private sanitizer: DomSanitizer,private alertService: AlertService, private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.spinnerService.show();
@@ -70,6 +71,7 @@ export class UserListComponent implements OnInit {
     this.billService.create(data).subscribe((data) => {
       this.hideLoader();
       this.alertService.success(data["feedback"]);
+      if(isPlatformBrowser(this.platform))
       document.getElementById("close-modal").click();
     }, 
       (err:HttpErrorResponse) => {

@@ -8,9 +8,9 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -22,7 +22,7 @@ export class Interceptor implements HttpInterceptor {
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     
     this.newReq = req.clone({
-      url: `${environment.api}${environment.apiVersion}${req.url}`,
+      url: `${environment.BACKEND_API_URL}${req.url}`,
       setHeaders: { 'Authorization': `Bearer ${this.userService.getAuthorizationToken()}`},
     });
     

@@ -75,7 +75,7 @@
                 <span class="sr-only">Loading...</span>
               </div>
               <button [disabled]="billForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': billForm.invalid, 'btn-success': billForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
-              <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button #closeModal id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </form>
         </div>

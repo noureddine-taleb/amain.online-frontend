@@ -1,6 +1,6 @@
-import { host } from 'host';
+import { env } from '../../env';
 
 export const environment = {
-  ...host,
+  ...env,
   production: true,
 };
