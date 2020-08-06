@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { BillService } from 'src/app/services/bill.service';
-import { PaymentService } from 'src/app/services/payment.service';
+import { BillService } from '../../services/bill/bill.service';
+import { PaymentService } from '../../services/payment/payment.service';
 import { AlertService } from 'ngx-alerts';
 import { faMoneyBillAlt,faPrint } from '@fortawesome/free-solid-svg-icons';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../services/user/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Bill } from '../../models/bill/bill';
+import { Payment } from '../../models/payment/payment';
 
 @Component({
   selector: 'app-bill-list',
@@ -15,12 +17,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class BillListComponent implements OnInit {
 
-  bills: any[] = [];
-  bill: any = null;
+  bills: Bill[] = [];
+  bill: Bill = null;
   faMoneyBillAlt = faMoneyBillAlt;
   faPrint = faPrint;
   blob: Blob;
-  url;
+  url: SafeResourceUrl;
   userId;
   loading = false;
   p: number = 1;
@@ -29,19 +31,18 @@ export class BillListComponent implements OnInit {
   {}
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('user-id');
+    this.userId = this.route.snapshot.paramMap.get('userID');
     this.spinnerService.show();
     if(this.userId){
       this.userService.bills(this.userId).subscribe(res => {
         this.spinnerService.hide();
-        this.bills = res['data'];
+        this.bills = res['bills'];
       },() => this.spinnerService.hide() );
     
     }else {
-
-      this.billService.index().subscribe(res => {
+      this.billService.getAll().subscribe(res => {
         this.spinnerService.hide();
-        this.bills = res['data'];
+        this.bills = res['bills'];
       },() => this.spinnerService.hide() );
     }
   }
@@ -53,11 +54,11 @@ export class BillListComponent implements OnInit {
   downloadBill(bill){
     this.bill = bill;
     this.showLoader();
-    this.billService.download(this.bill.id).subscribe(res => {
+    this.billService.download(this.bill._id).subscribe(res => {
       this.hideLoader();
       this.blob = new Blob([res], {type : 'application/pdf'});
       this.url = URL.createObjectURL(this.blob);
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(<string>this.url);
     }, () => {
       this.hideLoader();
       this.alertService.danger("download failure");
@@ -67,7 +68,7 @@ export class BillListComponent implements OnInit {
   paymentConfirmation(){
     if(this.bill) {
       this.showLoader();
-      this.paymentService.create({bill_id : this.bill.id}).subscribe(res => {
+      this.paymentService.create(new Payment(this.bill._id)).subscribe(res => {
         this.hideLoader();
         this.alertService.success(res["feedback"]);
         this.ngOnInit();

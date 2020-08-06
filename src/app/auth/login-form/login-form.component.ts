@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
-import { User } from 'src/app/models/user';
+import { User } from '../../models/user/user';
+import { ValidationService } from '../../services/validation/validation.service';
 
 @Component({
   selector: 'app-login-form',
@@ -18,13 +19,20 @@ export class LoginFormComponent implements OnInit {
   errors:any[] = [];
   loading = false;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService,private router: Router,private alertService: AlertService,private spinnerService: NgxSpinnerService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private userService: UserService,
+    private validationService: ValidationService,
+    private router: Router,
+    private alertService: AlertService,
+    private spinnerService: NgxSpinnerService
+    ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       phone : [
         '',
-        [Validators.required, Validators.pattern(this.userService.phoneRegexp)]
+        [Validators.required, Validators.pattern(this.validationService.phoneRegexp)]
       ],
       password : [
         '',
@@ -39,19 +47,18 @@ export class LoginFormComponent implements OnInit {
   submit(data: User){
     if(this.loginForm.invalid) return;
     this.showLoader();
-    this.userService.login(data).subscribe( res => {
-      this.alertService.success(res["feedback"]);
-      setTimeout(() => {
-        this.router.navigate(["/"]);
-      },2000);
-    },(err:HttpErrorResponse) => {
+    this.userService.login(data).subscribe( 
+      _ => 
+      {
+      this.alertService.success("user login with success");
+      setTimeout(() => this.router.navigate(["/"]), 2000)
+    },
+    err => {
       this.hideLoader();
       this.alertService.danger('error occured');
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
-    },() => {
-      this.hideLoader();
     });
   }
 

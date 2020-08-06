@@ -4,19 +4,19 @@
       <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
           <div class="form-group">
             <label for="exampleInputEmail1">Full Name</label>
-            <input type="text" class="form-control" aria-describedby="phoneHelp" formControlName="name">
+            <input autofocus type="tel" class="form-control" aria-describedby="phoneHelp" formControlName="name">
             <div *ngIf="registerForm.controls.name.errors?.required" class="invalid-feedback" > name is required</div>
             <div *ngIf="registerForm.controls.name.errors?.pattern" class="invalid-feedback" > name should contain only letters</div>
           </div>
           <div class="form-group">
             <label for="exampleInputEmail1">Phone Number</label>
-            <input type="text" class="form-control" aria-describedby="phoneHelp" formControlName="phone">
+            <input type="tel" class="form-control" aria-describedby="phoneHelp" formControlName="phone">
             <small class="form-text text-muted">We'll never share your phone with anyone else.</small>
             <div *ngIf="registerForm.controls.phone.errors?.required" class="invalid-feedback" > phone number is required</div>
             <div *ngIf="registerForm.controls.phone.errors?.pattern" class="invalid-feedback" > phone number should contain 10 digits ex:0691016066</div>
           </div>
-          <div class="custom-file">
-            <input id="image" type="file" class="custom-file-input" formControlName="image" (input)="upload($event)">
+          <div class="custom-file form-group">
+            <input #imageEl id="image" type="file" accept="image/jpeg" class="custom-file-input" formControlName="image" (input)="upload($event)">
             <label class="custom-file-label" for="image">Choose file...</label>
             <!-- progress -->
             <div class="progress mt-3" [hidden]="!uploadStatus.status">
@@ -24,7 +24,7 @@
             </div>
             <!-- /progress -->
             <div *ngIf="registerForm.controls.image.errors?.required" class="invalid-feedback" > image is required</div>
-            <div *ngIf="registerForm.controls.image.errors?.type" class="invalid-feedback" > accepted files are images only ex: image.jpg, image.jpeg</div>
+            <div *ngIf="registerForm.controls.image.errors?.mime" class="invalid-feedback" > accepted files are images only ex: image.jpg, image.jpeg</div>
             <div *ngIf="registerForm.controls.image.errors?.size" class="invalid-feedback" > file size should be less than 3MiB </div>
           </div>
           <div class="form-group">
@@ -43,15 +43,15 @@
             <input type="password" class="form-control" formControlName="password_confirmation">
             <div *ngIf="registerForm.controls.password_confirmation.errors?.required" class="invalid-feedback" > password Confirmation is required</div>
             <div *ngIf="registerForm.controls.password_confirmation.errors?.minlength" class="invalid-feedback" > password Confirmation length should be more that 5 characters</div>
-            <div *ngIf="registerForm.controls.password_confirmation.errors?.confirmation" class="invalid-feedback" > password confirmation should match password</div>
+            <div *ngIf="registerForm.controls.password_confirmation.errors?.match" class="invalid-feedback" > password confirmation should match password</div>
           </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="terms-and-conditions" formControlName="terms_and_conditions">
             <label class="form-check-label" for="terms-and-conditions">I agree on <a routerLink="/terms-and-conditions"> Terms and Conditions</a> of this app</label>
             <div *ngIf="registerForm.controls.terms_and_conditions.errors?.required" class="invalid-feedback" > you should agree on our terms</div>
           </div>
-          <button [disabled]="registerForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': registerForm.invalid, 'btn-success': registerForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
-          <a routerLink="/auth/login-form"><button type="button" class="btn btn-primary">Login</button></a>
+          <button type="submit" class="btn" [ngClass]="{'btn-danger': registerForm.invalid, 'btn-success': registerForm.valid}" [ngStyle]="{'marginRight': '15px'}">Sign up</button>
+          <a routerLink="/auth/login"><button type="button" class="btn btn-primary">Login</button></a>
           <div *ngIf="loading" class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>
           </div>

@@ -8,7 +8,7 @@
           <th scope="col">Desc</th>
           <th scope="col">Date</th>
           <th scope="col">Fees</th>
-          <th scope="col">Bills N</th>
+          <!-- <th scope="col">Bills N</th> -->
           <!-- <th scope="col">Payments N</th>
           <th scope="col">Credit</th>
           <th scope="col">Debit</th> -->
@@ -19,9 +19,9 @@
           <th scope="row">{{ project.id }}</th>
           <td>{{ project.name }}</td>
           <td>{{ project.desc }}</td>
-          <td>{{ project.created_at }}</td>
+          <td>{{ project.createdAt | date: 'dd/MM/yy' }}</td>
           <td>{{ project.fees }}</td>
-          <td>{{ project.bills_count }}</td>
+          <!-- <td>{{ project.bills_count }}</td> -->
           <!-- <td>{{ project.payments_count }}</td> -->
           <!-- <td style="color: green;">Dh{{ project.credit }}</td> -->
           <!-- <td style="color: red;">Dh{{ project.debit }}</td> -->

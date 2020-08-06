@@ -8,12 +8,13 @@ import { RegisterFormComponent } from './auth/register-form/register-form.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavBarComponent } from './layouts/nav-bar/nav-bar.component';
-import { CanActivateGuard } from './guards/can-activate.guard';
-import { AuthGuard } from './guards/auth.guard';
+import { IsAuthGuard } from './guards/is-auth.guard';
+import { IsAdminGuard } from './guards/is-admin.guard';
+import { IsNotAuthGuard } from './guards/is-not-auth.guard';
 
-import { ProjectService } from './services/project.service';
-import { BillService } from './services/bill.service';
-import { PaymentService } from './services/payment.service';
+import { ProjectService } from './services/project/project.service';
+import { BillService } from './services/bill/bill.service';
+import { PaymentService } from './services/payment/payment.service';
 
 import { UserListComponent } from './dashboard/user-list/user-list.component';
 
@@ -21,7 +22,7 @@ import { BillListComponent } from './dashboard/bill-list/bill-list.component';
 
 import { ProjectFormComponent } from './dashboard/project-form/project-form.component';
 import { ProjectListComponent } from './dashboard/project-list/project-list.component';
-import { UserService } from './services/user.service';
+import { UserService } from './services/user/user.service';
 import { Interceptor } from './interceptors/interceptor.interceptor';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
@@ -35,7 +36,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './dashboard/profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment'; 
+import { environment } from '../environments/environment';
+import { ReportsComponent } from './dashboard/reports/reports.component';
+import { TransactionsComponent } from './dashboard/transactions/transactions.component'; 
+import { TreasuryService } from './services/treasury/treasury.service';
+import { ReportService } from './services/report/report.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,8 @@ import { environment } from '../environments/environment';
     Page500Component,
     ProfileComponent,
     DashboardComponent,
+    ReportsComponent,
+    TransactionsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -71,8 +78,11 @@ import { environment } from '../environments/environment';
     ProjectService,
     BillService,
     PaymentService,
-    CanActivateGuard,
-    AuthGuard,
+    IsAuthGuard,
+    IsNotAuthGuard,
+    IsAdminGuard,
+    TreasuryService,
+    ReportService,
     [
       { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     ]

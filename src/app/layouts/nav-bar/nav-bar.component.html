@@ -5,21 +5,32 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a  class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li *ngIf="userService.isAdmin()" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="projectNavbar" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Project
+        <li class="nav-item" >
+          <a  class="nav-link" routerLink="/dashboard/projects" id="userNavbar" role="button" >
+            Projects
           </a>
-          <div class="dropdown-menu" aria-labelledby="projectNavbar">
-            <a class="dropdown-item" routerLink="/dashboard/project-list">list projects</a>
-            <a class="dropdown-item" routerLink="/dashboard/project-form">insert project</a>
-          </div>
         </li>
-        <li *ngIf="userService.isAdmin()" class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/user-list" id="userNavbar" role="button" >
+        <li *ngIf="userService.isAdmin()" class="nav-item" >
+          <a  class="nav-link" routerLink="/dashboard/users" id="userNavbar" role="button" >
             Users
+          </a>
+        </li>
+        <li *ngIf="userService.isAdmin()" class="nav-item" >
+          <a  class="nav-link" routerLink="/dashboard/projects/create" id="userNavbar" role="button" >
+            Insert Projects
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a  *ngIf="userService.isAdmin()" class="nav-link" routerLink="/dashboard/transactions" id="userNavbar" role="button" >
+            Transactions
+          </a>
+        </li>
+        <li class="nav-item" >
+          <a  class="nav-link" routerLink="/dashboard/reports" id="userNavbar" role="button" >
+            Reports
           </a>
         </li>
       </ul>

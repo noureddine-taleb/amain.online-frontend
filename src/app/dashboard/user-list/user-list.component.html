@@ -17,7 +17,7 @@
             </td>
             <th (click)="billsList(user)"  [ngStyle]="{'cursor': 'pointer'}" class="align-middle" scope="row">{{ user.name }}</th>
             <td (click)="billsList(user)"  [ngStyle]="{'cursor': 'pointer'}" class="align-middle">{{ user.phone }}</td>
-            <td (click)="billsList(user)"  [ngStyle]="{'cursor': 'pointer'}" class="align-middle">{{ user.dob }}</td>
+            <td (click)="billsList(user)"  [ngStyle]="{'cursor': 'pointer'}" class="align-middle">{{ user.dob | date: 'dd/MM/yyy' }}</td>
             <td  class="functions">
               <fa-icon [icon]="faPlusCircle" [ngStyle]="{'cursor': 'pointer'}" (click)="addBill(user)" data-toggle="modal" data-target="#bill-form" class="mr-3"></fa-icon>
             </td>
@@ -58,23 +58,23 @@
               </div>
               <div class="form-group">
                 <label for="project">Select Project</label>
-                <select class="form-control" id="project" formControlName="project_id">
-                  <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+                <select class="form-control" id="project" formControlName="projectID">
+                  <option *ngFor="let project of projects" [value]="project._id">{{ project.name }}</option>
                 </select>
-                <div *ngIf="billForm.controls.project_id.errors?.required" class="invalid-feedback">project is required</div>
+                <div *ngIf="billForm.controls.projectID.errors?.required" class="invalid-feedback">project is required</div>
               </div>
               <div class="form-group">
-                <label for="weight">Quantity</label>
-                <input type="number" class="form-control" id="weight" placeholder="2.5" formControlName="weight">
-                <div *ngIf="billForm.controls.weight.errors?.required" class="invalid-feedback">Quantity is required</div>
-                <div *ngIf="billForm.controls.weight.errors?.min" class="invalid-feedback">Quantity should be greater than 0</div>
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quantity" placeholder="2.5" formControlName="quantity">
+                <div *ngIf="billForm.controls.quantity.errors?.required" class="invalid-feedback">Quantity is required</div>
+                <div *ngIf="billForm.controls.quantity.errors?.min" class="invalid-feedback">Quantity should be greater than 0</div>
               </div>
             </div>
             <div class="modal-footer">
               <div *ngIf="loading" class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
               </div>
-              <button [disabled]="billForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': billForm.invalid, 'btn-success': billForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
+              <button type="submit" class="btn" [ngClass]="{'btn-danger': billForm.invalid, 'btn-success': billForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
               <button #closeModal id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </form>

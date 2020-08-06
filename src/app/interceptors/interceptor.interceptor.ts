@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.prod';
 
@@ -35,14 +35,14 @@ export class Interceptor implements HttpInterceptor {
 
           if(err.status == 401){
             this.userService.logout();
-            router.navigate(["/auth/login-form"]);
+            router.navigate(["/", "auth", "login"]);
           }
-          else if(err.status == 404){
-            router.navigate(["/404"]);
-          }
-          else if(err.status >= 500){
-            router.navigate(["/500"]);
-          }
+          // else if(err.status == 404){
+          //   router.navigate(["/404"]);
+          // }
+          // else if(err.status >= 500){
+          //   router.navigate(["/500"]);
+          // }
         }
 
         return throwError(err)

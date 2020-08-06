@@ -21,7 +21,7 @@
           <div *ngIf="projectForm.controls.fees.errors?.required" class="invalid-feedback">project fees is required</div>
           <div *ngIf="projectForm.controls.fees.errors?.min" class="invalid-feedback">project fees should be greater than 0</div>
         </div>
-        <button [disabled]="projectForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': projectForm.invalid, 'btn-success': projectForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
+        <button type="submit" class="btn" [ngClass]="{'btn-danger': projectForm.invalid, 'btn-success': projectForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>

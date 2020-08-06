@@ -4,7 +4,7 @@
       <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
+            <input autofocus autocomplete="phone" name="phone" type="text" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
             <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
             <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback">phone number is required</div>
             <div *ngIf="loginForm.controls.phone.errors?.pattern" class="invalid-feedback">phone number should look like 0612345678</div>
@@ -18,13 +18,13 @@
             <input type="checkbox" class="form-check-input" id="remember-me" formControlName="rememberme">
             <label class="form-check-label" for="remember-me">Remember me</label>
           </div>
-          <button [disabled]="loginForm.invalid" type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
-          <a routerLink="/auth/register-form"><button type="button" class="btn btn-primary">Register</button></a>
+          <button type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">Sign in</button>
+          <a routerLink="/auth/register"><button type="button" class="btn btn-primary">Register</button></a>
           <div *ngIf="loading" class="spinner-border text-primary" role="status">
             <span class="sr-only">Loading...</span>
           </div>
       </form>
-      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors.length">
+      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors?.length">
         <ul>
           <li *ngFor="let error of errors"> {{ error }} </li>
         </ul>

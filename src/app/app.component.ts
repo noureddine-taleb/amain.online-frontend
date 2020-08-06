@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, ActivatedRoute, Data, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, animate, style, query, state, animateChild, group } from '@angular/animations';
+import { filter } from 'rxjs/operators';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,7 @@ import { trigger, transition, animate, style, query, state, animateChild, group 
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('routeAnimations', [
-      transition('userListPage => billListPage', [
+      transition('pp => pp', [
         style({ position: 'relative' }),
         query(':enter, :leave', [
           style({
@@ -33,7 +35,7 @@ import { trigger, transition, animate, style, query, state, animateChild, group 
         query(':enter', animateChild()),
       ]),
 
-      transition('billListPage => userListPage', [
+      transition('pp => pp', [
         style({ position: 'relative' }),
         query(':enter, :leave', [
           style({
@@ -63,34 +65,22 @@ import { trigger, transition, animate, style, query, state, animateChild, group 
 
 })
 export class AppComponent {
+  // animation: string
 
-  constructor(private _route: ActivatedRoute, private _router: Router){
-
-      this._router.events
-      // .filter(event => event instanceof NavigationEnd)
-       .subscribe(
-          () => {
-             console.log(this._route.snapshot.children);
-          }
-      );
-
-  }
+  constructor(
+    private _route: ActivatedRoute, 
+    private _router: Router,
+    private _userService: UserService,
+    )
+  {}
 
   ngOnInit(): void {
-    // this.route.url.subscribe(() => {
-    //   // this.animation = this.route.snapshot.data;
-    //   // this.animation = this.route.snapshot.firstChild?.data;
-    //   console.log('change');
-    // })
-
-    // this.route.
   }
 
   prepareRoute(outlet: RouterOutlet) {
-
-    // console.log('outlet', this.route.snapshot.url)
-    // return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
     // return this.animation;
+    // console.log(this._router.url)
+    return this._router.url
   }
 
 }

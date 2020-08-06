@@ -1,0 +1,24 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr class="table-info">
+          <th scope="col">Project</th>
+          <th scope="col">Earning</th>
+          <th scope="col">Losts</th>
+          <th scope="col">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of reports | paginate: { itemsPerPage: 7, currentPage: p }">
+            <td>{{ report.project }}</td>
+            <td [ngStyle]="{ color: 'green' }">{{ report.earn }} DH</td>
+            <td [ngStyle]="{ color: 'red' }">{{ report.lost }} DH</td>
+            <td  [ngStyle]="{ color: report.balance >= 0 ? 'green' : 'red', fontWeight: 'bold', padding: '20px' }">&lt;{{ report.balance }} DH&gt;</td>
+        </tr>
+      </tbody>
+    </table>
+    <div [ngStyle]="{ color: total >= 0 ? 'green' : 'red', fontWeight: 'bold', padding: '20px' }">Total: {{ total }} DH</div>
+    <div class="pagination-div">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>

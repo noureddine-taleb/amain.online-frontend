@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../../services/project/project.service';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Project } from '../../models/project/project';
 
 @Component({
   selector: 'app-project-form',
@@ -35,12 +36,14 @@ export class ProjectFormComponent implements OnInit {
     })
   }
 
-  submit(data){
+  submit(data: Project){
+    if(this.projectForm.invalid) return
     this.showLoader();
-    this.projectService.create(data).subscribe(res => {
+    this.projectService.create(new Project(data.name, data.desc, data.fees)).subscribe(
+    _ => {
       this.hideLoader();
-      this.alertService.success(res["feedback"]);
-      setTimeout(() => this.router.navigate(["/dashboard/project-list"]), 2000);
+      this.alertService.success("project created successfully");
+      setTimeout(() => this.router.navigate(["/", "dashboard", "projects"]), 2000);
     },(err:HttpErrorResponse) => {
       this.hideLoader();
       this.alertService.danger('error occured');

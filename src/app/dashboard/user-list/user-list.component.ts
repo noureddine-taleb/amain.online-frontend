@@ -1,17 +1,20 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
-import { BillService } from '../../services/bill.service';
+import { BillService } from '../../services/bill/bill.service';
 import { AlertService } from 'ngx-alerts';
-import { ProjectService } from '../../services/project.service';
+import { ProjectService } from '../../services/project/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from '../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { User } from '../../models/user/user';
+import { Project } from '../../models/project/project';
+import { Bill } from '../../models/bill/bill';
 
 @Component({
   selector: 'app-user-list',
@@ -20,59 +23,69 @@ import { PLATFORM_ID } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  users: any[] = [];
-  user: any;
+  users: User[] = [];
+  user: User;
   faPlusCircle = faPlusCircle;
   billForm : FormGroup;
   errors:any[] = [];
-  projects:any[] = [];
+  projects:Project[] = [];
   loading = false;
   p:number = 1;
   prefix = `${environment.UPLOAD_FOLDER}`;
-  constructor(@Inject(PLATFORM_ID) private platform, private projectService: ProjectService, private billService: BillService, private formBuilder: FormBuilder, private userService: UserService, private router: Router,private sanitizer: DomSanitizer,private alertService: AlertService, private spinnerService: NgxSpinnerService) { }
+  constructor(
+    @Inject(PLATFORM_ID) private platform, 
+    private projectService: ProjectService, 
+    private billService: BillService, 
+    private formBuilder: FormBuilder, 
+    private userService: UserService, 
+    private router: Router,
+    private sanitizer: DomSanitizer,
+    private alertService: AlertService, 
+    private spinnerService: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.spinnerService.show();
-    this.userService.index().subscribe(res => {
+    this.userService.getAll().subscribe(res => {
     this.spinnerService.hide();
-      this.users = res['data'];
+      this.users = res['users'];
      },() => this.spinnerService.hide());
 
-    this.projectService.index().subscribe(res => (this.projects = res['data']) )
+    this.projectService.getAll().subscribe(res => (this.projects = res['projects']) )
     
     this.billForm = this.formBuilder.group({
-      user_id:[
+      userID:[
         '',
         [Validators.required]
       ],
-      project_id:[
+      projectID:[
         '',
         [Validators.required]
       ],
-      weight:[
+      quantity:[
         '',
         [Validators.required, Validators.min(0.1)]
       ]
     });
   }
 
-  billsList(user){
-    this.router.navigate([ 'dashboard/bill-list', user.id]);
+  billsList(user: User){
+    this.router.navigate([ '/', 'dashboard', 'users', user._id, 'bills']);
   }
 
-  addBill(user){
+  addBill(user: User){
     this.user = user;
-    this.billForm.patchValue({user_id: this.user.id});
+    this.billForm.patchValue({userID: this.user._id});
   }
 
-  submit(data){
+  submit(data: Bill){
     if(this.billForm.invalid) return;
     this.showLoader();
-    this.billService.create(data).subscribe((data) => {
+    this.billService.create(new Bill(data.userID, data.projectID, data.quantity)).subscribe((data) => {
       this.hideLoader();
-      this.alertService.success(data["feedback"]);
+      this.alertService.success("bill created successfully");
       if(isPlatformBrowser(this.platform))
-      document.getElementById("close-modal").click();
+        document.getElementById("close-modal").click();
     }, 
       (err:HttpErrorResponse) => {
         this.hideLoader();
@@ -91,7 +104,7 @@ export class UserListComponent implements OnInit {
     this.loading = false;
   }
 
-  getSafeUrl(user){
+  getSafeUrl(user: User){
     return this.sanitizer.bypassSecurityTrustUrl(`${this.prefix}${user.image}`);
   }
 }

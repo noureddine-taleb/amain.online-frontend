@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BillService } from 'src/app/services/bill.service';
-import { UserService } from 'src/app/services/user.service';
+import { BillService } from '../../services/bill/bill.service';
+import { UserService } from '../../services/user/user.service';
 import { AlertService } from 'ngx-alerts';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
+import { Bill } from '../../models/bill/bill';
 
 @Component({
   selector: 'app-profile',
@@ -14,41 +14,45 @@ import { faPrint } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProfileComponent implements OnInit {
 
-  bills: any[] = [];
-  bill: any = null;
+  bills: Bill[] = [];
+  bill: Bill;
   faPrint = faPrint;
   blob: Blob;
-  url;
-  userId;
-  loading = false;
+  url: SafeResourceUrl;
+  loading: boolean = false;
   p: number = 1;
   
-  constructor(private billService: BillService, private userService: UserService, private alertService: AlertService, private sanitizer: DomSanitizer, private route: ActivatedRoute, private spinnerService: NgxSpinnerService) 
+  constructor(
+    private billService: BillService, 
+    private userService: UserService, 
+    private alertService: AlertService, 
+    private sanitizer: DomSanitizer, 
+    private spinnerService: NgxSpinnerService
+    ) 
   {}
 
   ngOnInit(): void {
-    this.userId = this.userService.getUser()['id'];
     this.spinnerService.show();
-    
-    this.userService.bills(this.userId).subscribe(res => {
+    this.userService.bills().subscribe(
+    res => {
       this.spinnerService.hide();
-      this.bills = res['data'];
-    },() => this.spinnerService.hide() );
+      this.bills = res['bills'];
+    },
+    _ => this.spinnerService.hide() );
 
   }
 
-  saveBill(bill){
+  saveBill(bill: Bill){
     this.bill = bill;
   }
   
-  downloadBill(bill){
+  downloadBill(bill: Bill){
     this.bill = bill;
     this.showLoader();
-    this.billService.download(this.bill.id).subscribe(res => {
+    this.billService.download(this.bill._id).subscribe(res => {
       this.hideLoader();
       this.blob = new Blob([res], {type : 'application/pdf'});
-      this.url = URL.createObjectURL(this.blob);
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(this.blob));
     }, () => {
       this.hideLoader();
       this.alertService.danger("download failure");
