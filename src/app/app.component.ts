@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, ActivatedRoute, Data, Router, NavigationEnd } from '@angular/router';
-import { trigger, transition, animate, style, query, state, animateChild, group } from '@angular/animations';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { trigger, transition, animate, style, query, animateChild, group } from '@angular/animations';
 import { filter } from 'rxjs/operators';
-import { UserService } from './services/user/user.service';
+import { AnalyticsService } from './services/analytics/analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -65,21 +65,20 @@ import { UserService } from './services/user/user.service';
 
 })
 export class AppComponent {
-  // animation: string
 
   constructor(
-    private _route: ActivatedRoute, 
     private _router: Router,
-    private _userService: UserService,
+    private analyticsService: AnalyticsService,
     )
   {}
 
   ngOnInit(): void {
+    this._router.events
+    .pipe(filter(e => e instanceof NavigationEnd))
+    .subscribe(this.analyticsService.pageView)
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    // return this.animation;
-    // console.log(this._router.url)
     return this._router.url
   }
 

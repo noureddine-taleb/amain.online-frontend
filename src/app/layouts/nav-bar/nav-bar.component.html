@@ -6,35 +6,35 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a  class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+          <a  class="nav-link" routerLink="/dashboard">الصفحة الرئيسية <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" >
           <a  class="nav-link" routerLink="/dashboard/projects" id="userNavbar" role="button" >
-            Projects
+            المشاريع
           </a>
         </li>
         <li *ngIf="userService.isAdmin()" class="nav-item" >
           <a  class="nav-link" routerLink="/dashboard/users" id="userNavbar" role="button" >
-            Users
+            المستخدمون
           </a>
         </li>
         <li *ngIf="userService.isAdmin()" class="nav-item" >
           <a  class="nav-link" routerLink="/dashboard/projects/create" id="userNavbar" role="button" >
-            Insert Projects
+            أدخل المشاريع
           </a>
         </li>
         <li class="nav-item" >
           <a  *ngIf="userService.isAdmin()" class="nav-link" routerLink="/dashboard/transactions" id="userNavbar" role="button" >
-            Transactions
+            المعاملات
           </a>
         </li>
         <li class="nav-item" >
           <a  class="nav-link" routerLink="/dashboard/reports" id="userNavbar" role="button" >
-            Reports
+            التقارير
           </a>
         </li>
       </ul>
-        <button class="btn btn-danger my-2 my-sm-0"  (click)="userService.logout()">Logout</button>
+        <button class="btn btn-danger my-2 my-sm-0"  (click)="userService.logout()">تسجيل خروج</button>
     </div>
   </nav>
   

@@ -9,6 +9,7 @@ import { UserService } from '../../services/user/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Bill } from '../../models/bill/bill';
 import { Payment } from '../../models/payment/payment';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-bill-list',
@@ -27,7 +28,16 @@ export class BillListComponent implements OnInit {
   loading = false;
   p: number = 1;
   
-  constructor(private billService: BillService, private userService: UserService, private paymentService: PaymentService, private alertService: AlertService,private sanitizer: DomSanitizer, private route: ActivatedRoute, private spinnerService: NgxSpinnerService) 
+  constructor(
+    private billService: BillService, 
+    private userService: UserService, 
+    private paymentService: PaymentService, 
+    private alertService: AlertService,
+    private sanitizer: DomSanitizer, 
+    private route: ActivatedRoute, 
+    private spinnerService: NgxSpinnerService,
+    private analyticsService: AnalyticsService,
+    ) 
   {}
 
   ngOnInit(): void {
@@ -66,6 +76,7 @@ export class BillListComponent implements OnInit {
   }
 
   paymentConfirmation(){
+    this.analyticsService.event('productivity', 'create_payment', 'method')
     if(this.bill) {
       this.showLoader();
       this.paymentService.create(new Payment(this.bill._id)).subscribe(res => {

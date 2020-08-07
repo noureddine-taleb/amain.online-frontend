@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +41,7 @@ import { ReportsComponent } from './dashboard/reports/reports.component';
 import { TransactionsComponent } from './dashboard/transactions/transactions.component'; 
 import { TreasuryService } from './services/treasury/treasury.service';
 import { ReportService } from './services/report/report.service';
+import { GlobalErrorHandler } from './errorHandler/global-error-handler';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { ReportService } from './services/report/report.service';
     ReportService,
     [
       { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
-    ]
+    ],
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

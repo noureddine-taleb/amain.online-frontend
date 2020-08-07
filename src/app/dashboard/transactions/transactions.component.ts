@@ -8,6 +8,7 @@ import { TreasuryService } from '../../services/treasury/treasury.service';
 import { ProjectService } from '../../services/project/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Project } from '../../models/project/project';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-transactions',
@@ -28,7 +29,8 @@ export class TransactionsComponent implements OnInit {
     private alertService:AlertService, 
     private projectService: ProjectService,
     private spinnerService: NgxSpinnerService,
-    private router: Router 
+    private router: Router,
+    private analyticsService: AnalyticsService,
     ) { }
 
   ngOnInit(): void {
@@ -57,6 +59,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   submit(data: Treasury){
+    this.analyticsService.event('productivity', 'create_treasury_record', 'method', this.treasuryForm.valid ? 1 : 0)
     if(this.treasuryForm.invalid) return
     this.showLoader()
     this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, this.projectID)).subscribe(

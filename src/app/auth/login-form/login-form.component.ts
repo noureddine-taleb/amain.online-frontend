@@ -3,10 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
-import { HttpErrorResponse } from '@angular/common/http';
-import { NgxSpinnerService } from "ngx-spinner";
 import { User } from '../../models/user/user';
 import { ValidationService } from '../../services/validation/validation.service';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-login-form',
@@ -25,7 +24,7 @@ export class LoginFormComponent implements OnInit {
     private validationService: ValidationService,
     private router: Router,
     private alertService: AlertService,
-    private spinnerService: NgxSpinnerService
+    private analyticsService: AnalyticsService,
     ) {}
 
   ngOnInit(): void {
@@ -45,6 +44,8 @@ export class LoginFormComponent implements OnInit {
   }
       
   submit(data: User){
+    this.analyticsService.event('engagement', 'login', 'method', this.loginForm.valid ? 1 : 0)
+    
     if(this.loginForm.invalid) return;
     this.showLoader();
     this.userService.login(data).subscribe( 

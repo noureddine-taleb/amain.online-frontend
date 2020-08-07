@@ -8,6 +8,7 @@ import { ValidationService } from '../../services/validation/validation.service'
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-register-form',
@@ -30,7 +31,8 @@ export class RegisterFormComponent implements OnInit
     private router:Router,
     private alertService: AlertService,
     private validationService: ValidationService,
-    @Inject(PLATFORM_ID) private platform
+    @Inject(PLATFORM_ID) private platform,
+    private analyticsService: AnalyticsService,
   )
   { }
 
@@ -76,6 +78,8 @@ export class RegisterFormComponent implements OnInit
   
   submit(data: any) 
   {
+    this.analyticsService.event('engagement', 'sign_up', 'method', this.registerForm.valid ? 1 : 0)
+
     if(this.registerForm.invalid) return;
     this.showLoader();
     const fileName = Date.now() + Math.random() + this.image.name;

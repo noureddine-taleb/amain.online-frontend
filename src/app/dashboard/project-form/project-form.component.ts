@@ -5,6 +5,7 @@ import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Project } from '../../models/project/project';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-project-form',
@@ -17,7 +18,13 @@ export class ProjectFormComponent implements OnInit {
   errors:any[] = [];
   loading = false;
 
-  constructor(private formBuilder: FormBuilder,private projectService: ProjectService,private alertService:AlertService, private router: Router ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private projectService: ProjectService,
+    private alertService:AlertService, 
+    private router: Router,
+    private analyticsService: AnalyticsService,
+    ) { }
 
   ngOnInit(): void {
     this.projectForm = this.formBuilder.group({
@@ -37,6 +44,7 @@ export class ProjectFormComponent implements OnInit {
   }
 
   submit(data: Project){
+    this.analyticsService.event('productivity', 'create_project', 'method', this.projectForm.valid ? 1 : 0)
     if(this.projectForm.invalid) return
     this.showLoader();
     this.projectService.create(new Project(data.name, data.desc, data.fees)).subscribe(

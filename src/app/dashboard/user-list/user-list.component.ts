@@ -15,6 +15,7 @@ import { PLATFORM_ID } from '@angular/core';
 import { User } from '../../models/user/user';
 import { Project } from '../../models/project/project';
 import { Bill } from '../../models/bill/bill';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Component({
   selector: 'app-user-list',
@@ -41,7 +42,8 @@ export class UserListComponent implements OnInit {
     private router: Router,
     private sanitizer: DomSanitizer,
     private alertService: AlertService, 
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private analyticsService: AnalyticsService,
   ) {}
 
   ngOnInit(): void {
@@ -79,6 +81,8 @@ export class UserListComponent implements OnInit {
   }
 
   submit(data: Bill){
+    this.analyticsService.event('productivity', 'create_bill', 'method', this.billForm.valid ? 1 : 0)
+
     if(this.billForm.invalid) return;
     this.showLoader();
     this.billService.create(new Bill(data.userID, data.projectID, data.quantity)).subscribe((data) => {

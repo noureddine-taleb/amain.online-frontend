@@ -6,6 +6,7 @@ import { User } from '../../models/user/user'
 import { Observable } from 'rxjs'
 import { CRUD } from '../../models/crud/crud'
 import { isPlatformBrowser } from '@angular/common'
+import { AnalyticsService } from '../analytics/analytics.service'
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,10 @@ export class UserService implements CRUD {
  _url = '/users'
 
   constructor(
-    @Inject(PLATFORM_ID) private platform: Object, 
+    @Inject(PLATFORM_ID) private platform: object, 
     private http: HttpClient, 
-    private injector: Injector
+    private injector: Injector,
+    private analyticsService: AnalyticsService,
     ){}
 
   get user(){
@@ -46,6 +48,7 @@ export class UserService implements CRUD {
   }
   
   logout(){
+    this.analyticsService.event('engagement', 'log_out', 'method')
     if(isPlatformBrowser(this.platform)){
       localStorage.removeItem('token')
       this.injector.get(Router).navigate(["auth", "login"])
