@@ -1,4 +1,7 @@
 TODO :
+    - animation
+    - full offline support
+    - better i18n support
     - error handling
     - use injector
     - deprecate angular fa icons and use native ones
