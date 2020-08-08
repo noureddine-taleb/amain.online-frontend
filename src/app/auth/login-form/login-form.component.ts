@@ -51,12 +51,12 @@ export class LoginFormComponent implements OnInit {
     this.userService.login(data).subscribe( 
       _ => 
       {
-      this.alertService.success("user login with success");
+      this.alertService.success("تسجيل دخول المستخدم بنجاح");
       setTimeout(() => this.router.navigate(["/"]), 2000)
     },
     err => {
       this.hideLoader();
-      this.alertService.danger('error occured');
+      this.alertService.danger('حدث خطأ');
       if(err.status == 422){
         this.errors = err.error['errors'];
       }

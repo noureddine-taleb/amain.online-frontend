@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(this.blob));
     }, () => {
       this.hideLoader();
-      this.alertService.danger("download failure");
+      this.alertService.danger("فشل التنزيل");
     });
   }
 

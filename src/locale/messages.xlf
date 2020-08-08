@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="091ad013dbe4e623f472cea0d357d420300cd47c" datatype="html">
+        <source>Home<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>(current)<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="026e17d7321db8d67b0d0700db62ce47c12c94cd" datatype="html">
+        <source>
+            Users
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a7159433aff5b76f1e5fd608969fbae69d690303" datatype="html">
+        <source>
+            Insert Project
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cb5c62b2bc69cc954ed9e114d9445b9cf08e89ea" datatype="html">
+        <source>
+            Transactions
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="705101d9f1311b9da277d43a5bf50c4942986fa8" datatype="html">
+        <source>
+            Reports
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
+        <source>Logout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/layouts/nav-bar/nav-bar.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

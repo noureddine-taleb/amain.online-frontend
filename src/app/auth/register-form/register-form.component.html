@@ -2,71 +2,233 @@
   <div class="row">
     <div class="col-lg-6">
       <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Full Name</label>
-            <input autofocus type="tel" class="form-control" aria-describedby="phoneHelp" formControlName="name">
-            <div *ngIf="registerForm.controls.name.errors?.required" class="invalid-feedback" > name is required</div>
-            <div *ngIf="registerForm.controls.name.errors?.pattern" class="invalid-feedback" > name should contain only letters</div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">
+            الاسم الكامل
+          </label>
+          <input
+            autofocus
+            type="tel"
+            class="form-control"
+            aria-describedby="phoneHelp"
+            formControlName="name"
+          />
+          <div
+            *ngIf="registerForm.controls.name.errors?.required"
+            class="invalid-feedback"
+          >
+            مطلوب اسم
           </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Phone Number</label>
-            <input type="tel" class="form-control" aria-describedby="phoneHelp" formControlName="phone">
-            <small class="form-text text-muted">We'll never share your phone with anyone else.</small>
-            <div *ngIf="registerForm.controls.phone.errors?.required" class="invalid-feedback" > phone number is required</div>
-            <div *ngIf="registerForm.controls.phone.errors?.pattern" class="invalid-feedback" > phone number should contain 10 digits ex:0691016066</div>
+          <div
+            *ngIf="registerForm.controls.name.errors?.pattern"
+            class="invalid-feedback"
+          >
+            يجب أن يحتوي الاسم على أحرف فقط
           </div>
-          <div class="custom-file form-group">
-            <input #imageEl id="image" type="file" accept="image/jpeg" class="custom-file-input" formControlName="image" (input)="upload($event)">
-            <label class="custom-file-label" for="image">Choose file...</label>
-            <!-- progress -->
-            <div class="progress mt-3" [hidden]="!uploadStatus.status">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.aria-valuenow]="uploadStatus.progress" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-            </div>
-            <!-- /progress -->
-            <div *ngIf="registerForm.controls.image.errors?.required" class="invalid-feedback" > image is required</div>
-            <div *ngIf="registerForm.controls.image.errors?.mime" class="invalid-feedback" > accepted files are images only ex: image.jpg, image.jpeg</div>
-            <div *ngIf="registerForm.controls.image.errors?.size" class="invalid-feedback" > file size should be less than 3MiB </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">
+            رقم الهاتف
+          </label>
+          <input
+            type="tel"
+            class="form-control"
+            aria-describedby="phoneHelp"
+            formControlName="phone"
+          />
+          <small class="form-text text-muted"
+            >
+            لن نشارك هاتفك مع أي شخص آخر.
+            </small
+          >
+          <div
+            *ngIf="registerForm.controls.phone.errors?.required"
+            class="invalid-feedback"
+          >
+            رقم الهاتف مطلوب
           </div>
-          <div class="form-group">
-              <label for="exampleFormControlFile1">Date</label>
-              <input type="date" class="form-control" formControlName="dob">
-            <div *ngIf="registerForm.controls.dob.errors?.required" class="invalid-feedback" > date of birth is required</div>
+          <div
+            *ngIf="registerForm.controls.phone.errors?.pattern"
+            class="invalid-feedback"
+          >
+            يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" formControlName="password">
-            <div *ngIf="registerForm.controls.password.errors?.required" class="invalid-feedback" > password is required</div>
-            <div *ngIf="registerForm.controls.password.errors?.minlength" class="invalid-feedback" > password length should be more that 5 characters</div>
+        </div>
+        <div class="custom-file form-group">
+          <input
+            #imageEl
+            id="image"
+            type="file"
+            accept="image/jpeg"
+            class="custom-file-input"
+            formControlName="image"
+            (input)="upload($event)"
+          />
+          <label class="custom-file-label" for="image">
+            اختر ملف...
+          </label>
+          <!-- progress -->
+          <div class="progress mt-3" [hidden]="!uploadStatus.status">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+              role="progressbar"
+              [attr.aria-valuenow]="uploadStatus.progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 75%;"
+            ></div>
           </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password Confirmation</label>
-            <input type="password" class="form-control" formControlName="password_confirmation">
-            <div *ngIf="registerForm.controls.password_confirmation.errors?.required" class="invalid-feedback" > password Confirmation is required</div>
-            <div *ngIf="registerForm.controls.password_confirmation.errors?.minlength" class="invalid-feedback" > password Confirmation length should be more that 5 characters</div>
-            <div *ngIf="registerForm.controls.password_confirmation.errors?.match" class="invalid-feedback" > password confirmation should match password</div>
+          <!-- /progress -->
+          <div
+            *ngIf="registerForm.controls.image.errors?.required"
+            class="invalid-feedback"
+          >
+            الصورة مطلوبة
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="terms-and-conditions" formControlName="terms_and_conditions">
-            <label class="form-check-label" for="terms-and-conditions">I agree on <a routerLink="/terms-and-conditions"> Terms and Conditions</a> of this app</label>
-            <div *ngIf="registerForm.controls.terms_and_conditions.errors?.required" class="invalid-feedback" > you should agree on our terms</div>
+          <div
+            *ngIf="registerForm.controls.image.errors?.mime"
+            class="invalid-feedback"
+          >
+            الملفات المقبولة هي صور فقط على سبيل المثال: image.jpg ، image.jpeg
           </div>
-          <button type="submit" class="btn" [ngClass]="{'btn-danger': registerForm.invalid, 'btn-success': registerForm.valid}" [ngStyle]="{'marginRight': '15px'}">Sign up</button>
-          <a routerLink="/auth/login"><button type="button" class="btn btn-primary">Login</button></a>
-          <div *ngIf="loading" class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
+          <div
+            *ngIf="registerForm.controls.image.errors?.size"
+            class="invalid-feedback"
+          >
+            يجب أن يكون حجم الملف أقل من 3 ميغا بايت
           </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Date</label>
+          <input type="date" class="form-control" formControlName="dob" />
+          <div
+            *ngIf="registerForm.controls.dob.errors?.required"
+            class="invalid-feedback"
+          >
+            تاريخ الميلاد مطلوب
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">
+            كلمه السر
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <div
+            *ngIf="registerForm.controls.password.errors?.required"
+            class="invalid-feedback"
+          >
+            كلمة المرور مطلوبة
+          </div>
+          <div
+            *ngIf="registerForm.controls.password.errors?.minlength"
+            class="invalid-feedback"
+          >
+            يجب أن يكون طول كلمة المرور أكثر من 5 أحرف
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">
+            تأكيد كلمة المرور
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password_confirmation"
+          />
+          <div
+            *ngIf="registerForm.controls.password_confirmation.errors?.required"
+            class="invalid-feedback"
+          >
+            مطلوب تأكيد كلمة المرور
+          </div>
+          <div
+            *ngIf="
+              registerForm.controls.password_confirmation.errors?.minlength
+            "
+            class="invalid-feedback"
+          >
+            يجب أن يكون طول تأكيد كلمة المرور أكثر من 5 أحرف
+          </div>
+          <div
+            *ngIf="registerForm.controls.password_confirmation.errors?.match"
+            class="invalid-feedback"
+          >
+            يجب أن يتطابق تأكيد كلمة المرور مع كلمة المرور
+          </div>
+        </div>
+        <div class="form-group form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="terms-and-conditions"
+            formControlName="terms_and_conditions"
+          />
+          <label class="form-check-label" for="terms-and-conditions"
+            >أوافق على
+            <a routerLink="/terms-and-conditions"> 
+              الأحكام والشروط</a> من
+            هذا التطبيق
+            </label
+          >
+          <div
+            *ngIf="registerForm.controls.terms_and_conditions.errors?.required"
+            class="invalid-feedback"
+          >
+            يجب أن توافق على شروطنا
+          </div>
+        </div>
+        <button
+          [disabled]="loading"
+          type="submit"
+          class="btn"
+          [ngClass]="{
+            'btn-danger': registerForm.invalid,
+            'btn-success': registerForm.valid
+          }"
+          [ngStyle]="{ marginRight: '15px' }"
+        >
+          سجل
+        </button>
+        <a routerLink="/auth/login"
+          ><button type="button" class="btn btn-primary">
+            تسجيل الدخول
+          </button></a
+        >
+        <div *ngIf="loading" class="spinner-border text-primary" role="status">
+          <span class="sr-only">
+            جار التحميل...
+          </span>
+        </div>
       </form>
-      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors.length">
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        [ngStyle]="{ marginTop: '20px' }"
+        role="alert"
+        *ngIf="errors.length"
+      >
         <ul>
-          <li *ngFor="let error of errors"> {{ error }} </li>
+          <li *ngFor="let error of errors">{{ error }}</li>
         </ul>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
     <div class="col-lg-6">
-      <img src="/assets/images/register.svg" class="img-fluid mt-3" alt="register img">
+      <img
+        src="/assets/images/register.svg"
+        class="img-fluid mt-3"
+        alt="register img"
+      />
     </div>
   </div>
 </div>

@@ -99,12 +99,12 @@ export class RegisterFormComponent implements OnInit
     combineLatest([imageObs, userObs])
     .subscribe(_ => {
       this.hideLoader()
-      this.alertService.success("user created successfully")
+      this.alertService.success("تم إنشاء المستخدم بنجاح")
       setTimeout(() => this.router.navigate(['/', 'auth','login']), 2000)
     },
     _ => {
       this.hideLoader();
-      this.alertService.danger('error occured')
+      this.alertService.danger('حدث خطأ')
     })
   }
 

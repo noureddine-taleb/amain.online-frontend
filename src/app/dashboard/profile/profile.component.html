@@ -3,22 +3,42 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Project</th>
-        <th scope="col">Date</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Functions</th>
+        <th scope="col">
+          اسم
+        </th>
+        <th scope="col">
+          مشروع
+        </th>
+        <th scope="col">
+          تاريخ
+        </th>
+        <th scope="col">
+          كمية
+        </th>
+        <th scope="col">
+          المهام
+        </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bill of bills | paginate: { itemsPerPage: 7, currentPage: p}">
+      <tr
+        *ngFor="
+          let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
+        "
+      >
         <th scope="row">{{ bill._id }}</th>
         <td>{{ bill.userID?.name }}</td>
         <td>{{ bill.projectID?.name }}</td>
-        <td>{{ bill.createdAt | date: 'dd/mm/yyyy' }}</td>
-        <td>{{ bill.quantity * bill.projectID?.fees}}</td>
+        <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
+        <td>{{ bill.quantity * bill.projectID?.fees }}</td>
         <td class="functions">
-          <fa-icon [icon]="faPrint" (click)="downloadBill(bill)" data-toggle="modal" data-target="#bill-pdf" class="mr-3"></fa-icon>
+          <fa-icon
+            [icon]="faPrint"
+            (click)="downloadBill(bill)"
+            data-toggle="modal"
+            data-target="#bill-pdf"
+            class="mr-3"
+          ></fa-icon>
         </td>
       </tr>
     </tbody>
@@ -28,8 +48,8 @@
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <div  class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong>Empty! </strong> there is no bills.
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>فارغة! </strong> لا توجد فواتير.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -37,25 +57,57 @@
 </ng-template>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="bill-pdf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div
+  class="modal fade bd-example-modal-lg"
+  id="bill-pdf"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Download pdf</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="exampleModalLabel">
+          تحميل PDF
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">      
-          <iframe *ngIf="url" style="width: 100%;" [src]="url" frameborder="0"></iframe>
+      <div class="modal-body">
+        <iframe
+          *ngIf="url"
+          style="width: 100%;"
+          [src]="url"
+          frameborder="0"
+        ></iframe>
       </div>
       <div class="modal-footer">
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">
+            جار التحميل...
+          </span>
         </div>
-        <a [href]="url" download="facture.pdf"><button type="button" class="btn btn-success">Download</button></a>
-        <button id="close-modal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a [href]="url" download="facture.pdf"
+          ><button [disabled]="loading" type="button" class="btn btn-success">
+            تحميل
+          </button></a
+        >
+        <button
+          id="close-modal"
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          إلغاء
+        </button>
       </div>
+    </div>
   </div>
-</div>
 </div>

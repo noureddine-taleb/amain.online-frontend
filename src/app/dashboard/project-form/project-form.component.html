@@ -3,40 +3,125 @@
     <div class="col-lg-6">
       <form [formGroup]="projectForm" (ngSubmit)="submit(projectForm.value)">
         <div class="form-group">
-          <label for="project-name">Project Name</label>
-          <input type="text" for="project-name" class="form-control" formControlName="name" placeholder="water project">
-          <div *ngIf="projectForm.controls.name.errors?.required" class="invalid-feedback">project name is required</div>
-          <div *ngIf="projectForm.controls.name.errors?.minlength" class="invalid-feedback">project name should be 5 char long</div>
+          <label for="project-name">
+            اسم المشروع
+          </label>
+          <input
+            type="text"
+            id="project-name"
+            class="form-control"
+            formControlName="name"
+          />
+          <div
+            *ngIf="projectForm.controls.name.errors?.required"
+            class="invalid-feedback"
+          >
+            اسم المشروع مطلوب
+          </div>
+          <div
+            *ngIf="projectForm.controls.name.errors?.minlength"
+            class="invalid-feedback"
+          >
+            يجب أن يكون اسم المشروع بطول 5 أحرف
+          </div>
         </div>
         <div class="form-group">
-          <label for="project-desc">Project Description</label>
-          <textarea type="text" for="project-desc" class="form-control" formControlName="desc" placeholder="water project is ... lorem ipsum lorem ipsum lorem ipsum lorem ipsum" rows="3">
+          <label for="project-desc">
+            وصف المشروع
+
+          </label>
+          <textarea
+            type="text"
+            for="project-desc"
+            class="form-control"
+            formControlName="desc"
+            placeholder="مشروع المياه هو bla bla bla ..."
+            rows="3"
+          >
           </textarea>
-          <div *ngIf="projectForm.controls.desc.errors?.required" class="invalid-feedback">project description is required</div>
-          <div *ngIf="projectForm.controls.desc.errors?.minlength" class="invalid-feedback">project description should be 20 char long</div>
+          <div
+            *ngIf="projectForm.controls.desc.errors?.required"
+            class="invalid-feedback"
+          >
+            وصف المشروع مطلوب
+          </div>
+          <div
+            *ngIf="projectForm.controls.desc.errors?.minlength"
+            class="invalid-feedback"
+          >
+            يجب أن يكون وصف المشروع بطول 20 حرفًا
+          </div>
         </div>
         <div class="form-group">
-          <label for="project-fees">Project Fees</label>
-          <input type="number" for="project-fees" class="form-control" formControlName="fees" placeholder="5.5">
-          <div *ngIf="projectForm.controls.fees.errors?.required" class="invalid-feedback">project fees is required</div>
-          <div *ngIf="projectForm.controls.fees.errors?.min" class="invalid-feedback">project fees should be greater than 0</div>
+          <label for="project-fees">
+            رسوم المشروع
+
+          </label>
+          <input
+            type="number"
+            for="project-fees"
+            class="form-control"
+            formControlName="fees"
+            placeholder="5.5"
+          />
+          <div
+            *ngIf="projectForm.controls.fees.errors?.required"
+            class="invalid-feedback"
+          >
+            رسوم المشروع مطلوبة
+          </div>
+          <div
+            *ngIf="projectForm.controls.fees.errors?.min"
+            class="invalid-feedback"
+          >
+            يجب أن تكون رسوم المشروع أكبر من 0
+          </div>
         </div>
-        <button type="submit" class="btn" [ngClass]="{'btn-danger': projectForm.invalid, 'btn-success': projectForm.valid}" [ngStyle]="{'marginRight': '15px'}">Submit</button>
+        <button
+        [disabled]="loading"
+          type="submit"
+          class="btn"
+          [ngClass]="{
+            'btn-danger': projectForm.invalid,
+            'btn-success': projectForm.valid
+          }"
+          [ngStyle]="{ marginRight: '15px' }"
+        >
+          إرسال
+        </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">
+            جار التحميل...
+
+          </span>
         </div>
       </form>
-      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors.length">
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        [ngStyle]="{ marginTop: '20px' }"
+        role="alert"
+        *ngIf="errors.length"
+      >
         <ul>
-          <li *ngFor="let error of errors"> {{ error }} </li>
+          <li *ngFor="let error of errors">{{ error }}</li>
         </ul>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
     <div class="col-lg-6 container">
-      <img src="/assets/images/project.svg" alt="404" class="img-fluid" [ngStyle]="{'maxWidth': '100%'}">
+      <img
+        src="/assets/images/project.svg"
+        alt="404"
+        class="img-fluid"
+        [ngStyle]="{ maxWidth: '100%' }"
+      />
     </div>
   </div>
 </div>

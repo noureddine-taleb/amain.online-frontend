@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Project } from '../../models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
+import Typed from 'typed.js';
 
 @Component({
   selector: 'app-project-form',
@@ -27,6 +28,7 @@ export class ProjectFormComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.typed()
     this.projectForm = this.formBuilder.group({
       name: [
         '',
@@ -34,7 +36,7 @@ export class ProjectFormComponent implements OnInit {
       ],
       desc: [
         '',
-        [Validators.required,Validators.minLength(20)]
+        [Validators.required,Validators.minLength(10)]
       ],
       fees: [
         '',
@@ -50,11 +52,11 @@ export class ProjectFormComponent implements OnInit {
     this.projectService.create(new Project(data.name, data.desc, data.fees)).subscribe(
     _ => {
       this.hideLoader();
-      this.alertService.success("project created successfully");
+      this.alertService.success("تم إنشاء المشروع بنجاح");
       setTimeout(() => this.router.navigate(["/", "dashboard", "projects"]), 2000);
     },(err:HttpErrorResponse) => {
       this.hideLoader();
-      this.alertService.danger('error occured');
+      this.alertService.danger('حدث خطأ');
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
@@ -69,4 +71,22 @@ export class ProjectFormComponent implements OnInit {
     this.loading = false;
   }
 
+  typed() {
+    const options = {
+      strings: [
+        'مشروع مائي',
+        'مشروع الطاقة الشمسية',
+        'الاشتراك',
+        'أنشطة اجتماعية (a7wach، كرة القدم ...)',
+      ],
+      typeSpeed: 65,
+      backSpeed: 15,
+      smartBackspace: true,
+      attr: 'placeholder',
+      bindInputFocusEvents: true,
+      cursorChar: '_',
+      loop: true,
+    };
+    new Typed('#project-name', options);
+  }
 }

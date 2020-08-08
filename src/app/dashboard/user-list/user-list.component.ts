@@ -87,13 +87,13 @@ export class UserListComponent implements OnInit {
     this.showLoader();
     this.billService.create(new Bill(data.userID, data.projectID, data.quantity)).subscribe((data) => {
       this.hideLoader();
-      this.alertService.success("bill created successfully");
+      this.alertService.success("تم إنشاء الفاتورة بنجاح");
       if(isPlatformBrowser(this.platform))
         document.getElementById("close-modal").click();
     }, 
       (err:HttpErrorResponse) => {
         this.hideLoader();
-        this.alertService.danger('error occured');
+        this.alertService.danger('حدث خطأ');
         if(err.status == 422){
           this.errors = err.error['errors'];
         }

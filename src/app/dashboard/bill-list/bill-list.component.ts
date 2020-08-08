@@ -71,7 +71,7 @@ export class BillListComponent implements OnInit {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(<string>this.url);
     }, () => {
       this.hideLoader();
-      this.alertService.danger("download failure");
+      this.alertService.danger("فشل التنزيل");
     });
   }
 
@@ -81,11 +81,11 @@ export class BillListComponent implements OnInit {
       this.showLoader();
       this.paymentService.create(new Payment(this.bill._id)).subscribe(res => {
         this.hideLoader();
-        this.alertService.success(res["feedback"]);
+        this.alertService.success("تمت إضافة الدفع بنجاح");
         this.ngOnInit();
       }, () => {
         this.hideLoader();
-        this.alertService.danger("fail to add payment");
+        this.alertService.danger("تفشل في إضافة الدفع");
       });
     }
   }

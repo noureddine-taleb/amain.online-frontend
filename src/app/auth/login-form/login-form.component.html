@@ -3,25 +3,54 @@
     <div class="col-lg-6">
       <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
           <div class="form-group">
-            <label for="phone">Phone Number</label>
+            <label for="phone">
+              رقم الهاتف
+            </label>
             <input autofocus autocomplete="phone" name="phone" type="text" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
-            <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback">phone number is required</div>
-            <div *ngIf="loginForm.controls.phone.errors?.pattern" class="invalid-feedback">phone number should look like 0612345678</div>
+            <small id="emailHelp" class="form-text text-muted">
+              لن نشارك هاتفك مع أي شخص آخر.
+
+            </small>
+            <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback">
+              رقم الهاتف مطلوب
+
+            </div>
+            <div *ngIf="loginForm.controls.phone.errors?.pattern" class="invalid-feedback">
+              يجب أن يظهر رقم الهاتف بالشكل 0612345678
+
+            </div>
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">
+              كلمه السر
+
+            </label>
             <input type="password" class="form-control" id="password" formControlName="password">
-            <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback">password is required</div>
+            <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback">
+              كلمة المرور مطلوبة
+
+            </div>
           </div>
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="remember-me" formControlName="rememberme">
-            <label class="form-check-label" for="remember-me">Remember me</label>
+            <label class="form-check-label" for="remember-me">
+              تذكرنى
+
+            </label>
           </div>
-          <button type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">Sign in</button>
-          <a routerLink="/auth/register"><button type="button" class="btn btn-primary">Register</button></a>
+          <button [disabled]="loading" type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">
+            تسجيل الدخول
+
+          </button>
+          <a routerLink="/auth/register"><button type="button" class="btn btn-primary">
+            تسجيل
+
+          </button></a>
           <div *ngIf="loading" class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">
+              جار التحميل...
+
+            </span>
           </div>
       </form>
       <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors?.length">

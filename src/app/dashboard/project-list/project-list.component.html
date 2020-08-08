@@ -4,10 +4,18 @@
       <thead class="table-danger">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Name</th>
-          <th scope="col">Desc</th>
-          <th scope="col">Date</th>
-          <th scope="col">Fees</th>
+          <th scope="col">
+            اسم
+          </th>
+          <th scope="col">
+            وصف
+          </th>
+          <th scope="col">
+            تاريخ
+          </th>
+          <th scope="col">
+            الرسوم
+          </th>
           <!-- <th scope="col">Bills N</th> -->
           <!-- <th scope="col">Payments N</th>
           <th scope="col">Credit</th>
@@ -15,11 +23,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let project of projects | paginate: { itemsPerPage: 5, currentPage: p}">
+        <tr
+          *ngFor="
+            let project of projects
+              | paginate: { itemsPerPage: 5, currentPage: p }
+          "
+        >
           <th scope="row">{{ project.id }}</th>
           <td>{{ project.name }}</td>
           <td>{{ project.desc }}</td>
-          <td>{{ project.createdAt | date: 'dd/MM/yy' }}</td>
+          <td>{{ project.createdAt | date: "dd/MM/yy" }}</td>
           <td>{{ project.fees }}</td>
           <!-- <td>{{ project.bills_count }}</td> -->
           <!-- <td>{{ project.payments_count }}</td> -->
@@ -35,13 +48,13 @@
 </ng-container>
 
 <ng-template #elseTemplate>
-  <div  class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong>Empty!</strong> there is no projects.
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    <strong>
+      فارغة!
+    </strong> 
+    لا توجد مشاريع.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
 </ng-template>
-
-
-  
