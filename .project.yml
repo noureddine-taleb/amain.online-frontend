@@ -1,14 +1,16 @@
 TODO :
     - animation
+    - verify registered users
+    - focus on reliability and robustness
+    - increase accessibility
+    - beter ux (make password visible on demand)
+    - light house suggestion
+    - progressive enhancement (notification, badge, bg sync ...)
+    - fix ssr errors
     - full offline support
     - better i18n support
-    - error handling
-    - use injector
     - deprecate angular fa icons and use native ones
-    - change default 404 behavior
-    - pwa
     - badge of n of new  bill on user profile icon
-    - delay file upload until user click register
     - add chart dashboard
     - add more helpfull info to project table
 

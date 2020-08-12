@@ -50,14 +50,15 @@ export class UserService implements CRUD {
   logout(){
     this.analyticsService.event('engagement', 'log_out', 'method')
     if(isPlatformBrowser(this.platform)){
-      localStorage.removeItem('token')
+      window.localStorage.removeItem('token')
       this.injector.get(Router).navigate(["auth", "login"])
     }
   }
 
   getAuthorizationToken(): string | null{
-    if(isPlatformBrowser(this.platform))
-      return localStorage.getItem('token')
+    if(isPlatformBrowser(this.platform)){
+      return window.localStorage.getItem('token')
+    }
     return null
   }
 
@@ -78,8 +79,9 @@ export class UserService implements CRUD {
 
   store(res: Observable<any>){
     this._user = res['user']
-    if(isPlatformBrowser(this.platform))
-      localStorage.setItem('token',  this._user?.token )
+    if(isPlatformBrowser(this.platform)){
+      window.localStorage.setItem('token',  this._user?.token )
+    }
   }
 
   bills(id?: string): Observable<any> {
