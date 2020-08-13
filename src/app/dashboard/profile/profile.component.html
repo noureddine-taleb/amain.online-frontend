@@ -1,48 +1,49 @@
 <ng-container *ngIf="bills.length; else elseTemplate">
-  <table class="table table-striped table-active">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">
-          اسم
-        </th>
-        <th scope="col">
-          مشروع
-        </th>
-        <th scope="col">
-          تاريخ
-        </th>
-        <th scope="col">
-          كمية
-        </th>
-        <th scope="col">
-          المهام
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="
-          let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
-        "
-      >
-        <th scope="row">{{ bill._id }}</th>
-        <td>{{ bill.userID?.name }}</td>
-        <td>{{ bill.projectID?.name }}</td>
-        <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
-        <td>{{ bill.quantity * bill.projectID?.fees }}</td>
-        <td class="functions">
-          <fa-icon
-            [icon]="faPrint"
-            (click)="downloadBill(bill)"
-            data-toggle="modal"
-            data-target="#bill-pdf"
-            class="mr-3"
-          ></fa-icon>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped table-active">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">
+            اسم
+          </th>
+          <th scope="col">
+            مشروع
+          </th>
+          <th scope="col">
+            تاريخ
+          </th>
+          <th scope="col">
+            كمية
+          </th>
+          <th scope="col">
+            المهام
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
+          "
+        >
+          <th scope="row">{{ bill._id }}</th>
+          <td>{{ bill.userID?.name }}</td>
+          <td>{{ bill.projectID?.name }}</td>
+          <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
+          <td>{{ bill.quantity * bill.projectID?.fees }}</td>
+          <td class="functions">
+            <i
+              class="fa fa-print mr-3"
+              (click)="downloadBill(bill)"
+              data-toggle="modal"
+              data-target="#bill-pdf"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="pagination-div">
     <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
@@ -76,6 +77,7 @@
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          (click)="modalClosed()"
         >
           <span aria-hidden="true">&times;</span>
         </button>
@@ -104,6 +106,7 @@
           type="button"
           class="btn btn-secondary"
           data-dismiss="modal"
+          (click)="modalClosed()"
         >
           إلغاء
         </button>

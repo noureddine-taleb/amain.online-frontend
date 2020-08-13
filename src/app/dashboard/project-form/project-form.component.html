@@ -3,14 +3,15 @@
     <div class="col-lg-6">
       <form [formGroup]="projectForm" (ngSubmit)="submit(projectForm.value)">
         <div class="form-group">
-          <label for="project-name">
+          <label for="name">
             اسم المشروع
           </label>
           <input
             type="text"
-            id="project-name"
             class="form-control"
             formControlName="name"
+            name="name"
+            id="name"
           />
           <div
             *ngIf="projectForm.controls.name.errors?.required"
@@ -26,15 +27,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="project-desc">
+          <label for="desc">
             وصف المشروع
 
           </label>
           <textarea
             type="text"
-            for="project-desc"
             class="form-control"
             formControlName="desc"
+            name="desc"
+            id="desc"
             placeholder="مشروع المياه هو bla bla bla ..."
             rows="3"
           >
@@ -53,15 +55,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="project-fees">
+          <label for="fees">
             رسوم المشروع
 
           </label>
           <input
             type="number"
-            for="project-fees"
             class="form-control"
             formControlName="fees"
+            name="fees"
+            id="fees"
             placeholder="5.5"
           />
           <div

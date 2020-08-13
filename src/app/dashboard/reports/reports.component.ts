@@ -13,6 +13,8 @@ export class ReportsComponent implements OnInit {
   reports: Report[] = []
   total: number = 0
   p: number
+  other: string = '<other>'
+  otherRep: string = '<آخر>'
   constructor(
     private spinnerService: NgxSpinnerService,
     private reportService: ReportService,

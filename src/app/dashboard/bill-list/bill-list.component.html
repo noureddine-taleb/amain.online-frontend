@@ -33,22 +33,21 @@
           <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
           <td>{{ bill.quantity * bill.projectID?.fees }}</td>
           <td class="functions">
-            <fa-icon
+            <i
               [ngStyle]="{ cursor: 'pointer' }"
-              [icon]="faPrint"
+              class="fa fa-print mr-3"
               (click)="downloadBill(bill)"
               data-toggle="modal"
               data-target="#bill-pdf"
-              class="mr-3"
-            ></fa-icon>
-            <fa-icon
+            ></i>
+            <i
+              class="fa fa-money"
               [ngStyle]="{ cursor: 'pointer' }"
-              [icon]="faMoneyBillAlt"
               *ngIf="!bill.paymentID"
               (click)="saveBill(bill)"
               data-toggle="modal"
               data-target="#payment-form"
-            ></fa-icon>
+            ></i>
           </td>
         </tr>
       </tbody>
@@ -114,7 +113,7 @@
           تأكيد الدفع
         </button>
         <button
-          id="close-modal"
+          id="close-modal1"
           type="button"
           class="btn btn-secondary"
           data-dismiss="modal"
@@ -139,13 +138,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          تأكيد الدفعة
+          تحميل الفاتورة
         </h5>
         <button
           type="button"
           class="close"
           data-dismiss="modal"
           aria-label="Close"
+          (click)="modalClosed()"
         >
           <span aria-hidden="true">&times;</span>
         </button>
@@ -170,10 +170,11 @@
           </button></a
         >
         <button
-          id="close-modal"
+          id="close-modal2"
           type="button"
           class="btn btn-secondary"
           data-dismiss="modal"
+          (click)="modalClosed()"
         >
           إلغاء
         </button>

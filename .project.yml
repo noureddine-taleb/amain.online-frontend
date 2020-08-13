@@ -1,22 +1,50 @@
 TODO :
-    - animation
-    - verify registered users
-    - focus on reliability and robustness
-    - increase accessibility
-    - beter ux (make password visible on demand)
-    - light house suggestion
-    - progressive enhancement (notification, badge, bg sync ...)
-    - fix ssr errors
-    - full offline support
-    - better i18n support
-    - deprecate angular fa icons and use native ones
-    - badge of n of new  bill on user profile icon
-    - add chart dashboard
-    - add more helpfull info to project table
+    - IMP:
+        - light house suggestion
+        - verify registered users
+        - focus on reliability and robustness
+        - animation
+        - beter ux (make password visible on demand)
+        - progressive enhancement (notification, badge, bg sync ...)
+        - better i18n support
+        - badge of n of new bill on user profile icon
+        - add chart dashboard
+        - add more helpfull info to project table
+
+    - FIX:
+        - disable errors until press submit
+        - unsubscribe from obs when you finish
+        - full offline support
+
+    POTENTIAL BUGS :
+        - change the way we get project id in transaction component
+        - the way we get file object on sign up component
+        - find a way to bind close modal event to revoke url in bill component
 
 IN PROGRESS :
 
 DONE :
+    - accessibility:
+        - check label[for] == input[id]
+        - add name to input
+        - input[type]
+        - check for attr usage
+        - required translation
+        - change buttons to a on navigation in auth components
+        - check button,a,div usage
+    - reset forms after success
+    - dismiss payment form after success
+    - file input is without style
+    - remove old angular fa package
+    - deprecate angular fa icons and use native ones
+    - use URL.revokeObjectURL after you call URL.createObjectURL
+    - access any browser api using window
+    - remove '?' if no qs
+    - strong typed return in services (not obs) to avoid adrifting between server and browser
+    - use native types in ts ex ==> string, object ...
+    - get user req is not init
+    - fix ssr errors
+    - translate to arabe
     - define models
     - define home route
     - img problem xss

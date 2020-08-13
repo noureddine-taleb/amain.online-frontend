@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BillService } from '../../services/bill/bill.service';
@@ -26,7 +25,6 @@ export class UserListComponent implements OnInit {
 
   users: User[] = [];
   user: User;
-  faPlusCircle = faPlusCircle;
   billForm : FormGroup;
   errors:any[] = [];
   projects:Project[] = [];
@@ -34,7 +32,7 @@ export class UserListComponent implements OnInit {
   p:number = 1;
   prefix = `${environment.UPLOAD_FOLDER}`;
   constructor(
-    @Inject(PLATFORM_ID) private platform, 
+    @Inject(PLATFORM_ID) private platform: object, 
     private projectService: ProjectService, 
     private billService: BillService, 
     private formBuilder: FormBuilder, 
@@ -86,10 +84,11 @@ export class UserListComponent implements OnInit {
     if(this.billForm.invalid) return;
     this.showLoader();
     this.billService.create(new Bill(data.userID, data.projectID, data.quantity)).subscribe((data) => {
-      this.hideLoader();
       this.alertService.success("تم إنشاء الفاتورة بنجاح");
       if(isPlatformBrowser(this.platform))
-        document.getElementById("close-modal").click();
+        window.document.getElementById("close-modal").click();
+      this.billForm.reset()
+      this.hideLoader()
     }, 
       (err:HttpErrorResponse) => {
         this.hideLoader();

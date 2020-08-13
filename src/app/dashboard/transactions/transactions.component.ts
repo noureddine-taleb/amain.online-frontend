@@ -66,7 +66,6 @@ export class TransactionsComponent implements OnInit {
     this.showLoader()
     this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, this.projectID)).subscribe(
     _ => {
-      this.hideLoader()
       this.alertService.success("تم إنشاء السجل بنجاح")
       setTimeout(() => this.router.navigate(["/", "dashboard", "reports"]), 2000)
     },(err:HttpErrorResponse) => {

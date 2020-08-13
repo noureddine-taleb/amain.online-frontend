@@ -39,7 +39,7 @@ export class RegisterFormComponent implements OnInit
 
   ngOnInit(): void 
   {
-    if(isPlatformBrowser(this.platform)) this.imageEl = document.getElementById('image')
+    if(isPlatformBrowser(this.platform)) this.imageEl = window.document.getElementById('image')
     this.registerForm = this.formBuilder.group({
       name: [ 
         '',
@@ -98,7 +98,6 @@ export class RegisterFormComponent implements OnInit
 
     combineLatest([imageObs, userObs])
     .subscribe(_ => {
-      this.hideLoader()
       this.alertService.success("تم إنشاء المستخدم بنجاح")
       setTimeout(() => this.router.navigate(['/', 'auth','login']), 2000)
     },

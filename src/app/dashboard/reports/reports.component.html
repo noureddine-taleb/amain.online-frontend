@@ -22,7 +22,7 @@
           let report of reports | paginate: { itemsPerPage: 7, currentPage: p }
         "
       >
-        <td>{{ report.project }}</td>
+        <td>{{ report.project === other ? otherRep : report.project }}</td>
         <td [ngStyle]="{ color: 'green' }">{{ report.earn }} DH</td>
         <td [ngStyle]="{ color: 'red' }">{{ report.lost }} DH</td>
         <td

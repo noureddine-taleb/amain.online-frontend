@@ -25,27 +25,22 @@
               كلمه السر
 
             </label>
-            <input type="password" class="form-control" id="password" formControlName="password">
+            <input type="password" class="form-control" id="password" formControlName="password" name="password">
             <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback">
               كلمة المرور مطلوبة
 
             </div>
           </div>
           <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="remember-me" formControlName="rememberme">
+            <input type="checkbox" checked class="form-check-input" id="remember-me" formControlName="rememberme" name="rememberme">
             <label class="form-check-label" for="remember-me">
               تذكرنى
-
             </label>
           </div>
           <button [disabled]="loading" type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">
             تسجيل الدخول
 
           </button>
-          <a routerLink="/auth/register"><button type="button" class="btn btn-primary">
-            تسجيل
-
-          </button></a>
           <div *ngIf="loading" class="spinner-border text-primary" role="status">
             <span class="sr-only">
               جار التحميل...
@@ -53,6 +48,12 @@
             </span>
           </div>
       </form>
+      
+      <br>
+      <p>
+        ليس لديك حساب ، <a routerLink="/auth/register"> !إنشاء الآن </a>
+      </p>
+
       <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors?.length">
         <ul>
           <li *ngFor="let error of errors"> {{ error }} </li>

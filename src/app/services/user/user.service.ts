@@ -47,9 +47,9 @@ export class UserService implements CRUD {
     return this._user?._isAdmin
   }
   
-  logout(){
-    this.analyticsService.event('engagement', 'log_out', 'method')
+  logout(): void {
     if(isPlatformBrowser(this.platform)){
+      this.analyticsService.event('engagement', 'log_out', 'method')
       window.localStorage.removeItem('token')
       this.injector.get(Router).navigate(["auth", "login"])
     }
@@ -70,16 +70,16 @@ export class UserService implements CRUD {
 
   public getAll(query?: any){
     const queryParams = new URLSearchParams(query)
-    return this.http.get(`${this._url}?${queryParams}`)
+    return this.http.get(`${this._url}${queryParams.toString() && '?'}${queryParams}`)
   }
 
   public getImage(url: string){
     return this.http.get(url, { responseType: 'blob'})
   }
 
-  store(res: Observable<any>){
-    this._user = res['user']
+  store(res: Observable<any>): void{
     if(isPlatformBrowser(this.platform)){
+      this._user = res['user']
       window.localStorage.setItem('token',  this._user?.token )
     }
   }

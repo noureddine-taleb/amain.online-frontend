@@ -27,8 +27,6 @@ import { Interceptor } from './interceptors/interceptor.interceptor';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { AlertModule } from 'ngx-alerts';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RouterModule } from '@angular/router';
@@ -67,7 +65,6 @@ import { GlobalErrorHandler } from './errorHandler/global-error-handler';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule,
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     NgxSpinnerModule,
     RouterModule,

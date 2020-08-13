@@ -4,7 +4,6 @@ import { UserService } from '../../services/user/user.service';
 import { AlertService } from 'ngx-alerts';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { faPrint } from '@fortawesome/free-solid-svg-icons';
 import { Bill } from '../../models/bill/bill';
 
 @Component({
@@ -16,9 +15,9 @@ export class ProfileComponent implements OnInit {
 
   bills: Bill[] = [];
   bill: Bill;
-  faPrint = faPrint;
   blob: Blob;
   url: SafeResourceUrl;
+  __url: string;
   loading: boolean = false;
   p: number = 1;
   
@@ -51,12 +50,17 @@ export class ProfileComponent implements OnInit {
     this.showLoader();
     this.billService.download(this.bill._id).subscribe(res => {
       this.hideLoader();
-      this.blob = new Blob([res], {type : 'application/pdf'});
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(URL.createObjectURL(this.blob));
+      this.blob = new window.Blob([res], {type : 'application/pdf'});
+      this.__url = window.URL.createObjectURL(this.blob)
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.__url);
     }, () => {
       this.hideLoader();
       this.alertService.danger("فشل التنزيل");
     });
+  }
+
+  modalClosed(): void {
+    window.URL.revokeObjectURL(this.__url)
   }
 
   showLoader(){

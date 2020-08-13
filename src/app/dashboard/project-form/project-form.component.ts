@@ -51,7 +51,6 @@ export class ProjectFormComponent implements OnInit {
     this.showLoader();
     this.projectService.create(new Project(data.name, data.desc, data.fees)).subscribe(
     _ => {
-      this.hideLoader();
       this.alertService.success("تم إنشاء المشروع بنجاح");
       setTimeout(() => this.router.navigate(["/", "dashboard", "projects"]), 2000);
     },(err:HttpErrorResponse) => {

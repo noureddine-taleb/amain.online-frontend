@@ -29,11 +29,11 @@ export class NavBarComponent implements OnInit {
   activateNavElement(e){
     if(isPlatformServer(this.platform)) return
     
-    for(const el of document.getElementsByTagName('a')){
+    for(const el of window.document.getElementsByTagName('a')){
       el.classList.remove('active')
     }
 
-    for(const el of document.getElementsByTagName('a')){
+    for(const el of window.document.getElementsByTagName('a')){
       if(el.pathname === this._router.url){
         el.classList.add('active')
       }

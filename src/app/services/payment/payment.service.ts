@@ -13,7 +13,7 @@ export class PaymentService implements CRUD {
 
   public getAll(query?){
     const queryParams = new URLSearchParams(query)
-    return this.http.get(`${this._url}?${queryParams}`)
+    return this.http.get(`${this._url}${queryParams.toString() && '?'}${queryParams}`)
   }
 
   public create(data: Payment){

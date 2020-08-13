@@ -3,7 +3,7 @@
     <div class="col-lg-6">
       <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
         <div class="form-group">
-          <label for="exampleInputEmail1">
+          <label for="name">
             الاسم الكامل
           </label>
           <input
@@ -12,6 +12,8 @@
             class="form-control"
             aria-describedby="phoneHelp"
             formControlName="name"
+            name="name"
+            id="name"
           />
           <div
             *ngIf="registerForm.controls.name.errors?.required"
@@ -27,7 +29,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">
+          <label for="phone">
             رقم الهاتف
           </label>
           <input
@@ -35,6 +37,8 @@
             class="form-control"
             aria-describedby="phoneHelp"
             formControlName="phone"
+            name="phone"
+            id="phone"
           />
           <small class="form-text text-muted"
             >
@@ -54,18 +58,19 @@
             يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066
           </div>
         </div>
-        <div class="custom-file form-group">
+        <div class="custom-file form-group" [ngClass]="{ 'ng-invalid': registerForm.controls.image.invalid, 'ng-valid': registerForm.controls.image.valid }">
           <input
             #imageEl
-            id="image"
             type="file"
             accept="image/jpeg"
             class="custom-file-input"
             formControlName="image"
+            name="image"
+            id="image"
             (input)="upload($event)"
           />
           <label class="custom-file-label" for="image">
-            اختر ملف...
+            الصورة الشخصية
           </label>
           <!-- progress -->
           <div class="progress mt-3" [hidden]="!uploadStatus.status">
@@ -99,8 +104,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlFile1">Date</label>
-          <input type="date" class="form-control" formControlName="dob" />
+          <label for="dob">Date</label>
+          <input type="date" class="form-control" formControlName="dob" name="dob" id="dob"  />
           <div
             *ngIf="registerForm.controls.dob.errors?.required"
             class="invalid-feedback"
@@ -109,13 +114,15 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">
+          <label for="password">
             كلمه السر
           </label>
           <input
             type="password"
             class="form-control"
             formControlName="password"
+            name="password"
+            id="password"
           />
           <div
             *ngIf="registerForm.controls.password.errors?.required"
@@ -131,13 +138,15 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">
+          <label for="password_confirmation">
             تأكيد كلمة المرور
           </label>
           <input
             type="password"
             class="form-control"
             formControlName="password_confirmation"
+            name="password_confirmation"
+            id="password_confirmation"
           />
           <div
             *ngIf="registerForm.controls.password_confirmation.errors?.required"
@@ -164,10 +173,12 @@
           <input
             type="checkbox"
             class="form-check-input"
-            id="terms-and-conditions"
+            id="password_confirmation"
+            name="terms_and_conditions"
             formControlName="terms_and_conditions"
+            checked
           />
-          <label class="form-check-label" for="terms-and-conditions"
+          <label class="form-check-label" for="password_confirmation"
             >أوافق على
             <a routerLink="/terms-and-conditions"> 
               الأحكام والشروط</a> من
@@ -193,17 +204,18 @@
         >
           سجل
         </button>
-        <a routerLink="/auth/login"
-          ><button type="button" class="btn btn-primary">
-            تسجيل الدخول
-          </button></a
-        >
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
           <span class="sr-only">
             جار التحميل...
           </span>
         </div>
       </form>
+
+      <br>
+      <p>
+          لديك حساب بالفعل ، <a routerLink="/auth/login"> تسجيل الدخول </a>
+      </p>
+
       <div
         class="alert alert-danger alert-dismissible fade show"
         [ngStyle]="{ marginTop: '20px' }"
