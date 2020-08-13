@@ -5,6 +5,7 @@ export class Project {
         public name: string,
         public desc: string,
         public fees: number,
+        public createdByID: string,
     )
     {}
 }

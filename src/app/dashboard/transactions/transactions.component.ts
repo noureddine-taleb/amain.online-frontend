@@ -10,6 +10,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Project } from '../../models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-transactions',
@@ -22,7 +23,6 @@ export class TransactionsComponent implements OnInit {
   errors:any[] = []
   loading = false
   projects: Project[] = []
-  projectID: string
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +32,7 @@ export class TransactionsComponent implements OnInit {
     private spinnerService: NgxSpinnerService,
     private router: Router,
     private analyticsService: AnalyticsService,
+    private userService: UserService,
     ) { }
 
   ngOnInit(): void {
@@ -49,6 +50,9 @@ export class TransactionsComponent implements OnInit {
         '',
         [Validators.required,Validators.minLength(5)]
       ],
+      projectID: [
+        ''
+      ],
       desc: [
         '',
         [Validators.required,Validators.minLength(10)]
@@ -64,7 +68,7 @@ export class TransactionsComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_treasury_record', 'method', this.treasuryForm.valid ? 1 : 0)
     if(this.treasuryForm.invalid) return
     this.showLoader()
-    this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, this.projectID)).subscribe(
+    this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID())).subscribe(
     _ => {
       this.alertService.success("تم إنشاء السجل بنجاح")
       setTimeout(() => this.router.navigate(["/", "dashboard", "reports"]), 2000)
@@ -101,6 +105,6 @@ export class TransactionsComponent implements OnInit {
       cursorChar: '_',
       loop: true,
     };
-    new Typed('#project-desc', options);
+    new Typed('#desc', options);
   }
 }

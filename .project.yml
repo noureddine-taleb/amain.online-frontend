@@ -1,29 +1,41 @@
 TODO :
     - IMP:
-        - light house suggestion
-        - verify registered users
-        - focus on reliability and robustness
-        - animation
+        - Study web dev practices 
         - beter ux (make password visible on demand)
         - progressive enhancement (notification, badge, bg sync ...)
         - better i18n support
         - badge of n of new bill on user profile icon
         - add chart dashboard
-        - add more helpfull info to project table
-
+        - animation
     - FIX:
         - disable errors until press submit
         - unsubscribe from obs when you finish
         - full offline support
 
-    POTENTIAL BUGS :
-        - change the way we get project id in transaction component
-        - the way we get file object on sign up component
-        - find a way to bind close modal event to revoke url in bill component
-
 IN PROGRESS :
+    - add is payed in the bill table 
+    - add unit to project list
+    - move repeated html to separate components
+    - use html elemenet to store 'typed' data
+    - Add stuck field to report 
+    - add more helpfull info to project table
+    - Buil ARIA
+    - verify registered users
+
 
 DONE :
+    - meaning full lablels in buttons
+    - Translation pdf and app
+    - Collect web vitals
+    - Limit img size on desk
+    - Add creator field to collections 
+    - Hidden field in transaction for projectID
+    - A way for use to know he enter negative num in transaction 
+    - Autocomplete attr
+    - Use units with ng pipes 
+    - Use float num ng pipes 
+    - focus on reliability and robustness
+    - light house suggestion
     - accessibility:
         - check label[for] == input[id]
         - add name to input
@@ -68,6 +80,11 @@ DONE :
     - make resource models
     - make basic UI
     - error/feedback messages
+
+POTENTIAL BUGS :
+    - change the way we get project id in transaction component
+    - the way we get file object on sign up component
+    - find a way to bind close modal event to revoke url in bill component
 
 COMPLEMENT :
     - access location

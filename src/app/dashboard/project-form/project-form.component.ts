@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Project } from '../../models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-project-form',
@@ -22,6 +23,7 @@ export class ProjectFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private projectService: ProjectService,
+    private userService: UserService,
     private alertService:AlertService, 
     private router: Router,
     private analyticsService: AnalyticsService,
@@ -49,7 +51,7 @@ export class ProjectFormComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_project', 'method', this.projectForm.valid ? 1 : 0)
     if(this.projectForm.invalid) return
     this.showLoader();
-    this.projectService.create(new Project(data.name, data.desc, data.fees)).subscribe(
+    this.projectService.create(new Project(data.name, data.desc, data.fees, this.userService.getUserID())).subscribe(
     _ => {
       this.alertService.success("تم إنشاء المشروع بنجاح");
       setTimeout(() => this.router.navigate(["/", "dashboard", "projects"]), 2000);
@@ -86,6 +88,6 @@ export class ProjectFormComponent implements OnInit {
       cursorChar: '_',
       loop: true,
     };
-    new Typed('#project-name', options);
+    new Typed('#name', options);
   }
 }

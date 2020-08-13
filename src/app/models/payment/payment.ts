@@ -3,6 +3,7 @@ export class Payment {
     amount: number
     createdAt: Date = new Date()
     constructor(
-        public billID: string
+        public billID: string,
+        public createdByID: string,
     ){}
 }

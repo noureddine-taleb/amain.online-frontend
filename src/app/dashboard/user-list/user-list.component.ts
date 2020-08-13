@@ -83,7 +83,7 @@ export class UserListComponent implements OnInit {
 
     if(this.billForm.invalid) return;
     this.showLoader();
-    this.billService.create(new Bill(data.userID, data.projectID, data.quantity)).subscribe((data) => {
+    this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID())).subscribe((data) => {
       this.alertService.success("تم إنشاء الفاتورة بنجاح");
       if(isPlatformBrowser(this.platform))
         window.document.getElementById("close-modal").click();

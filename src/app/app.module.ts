@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -40,6 +40,10 @@ import { TransactionsComponent } from './dashboard/transactions/transactions.com
 import { TreasuryService } from './services/treasury/treasury.service';
 import { ReportService } from './services/report/report.service';
 import { GlobalErrorHandler } from './errorHandler/global-error-handler';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -84,7 +88,8 @@ import { GlobalErrorHandler } from './errorHandler/global-error-handler';
     [
       { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     ],
-    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

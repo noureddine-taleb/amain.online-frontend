@@ -6,6 +6,7 @@ export class Treasury {
         public desc: string,
         public amount: number,
         public projectID: string,
+        public createdByID: string,
     )
     {}
 }

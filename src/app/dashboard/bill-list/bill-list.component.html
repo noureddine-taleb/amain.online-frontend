@@ -17,6 +17,9 @@
           كمية
           </th>
           <th scope="col">
+            السعر
+          </th>
+          <th scope="col">
           المهام
           </th>
         </tr>
@@ -31,7 +34,8 @@
           <td>{{ bill.userID?.name }}</td>
           <td>{{ bill.projectID?.name }}</td>
           <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
-          <td>{{ bill.quantity * bill.projectID?.fees }}</td>
+          <td>{{ bill.quantity }}</td>
+          <td>{{ bill.quantity * bill.projectID?.fees | currency: 'DH' }}</td>
           <td class="functions">
             <i
               [ngStyle]="{ cursor: 'pointer' }"

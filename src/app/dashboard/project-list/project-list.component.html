@@ -16,10 +16,6 @@
           <th scope="col">
             الرسوم
           </th>
-          <!-- <th scope="col">Bills N</th> -->
-          <!-- <th scope="col">Payments N</th>
-          <th scope="col">Credit</th>
-          <th scope="col">Debit</th> -->
         </tr>
       </thead>
       <tbody>
@@ -33,11 +29,7 @@
           <td>{{ project.name }}</td>
           <td>{{ project.desc }}</td>
           <td>{{ project.createdAt | date: "dd/MM/yy" }}</td>
-          <td>{{ project.fees }}</td>
-          <!-- <td>{{ project.bills_count }}</td> -->
-          <!-- <td>{{ project.payments_count }}</td> -->
-          <!-- <td style="color: green;">Dh{{ project.credit }}</td> -->
-          <!-- <td style="color: red;">Dh{{ project.debit }}</td> -->
+          <td>{{ project.fees | currency: 'DH' }}</td>
         </tr>
       </tbody>
     </table>

@@ -28,8 +28,7 @@
         >
           <td (click)="billsList(user)" [ngStyle]="{ cursor: 'pointer' }">
             <img
-              [ngStyle]="{ width: '80%' }"
-              class="img-responsive"
+              class="img-fluid"
               [src]="getSafeUrl(user)"
               loading="lazy"
             />
@@ -113,7 +112,7 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <form [formGroup]="billForm" (ngSubmit)="submit(billForm.value)">
+          <form [formGroup]="billForm" (ngSubmit)="submit(billForm.value)" autocomplete="off">
             <div class="modal-body">
               <div class="form-group">
                 <label for="user">
@@ -198,7 +197,7 @@
                 }"
                 [ngStyle]="{ marginRight: '15px' }"
               >
-                إرسال
+                حفظ الفاتورة
               </button>
               <button
                 #closeModal

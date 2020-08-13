@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)">
+      <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)" autocomplete="on">
         <div class="form-group">
           <label for="name">
             الاسم الكامل
@@ -118,6 +118,7 @@
             كلمه السر
           </label>
           <input
+            autocomplete="off"
             type="password"
             class="form-control"
             formControlName="password"
@@ -142,6 +143,7 @@
             تأكيد كلمة المرور
           </label>
           <input
+            autocomplete="off"
             type="password"
             class="form-control"
             formControlName="password_confirmation"
@@ -202,7 +204,7 @@
           }"
           [ngStyle]="{ marginRight: '15px' }"
         >
-          سجل
+          إنشاء حساب
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
           <span class="sr-only">

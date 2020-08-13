@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
   }
   
   downloadBill(bill: Bill){
+    this.url = null;
     this.bill = bill;
     this.showLoader();
     this.billService.download(this.bill._id).subscribe(res => {

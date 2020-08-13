@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)">
+      <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" autocomplete="on">
           <div class="form-group">
             <label for="phone">
               رقم الهاتف
             </label>
-            <input autofocus autocomplete="phone" name="phone" type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
+            <input autofocus name="phone" type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
             <small id="emailHelp" class="form-text text-muted">
               لن نشارك هاتفك مع أي شخص آخر.
 

@@ -5,6 +5,7 @@ export class Bill {
         public userID: string,
         public projectID: string,
         public quantity: number,
+        public createdByID: string,
     )
     {}
 }

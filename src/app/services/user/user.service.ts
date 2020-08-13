@@ -47,6 +47,10 @@ export class UserService implements CRUD {
     return this._user?._isAdmin
   }
   
+  getUserID(): string{
+    return this._user?._id
+  }
+  
   logout(): void {
     if(isPlatformBrowser(this.platform)){
       this.analyticsService.event('engagement', 'log_out', 'method')

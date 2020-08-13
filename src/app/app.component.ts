@@ -3,6 +3,7 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { trigger, transition, animate, style, query, animateChild, group } from '@angular/animations';
 import { filter } from 'rxjs/operators';
 import { AnalyticsService } from './services/analytics/analytics.service';
+import { getCLS, getFID, getLCP } from 'web-vitals';
 
 @Component({
   selector: 'app-root',
@@ -73,6 +74,7 @@ export class AppComponent {
   {}
 
   ngOnInit(): void {
+    this.analyticsService.collectWebVitals()
     this._router.events
     .pipe(filter(e => e instanceof NavigationEnd))
     .subscribe(this.analyticsService.pageView)

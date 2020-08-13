@@ -62,6 +62,7 @@ export class BillListComponent implements OnInit {
   }
   
   downloadBill(bill: Bill){
+    this.url = null;
     this.bill = bill;
     this.showLoader();
     this.billService.download(this.bill._id).subscribe(res => {
@@ -83,7 +84,7 @@ export class BillListComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_payment', 'method')
     if(this.bill) {
       this.showLoader();
-      this.paymentService.create(new Payment(this.bill._id)).subscribe(_ => {
+      this.paymentService.create(new Payment(this.bill._id, this.userService.getUserID())).subscribe(_ => {
         this.hideLoader();
         if(isPlatformBrowser(this.platform))
           window.document.getElementById("close-modal1").click();
