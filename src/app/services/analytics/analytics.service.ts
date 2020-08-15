@@ -59,8 +59,8 @@ export class AnalyticsService {
   }
 
   collectWebVitals(): void{
-    getCLS(this.__sendToGoogleAnalytics)
-    getFID(this.__sendToGoogleAnalytics)
-    getLCP(this.__sendToGoogleAnalytics)
+    getCLS(this.__sendToGoogleAnalytics.bind(this))
+    getFID(this.__sendToGoogleAnalytics.bind(this))
+    getLCP(this.__sendToGoogleAnalytics.bind(this))
   }
 }

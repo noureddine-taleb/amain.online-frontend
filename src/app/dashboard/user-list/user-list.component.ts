@@ -30,6 +30,7 @@ export class UserListComponent implements OnInit {
   projects:Project[] = [];
   loading = false;
   p:number = 1;
+  unit:string
   prefix = `${environment.UPLOAD_FOLDER}`;
   constructor(
     @Inject(PLATFORM_ID) private platform: object, 
@@ -70,7 +71,7 @@ export class UserListComponent implements OnInit {
   }
 
   billsList(user: User){
-    this.router.navigate([ '/', 'dashboard', 'users', user._id, 'bills']);
+    this.router.navigate([ '/', 'users', user._id, 'bills']);
   }
 
   addBill(user: User){

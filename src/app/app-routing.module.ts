@@ -22,80 +22,73 @@ import { TransactionsComponent } from './dashboard/transactions/transactions.com
 
 const routes: Routes = [
   { 
-    path: '', 
-    redirectTo : 'dashboard', 
-    pathMatch: 'full', 
-    data: { animation: 'homePage' }
-  },
-  { 
     path: 'auth/login', 
     component : LoginFormComponent, 
     canActivate : [IsNotAuthGuard],   
     pathMatch : 'full',
-    // data: { animation: 'loginPage' }
+    data: { animation: 'loginFormPage' }
   },
   { 
     path: 'auth/register', 
     component : RegisterFormComponent, 
     canActivate : [IsNotAuthGuard],   
     pathMatch : 'full',
-    // data: { animation: 'registerPage' }
+    data: { animation: 'registerFormPage' }
   },
   // main app
   {
-    path: 'dashboard', 
+    path: '', 
     component : DashboardComponent,
-    // data: { animation: 'parent dashboard' }, 
     children: [
-    { 
-      path: '', 
-      component : ProfileComponent , 
-      canActivate : [IsAuthGuard],   
-      pathMatch : 'full'  
-      // data: { animation: 'profilePage' }
-    },
-    {
-      path: 'reports', 
-      component : ReportsComponent, 
-      canActivate : [IsAuthGuard],   
-      pathMatch : 'full'  , 
-      // data: { animation: 'billListPage' }
-    },
-    {
-      path: 'transactions', 
-      component : TransactionsComponent, 
-      canActivate : [IsAdminGuard],   
-      pathMatch : 'full'  , 
-      // data: { animation: 'billListPage' }
-    },
-    {
-      path: 'projects', 
-      component : ProjectListComponent , 
-      canActivate : [IsAuthGuard],   
-      pathMatch : 'full'  
-      // data: { animation: 'listProjectPage' } 
-    },
-    { 
-      path: 'projects/create', 
-      component : ProjectFormComponent , 
-      canActivate : [IsAdminGuard],   
-      pathMatch : 'full'  
-      // data: { animation: 'addProjectPage' } 
-    },
-    {
-      path: 'users', 
-      component : UserListComponent , 
-      canActivate : [IsAdminGuard],   
-      pathMatch : 'full'  , 
-      // data: { animation: 'userListPage' }
-    },
-    {
-      path: 'users/:userID/bills', 
-      component : BillListComponent , 
-      canActivate : [IsAdminGuard],   
-      pathMatch : 'full'  , 
-      // data: { animation: 'billListPage' }
-    }
+                  { 
+                    path: '', 
+                    component : ProfileComponent , 
+                    canActivate : [IsAuthGuard],   
+                    pathMatch : 'full',
+                    data: { animation: 'profilePage' }
+                  },
+                  {
+                    path: 'reports', 
+                    component : ReportsComponent, 
+                    canActivate : [IsAuthGuard],   
+                    pathMatch : 'full'  , 
+                    data: { animation: 'reportsPage' }
+                  },
+                  {
+                    path: 'transactions', 
+                    component : TransactionsComponent, 
+                    canActivate : [IsAdminGuard],   
+                    pathMatch : 'full'  , 
+                    data: { animation: 'transactionsPage' }
+                  },
+                  {
+                    path: 'projects', 
+                    component : ProjectListComponent , 
+                    canActivate : [IsAuthGuard],   
+                    pathMatch : 'full'  ,
+                    data: { animation: 'projectsPage' } 
+                  },
+                  { 
+                    path: 'projects/create', 
+                    component : ProjectFormComponent , 
+                    canActivate : [IsAdminGuard],   
+                    pathMatch : 'full'  ,
+                    data: { animation: 'projectFormPage' } 
+                  },
+                  {
+                    path: 'users', 
+                    component : UserListComponent , 
+                    canActivate : [IsAdminGuard],   
+                    pathMatch : 'full'  , 
+                    data: { animation: 'userListPage' }
+                  },
+                  {
+                    path: 'users/:userID/bills', 
+                    component : BillListComponent , 
+                    canActivate : [IsAdminGuard],   
+                    pathMatch : 'full'  , 
+                    data: { animation: 'billListPage' }
+                  }
   ]
   },
   
@@ -103,13 +96,13 @@ const routes: Routes = [
     path: '404', 
     component: Page404Component,   
     pathMatch : 'full' , 
-    // data: {animation: '404Page' }
+    data: { animation: '404Page' }
   },
   { 
     path: '500', 
     component: Page500Component,   
     pathMatch : 'full' , 
-    // data: {animation: '500Page' }
+    data: { animation: '500Page' }
   },
   { 
     path: '**', 
@@ -118,9 +111,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

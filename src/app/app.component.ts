@@ -1,9 +1,57 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { trigger, transition, animate, style, query, animateChild, group } from '@angular/animations';
 import { filter } from 'rxjs/operators';
 import { AnalyticsService } from './services/analytics/analytics.service';
-import { getCLS, getFID, getLCP } from 'web-vitals';
+const $in = [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: '100%'
+        })
+      ]),
+      query(':enter', [
+        style({ right: '-100%'})
+      ]),
+      query(':leave', animateChild()),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ right: '100%'}))
+        ]),
+        query(':enter', [
+          animate('300ms ease-out', style({ right: '0%'}))
+        ])
+      ]),
+      query(':enter', animateChild()),
+]
+
+const $out = [
+      style({ position: 'relative' }),
+      query(':enter, :leave', [
+        style({
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%'
+        })
+      ]),
+      query(':enter', [
+        style({ left: '-100%'})
+      ]),
+      query(':leave', animateChild()),
+      group([
+        query(':leave', [
+          animate('300ms ease-out', style({ left: '100%'}))
+        ]),
+        query(':enter', [
+          animate('300ms ease-out', style({ left: '0%'}))
+        ])
+      ]),
+      query(':enter', animateChild()),
+]
 
 @Component({
   selector: 'app-root',
@@ -11,56 +59,14 @@ import { getCLS, getFID, getLCP } from 'web-vitals';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('routeAnimations', [
-      transition('pp => pp', [
-        style({ position: 'relative' }),
-        query(':enter, :leave', [
-          style({
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '100%'
-          })
-        ]),
-        query(':enter', [
-          style({ right: '-100%'})
-        ]),
-        query(':leave', animateChild()),
-        group([
-          query(':leave', [
-            animate('300ms ease-out', style({ right: '100%'}))
-          ]),
-          query(':enter', [
-            animate('300ms ease-out', style({ right: '0%'}))
-          ])
-        ]),
-        query(':enter', animateChild()),
-      ]),
-
-      transition('pp => pp', [
-        style({ position: 'relative' }),
-        query(':enter, :leave', [
-          style({
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%'
-          })
-        ]),
-        query(':enter', [
-          style({ left: '-100%'})
-        ]),
-        query(':leave', animateChild()),
-        group([
-          query(':leave', [
-            animate('300ms ease-out', style({ left: '100%'}))
-          ]),
-          query(':enter', [
-            animate('300ms ease-out', style({ left: '0%'}))
-          ])
-        ]),
-        query(':enter', animateChild()),
-      ]),
-
+      // in
+      transition('loginFormPage => profilePage', $in),
+      // in
+      transition('userListPage => billListPage', $in),
+      // out
+      transition('* => loginFormPage', $out),
+      // out
+      transition('billListPage => userListPage', $out),
     ])
   ]
 
@@ -69,6 +75,7 @@ export class AppComponent {
 
   constructor(
     private _router: Router,
+    private _route: ActivatedRoute,
     private analyticsService: AnalyticsService,
     )
   {}
@@ -81,7 +88,8 @@ export class AppComponent {
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    return this._router.url
+    const animation = this._route?.snapshot?.firstChild?.root?.firstChild?.firstChild?.data?.['animation'] || this._route?.snapshot?.firstChild?.data?.['animation']
+    return animation
   }
 
 }

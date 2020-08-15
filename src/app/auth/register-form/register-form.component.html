@@ -18,12 +18,14 @@
           <div
             *ngIf="registerForm.controls.name.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             مطلوب اسم
           </div>
           <div
             *ngIf="registerForm.controls.name.errors?.pattern"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يحتوي الاسم على أحرف فقط
           </div>
@@ -41,6 +43,7 @@
             id="phone"
           />
           <small class="form-text text-muted"
+          role="note"
             >
             لن نشارك هاتفك مع أي شخص آخر.
             </small
@@ -48,12 +51,14 @@
           <div
             *ngIf="registerForm.controls.phone.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             رقم الهاتف مطلوب
           </div>
           <div
             *ngIf="registerForm.controls.phone.errors?.pattern"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066
           </div>
@@ -73,7 +78,10 @@
             الصورة الشخصية
           </label>
           <!-- progress -->
-          <div class="progress mt-3" [hidden]="!uploadStatus.status">
+          <div 
+          class="progress mt-3" 
+          [hidden]="!uploadStatus.status"
+          >
             <div
               class="progress-bar progress-bar-striped progress-bar-animated bg-success"
               role="progressbar"
@@ -87,18 +95,21 @@
           <div
             *ngIf="registerForm.controls.image.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             الصورة مطلوبة
           </div>
           <div
             *ngIf="registerForm.controls.image.errors?.mime"
             class="invalid-feedback"
+            role="alert"
           >
             الملفات المقبولة هي صور فقط على سبيل المثال: image.jpg ، image.jpeg
           </div>
           <div
             *ngIf="registerForm.controls.image.errors?.size"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يكون حجم الملف أقل من 3 ميغا بايت
           </div>
@@ -109,6 +120,7 @@
           <div
             *ngIf="registerForm.controls.dob.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             تاريخ الميلاد مطلوب
           </div>
@@ -117,23 +129,38 @@
           <label for="password">
             كلمه السر
           </label>
-          <input
+          
+          <div class="input-group" id="show_hide_password">
+            <input
             autocomplete="off"
             type="password"
             class="form-control"
             formControlName="password"
             name="password"
             id="password"
-          />
+          />            
+          <div class="input-group-prepend">
+              <div 
+                (click)="showPassword($event)"
+                class="input-group-text" 
+                role="status" 
+                aria-label="status" 
+              ><i class="fa fa-eye" id="password_status" aria-hidden="true"></i>
+            </div>
+            </div>
+          </div>
+
           <div
             *ngIf="registerForm.controls.password.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             كلمة المرور مطلوبة
           </div>
           <div
             *ngIf="registerForm.controls.password.errors?.minlength"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يكون طول كلمة المرور أكثر من 5 أحرف
           </div>
@@ -153,6 +180,7 @@
           <div
             *ngIf="registerForm.controls.password_confirmation.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             مطلوب تأكيد كلمة المرور
           </div>
@@ -161,12 +189,14 @@
               registerForm.controls.password_confirmation.errors?.minlength
             "
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يكون طول تأكيد كلمة المرور أكثر من 5 أحرف
           </div>
           <div
             *ngIf="registerForm.controls.password_confirmation.errors?.match"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يتطابق تأكيد كلمة المرور مع كلمة المرور
           </div>
@@ -190,6 +220,7 @@
           <div
             *ngIf="registerForm.controls.terms_and_conditions.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن توافق على شروطنا
           </div>

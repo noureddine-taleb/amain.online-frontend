@@ -28,7 +28,7 @@
         >
           <td (click)="billsList(user)" [ngStyle]="{ cursor: 'pointer' }">
             <img
-              class="img-fluid"
+              class="img-fluid usr-img"
               [src]="getSafeUrl(user)"
               loading="lazy"
             />
@@ -62,6 +62,7 @@
               (click)="addBill(user)"
               data-toggle="modal"
               data-target="#bill-form"
+              role="button"
             ></i>
           </td>
         </tr>
@@ -73,15 +74,7 @@
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong>
-      فارغة!
-    </strong>
-     لا يوجد مستخدمين.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <app-empty-card label="مستخدمين" ></app-empty-card>
 </ng-template>
 
 <!-- Modal -->
@@ -135,9 +128,12 @@
                   id="projectID"
                   name="projectID"
                   formControlName="projectID"
+                  (change)="unit = $event?.target?.options[$event?.target?.selectedIndex]?.title "
+
                 >
                   <option
                     *ngFor="let project of projects"
+                    [title]="project.unit"
                     [value]="project._id"
                     >{{ project.name }}</option
                   >
@@ -154,14 +150,26 @@
                   كمية
 
                 </label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="quantity"
-                  name="quantity"
-                  formControlName="quantity"
-                  placeholder="2.5"
-                />
+
+                <div class="input-group mb-2">
+                    <input
+                    type="number"
+                    class="form-control"
+                    id="quantity"
+                    name="quantity"
+                    formControlName="quantity"
+                    placeholder="2.5"
+                  />
+                  <div class="input-group-prepend">
+                    <div 
+                      style="border-radius: .25rem;"
+                      class="input-group-text" 
+                      role="status" 
+                      aria-label="status" 
+                    >{{ unit }}</div>
+                  </div>
+                  </div>
+
                 <div
                   *ngIf="billForm.controls.quantity.errors?.required"
                   class="invalid-feedback"

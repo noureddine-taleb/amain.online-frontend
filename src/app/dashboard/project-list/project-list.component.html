@@ -16,6 +16,9 @@
           <th scope="col">
             الرسوم
           </th>
+          <th scope="col">
+            وحدة
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +33,7 @@
           <td>{{ project.desc }}</td>
           <td>{{ project.createdAt | date: "dd/MM/yy" }}</td>
           <td>{{ project.fees | currency: 'DH' }}</td>
+          <td>{{ project.unit }}</td>
         </tr>
       </tbody>
     </table>
@@ -40,13 +44,5 @@
 </ng-container>
 
 <ng-template #elseTemplate>
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
-    <strong>
-      فارغة!
-    </strong> 
-    لا توجد مشاريع.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <app-empty-card label="مشاريع" ></app-empty-card>
 </ng-template>

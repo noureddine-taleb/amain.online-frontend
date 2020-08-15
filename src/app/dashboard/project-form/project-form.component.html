@@ -1,3 +1,9 @@
+<div id="typed-strings1" style="display: none;">
+  <p>مشروع مائي</p>
+  <p>مشروع الطاقة الشمسية</p>
+  <p>الاشتراك</p>
+  <p>أنشطة اجتماعية (a7wach، كرة القدم ...)</p>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
@@ -16,12 +22,14 @@
           <div
             *ngIf="projectForm.controls.name.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             اسم المشروع مطلوب
           </div>
           <div
             *ngIf="projectForm.controls.name.errors?.minlength"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يكون اسم المشروع بطول 5 أحرف
           </div>
@@ -44,12 +52,14 @@
           <div
             *ngIf="projectForm.controls.desc.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             وصف المشروع مطلوب
           </div>
           <div
             *ngIf="projectForm.controls.desc.errors?.minlength"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن يكون وصف المشروع بطول 20 حرفًا
           </div>
@@ -59,6 +69,7 @@
             رسوم المشروع
 
           </label>
+          <div class="input-group mb-2">
           <input
             autocomplete="off"
             type="number"
@@ -68,17 +79,56 @@
             id="fees"
             placeholder="5.5"
           />
+          <div class="input-group-prepend">
+            <div 
+              style="border-radius: .25rem;"
+              class="input-group-text" 
+              role="status" 
+              aria-label="status" 
+            >DH</div>
+          </div>
+          </div>
           <div
             *ngIf="projectForm.controls.fees.errors?.required"
             class="invalid-feedback"
+            role="alert"
           >
             رسوم المشروع مطلوبة
           </div>
           <div
             *ngIf="projectForm.controls.fees.errors?.min"
             class="invalid-feedback"
+            role="alert"
           >
             يجب أن تكون رسوم المشروع أكبر من 0
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fees">
+            وحدة قياس
+
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="unit"
+            name="unit"
+            id="unit"
+            placeholder="ton"
+          />
+          <div
+            *ngIf="projectForm.controls.unit.errors?.required"
+            class="invalid-feedback"
+            role="alert"
+          >
+          الوحدة مطلوبة
+          </div>
+          <div
+            *ngIf="projectForm.controls.unit.hasError('maxlength')"
+            class="invalid-feedback"
+            role="alert"
+          >
+           يجب أن تحتوي الوحدة على أقل من 5 فحم
           </div>
         </div>
         <button

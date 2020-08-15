@@ -88,7 +88,8 @@ export class UserService implements CRUD {
     }
   }
 
-  bills(id?: string): Observable<any> {
-    return this.http.get((id ? `${this._url}/${id}/bills` : `${this._url}/bills`))
+  bills(id?: string, query?: any): Observable<any> {
+    const queryParams = new URLSearchParams(query)
+    return this.http.get((id ? `${this._url}/${id}/bills${queryParams.toString() && '?'}${queryParams}` : `${this._url}/bills`))
   }
 }

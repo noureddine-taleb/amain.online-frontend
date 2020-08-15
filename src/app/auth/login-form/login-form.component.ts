@@ -63,6 +63,22 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
+  showPassword(e: Event){
+    e.preventDefault()
+    const passwordElement = document.getElementById('password') as HTMLInputElement
+    const passwordStatusElement = document.getElementById('password_status')
+    
+    if(passwordElement.type === "text"){
+        passwordElement.setAttribute('type', 'password')
+        passwordStatusElement.classList.remove( "fa-eye-slash" )
+        passwordStatusElement.classList.add( "fa-eye" )
+    }else if(passwordElement.type == "password"){
+        passwordElement.setAttribute('type', 'text')
+        passwordStatusElement.classList.add( "fa-eye-slash" )
+        passwordStatusElement.classList.remove( "fa-eye" )
+    }
+  }
+
   showLoader(){
     this.loading = true;
   }

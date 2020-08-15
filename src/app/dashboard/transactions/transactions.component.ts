@@ -71,7 +71,7 @@ export class TransactionsComponent implements OnInit {
     this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID())).subscribe(
     _ => {
       this.alertService.success("تم إنشاء السجل بنجاح")
-      setTimeout(() => this.router.navigate(["/", "dashboard", "reports"]), 2000)
+      setTimeout(() => this.router.navigate(["/", "reports"]), 2000)
     },(err:HttpErrorResponse) => {
       this.hideLoader()
       this.alertService.danger('حدث خطأ')
@@ -91,18 +91,13 @@ export class TransactionsComponent implements OnInit {
 
   typed() {
     const options = {
-      strings: [
-        'شراء بعض المعدات',
-        'الاعمال الخيرية',
-        'صيانة المساجد',
-        'بناء الطريق',
-      ],
+      stringsElement: '#typed-strings2',
       typeSpeed: 65,
       backSpeed: 15,
       smartBackspace: true,
       attr: 'placeholder',
       bindInputFocusEvents: true,
-      cursorChar: '_',
+      cursorChar: '|',
       loop: true,
     };
     new Typed('#desc', options);

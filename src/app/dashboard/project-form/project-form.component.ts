@@ -44,6 +44,10 @@ export class ProjectFormComponent implements OnInit {
         '',
         [Validators.required,Validators.min(0)]
       ],
+      unit: [
+        '',
+        [Validators.required,Validators.maxLength(5)]
+      ],
     })
   }
 
@@ -51,10 +55,10 @@ export class ProjectFormComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_project', 'method', this.projectForm.valid ? 1 : 0)
     if(this.projectForm.invalid) return
     this.showLoader();
-    this.projectService.create(new Project(data.name, data.desc, data.fees, this.userService.getUserID())).subscribe(
+    this.projectService.create(new Project(data.name, data.desc, data.fees, data.unit, this.userService.getUserID())).subscribe(
     _ => {
       this.alertService.success("تم إنشاء المشروع بنجاح");
-      setTimeout(() => this.router.navigate(["/", "dashboard", "projects"]), 2000);
+      setTimeout(() => this.router.navigate(["/", "projects"]), 2000);
     },(err:HttpErrorResponse) => {
       this.hideLoader();
       this.alertService.danger('حدث خطأ');
@@ -74,18 +78,13 @@ export class ProjectFormComponent implements OnInit {
 
   typed() {
     const options = {
-      strings: [
-        'مشروع مائي',
-        'مشروع الطاقة الشمسية',
-        'الاشتراك',
-        'أنشطة اجتماعية (a7wach، كرة القدم ...)',
-      ],
+      stringsElement: '#typed-strings1',
       typeSpeed: 65,
       backSpeed: 15,
       smartBackspace: true,
       attr: 'placeholder',
       bindInputFocusEvents: true,
-      cursorChar: '_',
+      cursorChar: '|',
       loop: true,
     };
     new Typed('#name', options);

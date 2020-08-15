@@ -42,6 +42,8 @@ import { ReportService } from './services/report/report.service';
 import { GlobalErrorHandler } from './errorHandler/global-error-handler';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { EmptyCardComponent } from './layouts/empty-card/empty-card.component';
+import { BillTableComponent } from './layouts/bill-table/bill-table.component';
 
 registerLocaleData(localeFr);
 
@@ -61,6 +63,8 @@ registerLocaleData(localeFr);
     DashboardComponent,
     ReportsComponent,
     TransactionsComponent,
+    EmptyCardComponent,
+    BillTableComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

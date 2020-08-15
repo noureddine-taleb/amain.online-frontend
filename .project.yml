@@ -1,29 +1,34 @@
 TODO :
+    - animation look noisy
+    - Add stuck/total quantity field to report 
+    - verify registered users
+    - add more helpfull info to project table
+    - add chart dashboard
+    - progressive enhancement (notification, badge, bg sync ...)
+    - Study web dev practices 
+
     - IMP:
-        - Study web dev practices 
-        - beter ux (make password visible on demand)
-        - progressive enhancement (notification, badge, bg sync ...)
         - better i18n support
         - badge of n of new bill on user profile icon
-        - add chart dashboard
-        - animation
     - FIX:
-        - disable errors until press submit
+        # - disable errors until press submit
         - unsubscribe from obs when you finish
         - full offline support
 
 IN PROGRESS :
-    - add is payed in the bill table 
-    - add unit to project list
-    - move repeated html to separate components
-    - use html elemenet to store 'typed' data
-    - Add stuck field to report 
-    - add more helpfull info to project table
-    - Buil ARIA
-    - verify registered users
+    - performance opt
 
 
 DONE :
+    - use html element to store 'typed' data
+    - Buil ARIA
+    - show units in number input field billForm/projectForm/transactionForm
+    - integrate unit into billpdf/projectList/billList
+    - add unit to project list
+    - add is payed in the bill table 
+    - move repeated html to separate components
+    - animation
+    - beter ux (make password visible on demand)
     - meaning full lablels in buttons
     - Translation pdf and app
     - Collect web vitals
