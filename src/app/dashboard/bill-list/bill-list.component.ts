@@ -10,6 +10,8 @@ import { Bill } from '../../models/bill/bill';
 import { Payment } from '../../models/payment/payment';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
+import { SeoService } from '../../services/seo/seo.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-bill-list',
@@ -17,7 +19,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./bill-list.component.css']
 })
 export class BillListComponent implements OnInit {
-
+  protected subs = empty().subscribe();
   bills: Bill[] = [];
   userId: string;
   loading = false;
@@ -28,23 +30,29 @@ export class BillListComponent implements OnInit {
     private userService: UserService, 
     private route: ActivatedRoute, 
     private spinnerService: NgxSpinnerService,
+    private seoService: SeoService,
     ) 
   {}
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('the list of bill', 'show all system users bills')
+    this.getBills()
+  }
+
+  getBills(): void{
     this.userId = this.route.snapshot.paramMap.get('userID');
     this.spinnerService.show();
     if(this.userId){
-      this.userService.bills(this.userId, { $include: 'payment' }).subscribe(res => {
+      this.subs.add(this.userService.bills(this.userId, { $include: 'payment' }).subscribe(res => {
         this.spinnerService.hide();
         this.bills = res['bills'];
-      },() => this.spinnerService.hide() );
+      },() => this.spinnerService.hide() ))
     
     }else {
-      this.billService.getAll().subscribe(res => {
+      this.subs.add(this.billService.getAll().subscribe(res => {
         this.spinnerService.hide();
         this.bills = res['bills'];
-      },() => this.spinnerService.hide() );
+      },() => this.spinnerService.hide() ))
     }
   }
 
@@ -56,4 +64,7 @@ export class BillListComponent implements OnInit {
     this.loading = false;
   }
 
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
+  }
 }

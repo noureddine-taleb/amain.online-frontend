@@ -15,6 +15,8 @@ import { User } from '../../models/user/user';
 import { Project } from '../../models/project/project';
 import { Bill } from '../../models/bill/bill';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
+import { SeoService } from '../../services/seo/seo.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -23,6 +25,7 @@ import { AnalyticsService } from '../../services/analytics/analytics.service';
 })
 export class UserListComponent implements OnInit {
 
+  protected subs = empty().subscribe();
   users: User[] = [];
   user: User;
   billForm : FormGroup;
@@ -43,16 +46,19 @@ export class UserListComponent implements OnInit {
     private alertService: AlertService, 
     private spinnerService: NgxSpinnerService,
     private analyticsService: AnalyticsService,
+    private seoService: SeoService,
   ) {}
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('table of users', 'show subscribed users')
     this.spinnerService.show();
-    this.userService.getAll().subscribe(res => {
+    this.subs.add(this.userService.getAll().subscribe(res => {
     this.spinnerService.hide();
       this.users = res['users'];
-     },() => this.spinnerService.hide());
+     },() => this.spinnerService.hide()))
 
-    this.projectService.getAll().subscribe(res => (this.projects = res['projects']) )
+    this.subs.add(this.projectService.getAll()
+    .subscribe(res => (this.projects = res['projects']) ))
     
     this.billForm = this.formBuilder.group({
       userID:[
@@ -84,7 +90,8 @@ export class UserListComponent implements OnInit {
 
     if(this.billForm.invalid) return;
     this.showLoader();
-    this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID())).subscribe((data) => {
+    this.subs.add(this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID()))
+    .subscribe((data) => {
       this.alertService.success("تم إنشاء الفاتورة بنجاح");
       if(isPlatformBrowser(this.platform))
         window.document.getElementById("close-modal").click();
@@ -97,7 +104,7 @@ export class UserListComponent implements OnInit {
         if(err.status == 422){
           this.errors = err.error['errors'];
         }
-      });
+      }))
   }
   
   showLoader(){
@@ -110,5 +117,9 @@ export class UserListComponent implements OnInit {
 
   getSafeUrl(user: User){
     return this.sanitizer.bypassSecurityTrustUrl(`${this.prefix}${user.image}`);
+  }
+
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
   }
 }

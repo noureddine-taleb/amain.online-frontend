@@ -30,7 +30,6 @@
     "bootstrap": "^4.4.1",
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.1",
     "ngx-alerts": "^9.0.2",
     "ngx-pagination": "^5.0.0",
     "ngx-spinner": "^9.0.2",

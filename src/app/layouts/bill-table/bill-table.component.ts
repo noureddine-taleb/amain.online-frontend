@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, Input, PLATFORM_ID, Inject, Output, EventEmitter } from '@angular/core';
 import { Bill } from '../../models/bill/bill';
 import { BillService } from '../../services/bill/bill.service';
 import { AlertService } from 'ngx-alerts';
@@ -18,6 +18,7 @@ export class BillTableComponent implements OnInit {
 
   @Input()bills: Bill[]
   @Input()from: string
+  @Output() newPaymentEvent = new EventEmitter<void>();
   p: number = 1
   loading: boolean = false;
   blob: Blob;
@@ -67,7 +68,7 @@ export class BillTableComponent implements OnInit {
         if(isPlatformBrowser(this.platform))
           window.document.getElementById("close-modal1").click();
         this.alertService.success("تمت إضافة الدفع بنجاح");
-        this.ngOnInit();
+        this.newPaymentEvent.emit()
       }, () => {
         this.hideLoader();
         this.alertService.danger("تفشل في إضافة الدفع");

@@ -7,6 +7,8 @@ import { User } from '../../models/user/user';
 import { ValidationService } from '../../services/validation/validation.service';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
+import { SeoService } from '../../services/seo/seo.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +16,7 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-
+  protected subs = empty().subscribe();
   loginForm : FormGroup;
   errors:any[] = [];
   loading = false;
@@ -27,9 +29,11 @@ export class LoginFormComponent implements OnInit {
     @Inject(PLATFORM_ID) private platform,
     private alertService: AlertService,
     private analyticsService: AnalyticsService,
+    private seoService: SeoService,
     ) {}
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('login page', 'place where users authenticated')
     this.loginForm = this.formBuilder.group({
       phone : [
         '',
@@ -50,7 +54,7 @@ export class LoginFormComponent implements OnInit {
     
     if(this.loginForm.invalid) return;
     this.showLoader();
-    this.userService.login(data).subscribe( 
+    this.subs.add(this.userService.login(data).subscribe( 
       _ => 
       {
       this.alertService.success("تسجيل دخول المستخدم بنجاح");
@@ -62,7 +66,7 @@ export class LoginFormComponent implements OnInit {
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
-    });
+    }))
   }
 
   showPassword(e: Event){
@@ -91,4 +95,7 @@ export class LoginFormComponent implements OnInit {
     this.loading = false;
   }
 
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
+  }
 }

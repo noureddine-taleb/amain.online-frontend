@@ -1,5 +1,5 @@
 <ng-container *ngIf="bills.length; else elseTemplate">
-  <app-bill-table [bills]="bills"></app-bill-table>
+  <app-bill-table [bills]="bills" (newPaymentEvent)="getBills()"></app-bill-table>
 </ng-container>
 <ng-template #elseTemplate>
   <app-empty-card label="الفواتير" ></app-empty-card>

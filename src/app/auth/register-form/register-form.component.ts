@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { ValidationService } from '../../services/validation/validation.service';
-import { combineLatest } from 'rxjs';
+import { combineLatest, empty } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
+import { SeoService } from '../../services/seo/seo.service';
 
 @Component({
   selector: 'app-register-form',
@@ -17,7 +18,7 @@ import { AnalyticsService } from '../../services/analytics/analytics.service';
 })
 export class RegisterFormComponent implements OnInit 
 {
-
+  protected subs = empty().subscribe();
   registerForm: FormGroup;
   errors: any[] = [];
   uploadStatus: { status: boolean, progress: number} = {status: false, progress: 0};
@@ -33,12 +34,14 @@ export class RegisterFormComponent implements OnInit
     private validationService: ValidationService,
     @Inject(PLATFORM_ID) private platform,
     private analyticsService: AnalyticsService,
+    private seoService: SeoService,
   )
   { }
 
 
   ngOnInit(): void 
   {
+    this.seoService.setTitleDesc('sign up page', 'place where users registered')
     if(isPlatformBrowser(this.platform)) this.imageEl = window.document.getElementById('image')
     this.registerForm = this.formBuilder.group({
       name: [ 
@@ -96,7 +99,7 @@ export class RegisterFormComponent implements OnInit
     })
     )
 
-    combineLatest([imageObs, userObs])
+    this.subs.add(combineLatest([imageObs, userObs])
     .subscribe(_ => {
       this.alertService.success("تم إنشاء المستخدم بنجاح")
       setTimeout(() => this.router.navigate(['/', 'auth','login']), 2000)
@@ -104,7 +107,7 @@ export class RegisterFormComponent implements OnInit
     _ => {
       this.hideLoader();
       this.alertService.danger('حدث خطأ')
-    })
+    }))
   }
 
   upload($event: any)
@@ -140,5 +143,9 @@ export class RegisterFormComponent implements OnInit
 
   hideLoader(){
     this.loading = false;
+  }
+
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
   }
 }

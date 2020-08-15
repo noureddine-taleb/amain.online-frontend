@@ -33,15 +33,9 @@ export class Interceptor implements HttpInterceptor {
           
           let router = this.injector.get(Router);
 
-          if(err.status == 401){
-            this.userService.logout();
-            router.navigate(["/", "auth", "login"]);
-          }
-          // else if(err.status == 404){
-          //   router.navigate(["/404"]);
-          // }
-          // else if(err.status >= 500){
-          //   router.navigate(["/500"]);
+          // if(err.status == 401){
+          //   this.userService.logout();
+          //   router.navigate(["/", "auth", "login"]);
           // }
         }
 

@@ -11,6 +11,8 @@ import { Project } from '../../models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
+import { SeoService } from '../../services/seo/seo.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-transactions',
@@ -19,6 +21,7 @@ import { UserService } from '../../services/user/user.service';
 })
 export class TransactionsComponent implements OnInit {
 
+    protected subs = empty().subscribe();
   treasuryForm: FormGroup
   errors:any[] = []
   loading = false
@@ -33,17 +36,19 @@ export class TransactionsComponent implements OnInit {
     private router: Router,
     private analyticsService: AnalyticsService,
     private userService: UserService,
+    private seoService: SeoService,
     ) { }
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('new transaction', 'place where to add non regular spending and earning')
     this.typed()
     this.spinnerService.show()
-    this.projectService.getAll().subscribe(res => {
+    this.subs.add(this.projectService.getAll().subscribe(res => {
       this.spinnerService.hide()
       this.projects = res['projects']
     }, 
     _ => this.spinnerService.hide()
-    )
+    ))
 
     this.treasuryForm = this.formBuilder.group({
       name: [
@@ -68,7 +73,8 @@ export class TransactionsComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_treasury_record', 'method', this.treasuryForm.valid ? 1 : 0)
     if(this.treasuryForm.invalid) return
     this.showLoader()
-    this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID())).subscribe(
+    this.subs.add(this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID()))
+    .subscribe(
     _ => {
       this.alertService.success("تم إنشاء السجل بنجاح")
       setTimeout(() => this.router.navigate(["/", "reports"]), 2000)
@@ -78,7 +84,7 @@ export class TransactionsComponent implements OnInit {
       if(err.status == 422){
         this.errors = err.error['errors']
       }
-    })
+    }))
   }
 
   showLoader(){
@@ -101,5 +107,9 @@ export class TransactionsComponent implements OnInit {
       loop: true,
     };
     new Typed('#desc', options);
+  }
+
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
   }
 }

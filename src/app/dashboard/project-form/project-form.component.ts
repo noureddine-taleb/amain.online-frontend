@@ -8,6 +8,8 @@ import { Project } from '../../models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
+import { SeoService } from '../../services/seo/seo.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-project-form',
@@ -16,6 +18,7 @@ import { UserService } from '../../services/user/user.service';
 })
 export class ProjectFormComponent implements OnInit {
 
+  protected subs = empty().subscribe();
   projectForm: FormGroup;
   errors:any[] = [];
   loading = false;
@@ -27,9 +30,11 @@ export class ProjectFormComponent implements OnInit {
     private alertService:AlertService, 
     private router: Router,
     private analyticsService: AnalyticsService,
+    private seoService: SeoService,
     ) { }
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('new project', 'create new project into db')
     this.typed()
     this.projectForm = this.formBuilder.group({
       name: [
@@ -55,7 +60,8 @@ export class ProjectFormComponent implements OnInit {
     this.analyticsService.event('productivity', 'create_project', 'method', this.projectForm.valid ? 1 : 0)
     if(this.projectForm.invalid) return
     this.showLoader();
-    this.projectService.create(new Project(data.name, data.desc, data.fees, data.unit, this.userService.getUserID())).subscribe(
+    this.subs.add(this.projectService.create(new Project(data.name, data.desc, data.fees, data.unit, this.userService.getUserID()))
+    .subscribe(
     _ => {
       this.alertService.success("تم إنشاء المشروع بنجاح");
       setTimeout(() => this.router.navigate(["/", "projects"]), 2000);
@@ -65,7 +71,7 @@ export class ProjectFormComponent implements OnInit {
       if(err.status == 422){
         this.errors = err.error['errors'];
       }
-    });
+    }))
   }
 
   showLoader(){
@@ -88,5 +94,9 @@ export class ProjectFormComponent implements OnInit {
       loop: true,
     };
     new Typed('#name', options);
+  }
+
+  public ngOnDestroy() {
+    this.subs.unsubscribe(); 
   }
 }

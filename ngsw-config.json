@@ -26,5 +26,39 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "externals",
+      "urls": [
+        "https://www.google-analytics.com/analytics.js",
+        "https://www.googletagmanager.com/gtag/js"
+      ],
+      "cacheConfig": {
+        "maxSize": 2,
+        "maxAge": "30d",
+        "timeout": "1s",
+        "strategy": "performance"
+      },
+      "cacheQueryOptions": {
+        "ignoreSearch": true
+      }
+    },
+    {
+      "name": "apis",
+      "urls": [
+        "https://api.amain.online/api/users",
+        "https://api.amain.online/api/projects"
+      ],
+      "cacheConfig": {
+        "maxSize": 5,
+        "maxAge": "1d",
+        "timeout": "3s",
+        "strategy": "freshness"
+      },
+      "cacheQueryOptions": {
+        "ignoreSearch": false
+      }
+    }
   ]
 }

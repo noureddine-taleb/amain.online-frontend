@@ -6,6 +6,7 @@ TODO :
     - add chart dashboard
     - progressive enhancement (notification, badge, bg sync ...)
     - Study web dev practices 
+    - enable mongo monit
 
     - IMP:
         - better i18n support
@@ -13,13 +14,18 @@ TODO :
     - FIX:
         # - disable errors until press submit
         - unsubscribe from obs when you finish
-        - full offline support
 
 IN PROGRESS :
-    - performance opt
 
 
 DONE :
+    - partial offline support
+    - cache google analytics
+    - reload bills after payment
+    - performance opt
+    - remove jquery from bootstrap
+    - meta and title for each page
+    - robots
     - use html element to store 'typed' data
     - Buil ARIA
     - show units in number input field billForm/projectForm/transactionForm
