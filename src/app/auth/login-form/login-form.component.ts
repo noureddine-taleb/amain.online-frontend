@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { AlertService } from 'ngx-alerts';
 import { User } from '../../models/user/user';
 import { ValidationService } from '../../services/validation/validation.service';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login-form',
@@ -23,6 +24,7 @@ export class LoginFormComponent implements OnInit {
     private userService: UserService,
     private validationService: ValidationService,
     private router: Router,
+    @Inject(PLATFORM_ID) private platform,
     private alertService: AlertService,
     private analyticsService: AnalyticsService,
     ) {}
@@ -64,18 +66,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   showPassword(e: Event){
-    e.preventDefault()
-    const passwordElement = document.getElementById('password') as HTMLInputElement
-    const passwordStatusElement = document.getElementById('password_status')
-    
-    if(passwordElement.type === "text"){
-        passwordElement.setAttribute('type', 'password')
-        passwordStatusElement.classList.remove( "fa-eye-slash" )
-        passwordStatusElement.classList.add( "fa-eye" )
-    }else if(passwordElement.type == "password"){
-        passwordElement.setAttribute('type', 'text')
-        passwordStatusElement.classList.add( "fa-eye-slash" )
-        passwordStatusElement.classList.remove( "fa-eye" )
+    if(isPlatformBrowser(this.platform)){
+          e.preventDefault()
+          const passwordElement = document.getElementById('password') as HTMLInputElement
+          const passwordStatusElement = document.getElementById('password_status')
+          
+          if(passwordElement.type === "text"){
+              passwordElement.setAttribute('type', 'password')
+              passwordStatusElement.classList.remove( "fa-eye-slash" )
+              passwordStatusElement.classList.add( "fa-eye" )
+          }else if(passwordElement.type == "password"){
+              passwordElement.setAttribute('type', 'text')
+              passwordStatusElement.classList.add( "fa-eye-slash" )
+              passwordStatusElement.classList.remove( "fa-eye" )
+          }
     }
   }
 

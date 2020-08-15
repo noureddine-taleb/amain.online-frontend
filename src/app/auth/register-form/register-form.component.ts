@@ -114,21 +114,23 @@ export class RegisterFormComponent implements OnInit
   }
 
   showPassword(e: Event){
-    e.preventDefault()
-    const passwordElement = document.getElementById('password') as HTMLInputElement
-    const passwordConfirmationElement = document.getElementById('password_confirmation') as HTMLInputElement
-    const passwordStatusElement = document.getElementById('password_status')
-    
-    if(passwordElement.type === "text"){
-        passwordElement.setAttribute('type', 'password')
-        passwordConfirmationElement.setAttribute('type', 'password')
-        passwordStatusElement.classList.remove( "fa-eye-slash" )
-        passwordStatusElement.classList.add( "fa-eye" )
-    }else if(passwordElement.type == "password"){
-        passwordElement.setAttribute('type', 'text')
-        passwordConfirmationElement.setAttribute('type', 'text')
-        passwordStatusElement.classList.add( "fa-eye-slash" )
-        passwordStatusElement.classList.remove( "fa-eye" )
+    if(isPlatformBrowser(this.platform)){
+          e.preventDefault()
+          const passwordElement = window.document.getElementById('password') as HTMLInputElement
+          const passwordConfirmationElement = window.document.getElementById('password_confirmation') as HTMLInputElement
+          const passwordStatusElement = window.document.getElementById('password_status')
+          
+          if(passwordElement.type === "text"){
+              passwordElement.setAttribute('type', 'password')
+              passwordConfirmationElement.setAttribute('type', 'password')
+              passwordStatusElement.classList.remove( "fa-eye-slash" )
+              passwordStatusElement.classList.add( "fa-eye" )
+          }else if(passwordElement.type == "password"){
+              passwordElement.setAttribute('type', 'text')
+              passwordConfirmationElement.setAttribute('type', 'text')
+              passwordStatusElement.classList.add( "fa-eye-slash" )
+              passwordStatusElement.classList.remove( "fa-eye" )
+          }
     }
   }
 

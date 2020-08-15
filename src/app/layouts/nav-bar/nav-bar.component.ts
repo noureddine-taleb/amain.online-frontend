@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
-import { isPlatformServer } from '@angular/common';
+import { isPlatformServer, isPlatformBrowser } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -23,21 +23,22 @@ export class NavBarComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.activateNavElement('doesnt matter')
+    this.activateNavElement()
   }
 
-  activateNavElement(e){
-    if(isPlatformServer(this.platform)) return
-    
-    for(const el of window.document.getElementsByTagName('a')){
-      el.classList.remove('active')
-    }
-
-    for(const el of window.document.getElementsByTagName('a')){
-      if(el.pathname === this._router.url){
-        el.classList.add('active')
+  activateNavElement(e?: Event){
+    if(isPlatformBrowser(this.platform)){
+      for(const el of window.document.getElementsByTagName('a')){
+        el.classList.remove('active')
+      }
+  
+      for(const el of window.document.getElementsByTagName('a')){
+        if(el.pathname === this._router.url){
+          el.classList.add('active')
+        }
       }
     }
+    
   }
 
 }

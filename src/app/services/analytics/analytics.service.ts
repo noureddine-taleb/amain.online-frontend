@@ -59,8 +59,10 @@ export class AnalyticsService {
   }
 
   collectWebVitals(): void{
-    getCLS(this.__sendToGoogleAnalytics.bind(this))
-    getFID(this.__sendToGoogleAnalytics.bind(this))
-    getLCP(this.__sendToGoogleAnalytics.bind(this))
+    if(isPlatformBrowser(this.platform)){
+      getCLS(this.__sendToGoogleAnalytics.bind(this))
+      getFID(this.__sendToGoogleAnalytics.bind(this))
+      getLCP(this.__sendToGoogleAnalytics.bind(this))
+    }
   }
 }
