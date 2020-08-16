@@ -3,7 +3,7 @@ import { Report } from '../../models/report/report';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ReportService } from '../../services/report/report.service';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reports',
@@ -11,12 +11,12 @@ import { empty } from 'rxjs';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   reports: Report[] = []
-  total: number = 0
+  total = 0
   p: number
-  other: string = '<other>'
-  otherRep: string = '<آخر>'
+  other = '<other>'
+  otherRep = '<آخر>'
   constructor(
     private spinnerService: NgxSpinnerService,
     private reportService: ReportService,
@@ -26,16 +26,20 @@ export class ReportsComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.setTitleDesc('reports', 'show aggregated reported of all data in the system')
     this.spinnerService.show()
-    this.subs.add(this.reportService.getAll().subscribe(res => {
-      this.spinnerService.hide()
-      this.reports = res['reports']
-      this.total = res['total']
-    }, 
-    _ => this.spinnerService.hide()
-    ))
+    const repSub = this.reportService.getAll().subscribe(res => {
+    this.spinnerService.hide()
+    this.reports = res['reports']
+    this.total = res['total']
+  },
+  _ => this.spinnerService.hide()
+  )
+    this.subs.push(repSub
+    )
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

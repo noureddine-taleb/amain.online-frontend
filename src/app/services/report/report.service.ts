@@ -6,7 +6,7 @@ import { CRUD } from '../../models/crud/crud';
   providedIn: 'root'
 })
 export class ReportService implements CRUD{
-  
+
   _url = '/reports'
   constructor(private http: HttpClient ) { }
 

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page500.component.css']
 })
 export class Page500Component implements OnInit {
-  
+
   constructor() { }
 
   ngOnInit(): void {

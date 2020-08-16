@@ -19,22 +19,22 @@ export class BillTableComponent implements OnInit {
   @Input()bills: Bill[]
   @Input()from: string
   @Output() newPaymentEvent = new EventEmitter<void>();
-  p: number = 1
-  loading: boolean = false;
+  p = 1
+  loading = false;
   blob: Blob;
   url: SafeResourceUrl;
   __url: string;
   bill: Bill;
 
   constructor(
-    private billService: BillService, 
-    private alertService: AlertService, 
-    private sanitizer: DomSanitizer, 
-    private paymentService: PaymentService, 
+    private billService: BillService,
+    private alertService: AlertService,
+    private sanitizer: DomSanitizer,
+    private paymentService: PaymentService,
     private analyticsService: AnalyticsService,
-    private userService: UserService, 
-    @Inject(PLATFORM_ID) private platform: object, 
-  ) 
+    private userService: UserService,
+    @Inject(PLATFORM_ID) private platform: object,
+  )
   {}
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class BillTableComponent implements OnInit {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.__url);
     }, () => {
       this.hideLoader();
-      this.alertService.danger("فشل التنزيل");
+      this.alertService.danger('فشل التنزيل');
     });
   }
 
@@ -61,17 +61,18 @@ export class BillTableComponent implements OnInit {
 
   paymentConfirmation(){
     this.analyticsService.event('productivity', 'create_payment', 'method')
-    if(this.bill) {
+    if (this.bill) {
       this.showLoader();
       this.paymentService.create(new Payment(this.bill._id, this.userService.getUserID())).subscribe(_ => {
         this.hideLoader();
-        if(isPlatformBrowser(this.platform))
-          window.document.getElementById("close-modal1").click();
-        this.alertService.success("تمت إضافة الدفع بنجاح");
+        if (isPlatformBrowser(this.platform)) {
+          window.document.getElementById('close-modal1').click();
+        }
+        this.alertService.success('تمت إضافة الدفع بنجاح');
         this.newPaymentEvent.emit()
       }, () => {
         this.hideLoader();
-        this.alertService.danger("تفشل في إضافة الدفع");
+        this.alertService.danger('تفشل في إضافة الدفع');
       });
     }
   }

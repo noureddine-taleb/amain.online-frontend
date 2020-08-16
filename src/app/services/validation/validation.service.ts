@@ -15,7 +15,7 @@ export class ValidationService {
 
 
   public matchValidator(matchTo: string ): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => control?.value === control?.parent?.get(matchTo)?.value ? null : { "match": true }
+    return (control: AbstractControl): ValidationErrors | null => control?.value === control?.parent?.get(matchTo)?.value ? null : { match: true }
   }
 
 
@@ -23,8 +23,8 @@ export class ValidationService {
     return (control: AbstractControl): ValidationErrors | null => {
       const errors: ValidationErrors = {};
       // console.log( (<HTMLInputElement>el)?.files[0], el );
-      (<HTMLInputElement>el)?.files[0]?.size > 3e6 && (errors.size = true)
-      !this.imageRegexp.test( (<HTMLInputElement>el)?.files[0]?.type ) && (errors.mime = true)
+      (el as HTMLInputElement)?.files[0]?.size > 3e6 && (errors.size = true)
+      !this.imageRegexp.test( (el as HTMLInputElement)?.files[0]?.type ) && (errors.mime = true)
       return Object.keys(errors).length ? errors : null
     }
   }

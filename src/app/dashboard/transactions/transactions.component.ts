@@ -12,7 +12,7 @@ import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-transactions',
@@ -21,16 +21,16 @@ import { empty } from 'rxjs';
 })
 export class TransactionsComponent implements OnInit {
 
-    protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   treasuryForm: FormGroup
-  errors:any[] = []
+  errors: any[] = []
   loading = false
   projects: Project[] = []
 
   constructor(
     private formBuilder: FormBuilder,
     private treasuryService: TreasuryService,
-    private alertService:AlertService, 
+    private alertService: AlertService,
     private projectService: ProjectService,
     private spinnerService: NgxSpinnerService,
     private router: Router,
@@ -43,24 +43,26 @@ export class TransactionsComponent implements OnInit {
     this.seoService.setTitleDesc('new transaction', 'place where to add non regular spending and earning')
     this.typed()
     this.spinnerService.show()
-    this.subs.add(this.projectService.getAll().subscribe(res => {
-      this.spinnerService.hide()
-      this.projects = res['projects']
-    }, 
-    _ => this.spinnerService.hide()
-    ))
+    const projSub = this.projectService.getAll().subscribe(res => {
+    this.spinnerService.hide()
+    this.projects = res['projects']
+  },
+  _ => this.spinnerService.hide()
+  )
+    this.subs.push(projSub
+    )
 
     this.treasuryForm = this.formBuilder.group({
       name: [
         '',
-        [Validators.required,Validators.minLength(5)]
+        [Validators.required, Validators.minLength(5)]
       ],
       projectID: [
         ''
       ],
       desc: [
         '',
-        [Validators.required,Validators.minLength(10)]
+        [Validators.required, Validators.minLength(10)]
       ],
       amount: [
         '',
@@ -71,20 +73,22 @@ export class TransactionsComponent implements OnInit {
 
   submit(data: Treasury){
     this.analyticsService.event('productivity', 'create_treasury_record', 'method', this.treasuryForm.valid ? 1 : 0)
-    if(this.treasuryForm.invalid) return
+    if (this.treasuryForm.invalid) { return }
     this.showLoader()
-    this.subs.add(this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID()))
-    .subscribe(
-    _ => {
-      this.alertService.success("تم إنشاء السجل بنجاح")
-      setTimeout(() => this.router.navigate(["/", "reports"]), 2000)
-    },(err:HttpErrorResponse) => {
-      this.hideLoader()
-      this.alertService.danger('حدث خطأ')
-      if(err.status == 422){
-        this.errors = err.error['errors']
-      }
-    }))
+    const treasSub = this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID()))
+  .subscribe(
+  _ => {
+    this.alertService.success('تم إنشاء السجل بنجاح')
+    setTimeout(() => this.router.navigate(['/', 'reports']), 2000)
+  }, (err: HttpErrorResponse) => {
+    this.hideLoader()
+    this.alertService.danger('حدث خطأ')
+    if (err.status == 422){
+      this.errors = err.error.errors
+    }
+  })
+    this.subs.push(treasSub
+    )
   }
 
   showLoader(){
@@ -110,6 +114,8 @@ export class TransactionsComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

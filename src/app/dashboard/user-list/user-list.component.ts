@@ -16,7 +16,7 @@ import { Project } from '../../models/project/project';
 import { Bill } from '../../models/bill/bill';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -25,25 +25,25 @@ import { empty } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
 
-  protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   users: User[] = [];
   user: User;
-  billForm : FormGroup;
-  errors:any[] = [];
-  projects:Project[] = [];
+  billForm: FormGroup;
+  errors: any[] = [];
+  projects: Project[] = [];
   loading = false;
-  p:number = 1;
-  unit:string
+  p = 1;
+  unit: string
   prefix = `${environment.UPLOAD_FOLDER}`;
   constructor(
-    @Inject(PLATFORM_ID) private platform: object, 
-    private projectService: ProjectService, 
-    private billService: BillService, 
-    private formBuilder: FormBuilder, 
-    private userService: UserService, 
+    @Inject(PLATFORM_ID) private platform: object,
+    private projectService: ProjectService,
+    private billService: BillService,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private alertService: AlertService, 
+    private alertService: AlertService,
     private spinnerService: NgxSpinnerService,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
@@ -52,24 +52,28 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.setTitleDesc('table of users', 'show subscribed users')
     this.spinnerService.show();
-    this.subs.add(this.userService.getAll().subscribe(res => {
-    this.spinnerService.hide();
-      this.users = res['users'];
-     },() => this.spinnerService.hide()))
+    const usrSub = this.userService.getAll().subscribe(res => {
+  this.spinnerService.hide();
+  this.users = res['users'];
+   }, () => this.spinnerService.hide())
+    this.subs.push(usrSub
+     )
 
-    this.subs.add(this.projectService.getAll()
-    .subscribe(res => (this.projects = res['projects']) ))
-    
+    const projSub = this.projectService.getAll()
+   .subscribe(res => (this.projects = res['projects']) )
+    this.subs.push(projSub
+    )
+
     this.billForm = this.formBuilder.group({
-      userID:[
+      userID: [
         '',
         [Validators.required]
       ],
-      projectID:[
+      projectID: [
         '',
         [Validators.required]
       ],
-      quantity:[
+      quantity: [
         '',
         [Validators.required, Validators.min(0.1)]
       ]
@@ -88,25 +92,28 @@ export class UserListComponent implements OnInit {
   submit(data: Bill){
     this.analyticsService.event('productivity', 'create_bill', 'method', this.billForm.valid ? 1 : 0)
 
-    if(this.billForm.invalid) return;
+    if (this.billForm.invalid) { return; }
     this.showLoader();
-    this.subs.add(this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID()))
-    .subscribe((data) => {
-      this.alertService.success("تم إنشاء الفاتورة بنجاح");
-      if(isPlatformBrowser(this.platform))
-        window.document.getElementById("close-modal").click();
-      this.billForm.reset()
-      this.hideLoader()
-    }, 
-      (err:HttpErrorResponse) => {
-        this.hideLoader();
-        this.alertService.danger('حدث خطأ');
-        if(err.status == 422){
-          this.errors = err.error['errors'];
-        }
-      }))
+    const billSub = this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID()))
+  .subscribe((data) => {
+    this.alertService.success('تم إنشاء الفاتورة بنجاح');
+    if (isPlatformBrowser(this.platform)) {
+      window.document.getElementById('close-modal').click();
+    }
+    this.billForm.reset()
+    this.hideLoader()
+  },
+    (err: HttpErrorResponse) => {
+      this.hideLoader();
+      this.alertService.danger('حدث خطأ');
+      if (err.status == 422){
+        this.errors = err.error.errors;
+      }
+    })
+    this.subs.push(billSub
+      )
   }
-  
+
   showLoader(){
     this.loading = true;
   }
@@ -120,6 +127,8 @@ export class UserListComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

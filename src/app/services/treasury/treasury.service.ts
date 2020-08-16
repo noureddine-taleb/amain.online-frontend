@@ -7,7 +7,7 @@ import { CRUD } from '../../models/crud/crud';
   providedIn: 'root'
 })
 export class TreasuryService implements CRUD {
-  
+
   _url = '/treasuries'
   constructor(private http: HttpClient ) { }
 

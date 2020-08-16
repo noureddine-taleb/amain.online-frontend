@@ -11,7 +11,7 @@ import { Payment } from '../../models/payment/payment';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bill-list',
@@ -19,19 +19,19 @@ import { empty } from 'rxjs';
   styleUrls: ['./bill-list.component.css']
 })
 export class BillListComponent implements OnInit {
-  protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   bills: Bill[] = [];
   userId: string;
   loading = false;
-  p: number = 1;
-  
+  p = 1;
+
   constructor(
-    private billService: BillService, 
-    private userService: UserService, 
-    private route: ActivatedRoute, 
+    private billService: BillService,
+    private userService: UserService,
+    private route: ActivatedRoute,
     private spinnerService: NgxSpinnerService,
     private seoService: SeoService,
-    ) 
+    )
   {}
 
   ngOnInit(): void {
@@ -42,17 +42,18 @@ export class BillListComponent implements OnInit {
   getBills(): void{
     this.userId = this.route.snapshot.paramMap.get('userID');
     this.spinnerService.show();
-    if(this.userId){
-      this.subs.add(this.userService.bills(this.userId, { $include: 'payment' }).subscribe(res => {
-        this.spinnerService.hide();
-        this.bills = res['bills'];
-      },() => this.spinnerService.hide() ))
-    
+    if (this.userId){
+      const billSub = this.userService.bills(this.userId, { $include: 'payment' }).subscribe(res => {
+      this.spinnerService.hide();
+      this.bills = res.bills;
+    }, () => this.spinnerService.hide() )
+      this.subs.push(billSub)
     }else {
-      this.subs.add(this.billService.getAll().subscribe(res => {
-        this.spinnerService.hide();
-        this.bills = res['bills'];
-      },() => this.spinnerService.hide() ))
+      const billSub = this.billService.getAll().subscribe(res => {
+      this.spinnerService.hide();
+      this.bills = res['bills'];
+    }, () => this.spinnerService.hide() )
+      this.subs.push(billSub)
     }
   }
 
@@ -65,6 +66,8 @@ export class BillListComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

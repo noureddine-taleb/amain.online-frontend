@@ -3,7 +3,7 @@ import { UserService } from '../../services/user/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Bill } from '../../models/bill/bill';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { empty, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -11,29 +11,32 @@ import { empty } from 'rxjs';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  protected subs = empty().subscribe();
-  bills: Bill[] 
-  
+  protected subs: Subscription[] = []
+  bills: Bill[]
+
   constructor(
-    private userService: UserService, 
+    private userService: UserService,
     private spinnerService: NgxSpinnerService,
     private seoService: SeoService,
-    ) 
+    )
   {}
 
   ngOnInit(): void {
     this.seoService.setTitleDesc('profile', 'show bills of authenticated user')
     this.spinnerService.show();
-    this.subs.add(this.userService.bills().subscribe(
-    res => {
-      this.spinnerService.hide();
-      this.bills = res['bills'];
-    },
-    _ => this.spinnerService.hide() ))
-
+    const billSub = this.userService.bills().subscribe(
+      res => {
+        this.spinnerService.hide();
+        this.bills = res.bills;
+      },
+      _ => this.spinnerService.hide()
+    )
+    this.subs.push(billSub)
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

@@ -8,37 +8,37 @@ import { getCLS, getFID, getLCP } from 'web-vitals';
 export class AnalyticsService {
 
   constructor(
-    @Inject(PLATFORM_ID) private platform: object, 
+    @Inject(PLATFORM_ID) private platform: object,
   ) { }
 
   pageView(): void{
-    if(isPlatformBrowser(this.platform)) {
+    if (isPlatformBrowser(this.platform)) {
       (window as any).gtag('event', 'page_view', {
-        'page_title': window.document.title,
-        'page_location': window.location.href,
-        'page_path': window.location.pathname,
+        page_title: window.document.title,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
       })
     }
   }
 
-  event(category: string, action:string, label: string, value?: number): void {
-    if(isPlatformBrowser(this.platform)){      
+  event(category: string, action: string, label: string, value?: number): void {
+    if (isPlatformBrowser(this.platform)){
       (window as any).gtag('event', action, {
-        'event_category': category,
-        'event_label': label,
-        'value': value,
+        event_category: category,
+        event_label: label,
+        value: value,
       })
     }
   }
 
   exception(err: object): void {
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       (window as any).gtag('event', 'exception', err)
     }
   }
 
   __sendToGoogleAnalytics({name, delta, id}: {name: string, delta: number, id: string}): void{
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       // Assumes the global `gtag()` function exists, see:
       // https://developers.google.com/analytics/devguides/collection/gtagjs
       (window as any).gtag('event', name, {
@@ -59,7 +59,7 @@ export class AnalyticsService {
   }
 
   collectWebVitals(): void{
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       getCLS(this.__sendToGoogleAnalytics.bind(this))
       getFID(this.__sendToGoogleAnalytics.bind(this))
       getLCP(this.__sendToGoogleAnalytics.bind(this))

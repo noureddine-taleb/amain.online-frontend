@@ -3,7 +3,7 @@ import { ProjectService } from '../../services/project/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Project } from '../../models/project/project';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-list',
@@ -11,12 +11,12 @@ import { empty } from 'rxjs';
   styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit {
-  protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   projects: Project[] = [];
-  p: number = 1;
-  
+  p = 1;
+
   constructor(
-    private projectService: ProjectService, 
+    private projectService: ProjectService,
     private spinnerService: NgxSpinnerService,
     private seoService: SeoService,
     ) { }
@@ -24,15 +24,19 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.setTitleDesc('table of projects', 'show available projects')
     this.spinnerService.show()
-    this.subs.add(this.projectService.getAll().subscribe(res => {
-      this.spinnerService.hide()
-      this.projects = res['projects']
-    }, 
-    _ => this.spinnerService.hide()
-    ))
+    const projSub = this.projectService.getAll().subscribe(res => {
+    this.spinnerService.hide()
+    this.projects = res['projects']
+  },
+  _ => this.spinnerService.hide()
+  )
+    this.subs.push(projSub
+    )
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

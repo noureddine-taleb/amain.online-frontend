@@ -28,7 +28,7 @@
               | paginate: { itemsPerPage: 5, currentPage: p }
           "
         >
-          <th scope="row">{{ project.id }}</th>
+          <th scope="row">{{ project._id }}</th>
           <td>{{ project.name }}</td>
           <td>{{ project.desc }}</td>
           <td>{{ project.createdAt | date: "dd/MM/yy" }}</td>

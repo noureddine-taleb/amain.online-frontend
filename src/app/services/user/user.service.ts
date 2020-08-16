@@ -17,8 +17,8 @@ export class UserService implements CRUD {
  _url = '/users'
 
   constructor(
-    @Inject(PLATFORM_ID) private platform: object, 
-    private http: HttpClient, 
+    @Inject(PLATFORM_ID) private platform: object,
+    private http: HttpClient,
     private injector: Injector,
     private analyticsService: AnalyticsService,
     ){}
@@ -42,25 +42,25 @@ export class UserService implements CRUD {
   isAuth(): boolean{
     return this.getAuthorizationToken() ? true : false
   }
-  
+
   isAdmin(): boolean{
     return this._user?._isAdmin
   }
-  
+
   getUserID(): string{
     return this._user?._id
   }
-  
+
   logout(): void {
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       this.analyticsService.event('engagement', 'log_out', 'method')
       window.localStorage.removeItem('token')
-      this.injector.get(Router).navigate(["auth", "login"])
+      this.injector.get(Router).navigate(['auth', 'login'])
     }
   }
 
   getAuthorizationToken(): string | null{
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       return window.localStorage.getItem('token')
     }
     return null
@@ -68,7 +68,7 @@ export class UserService implements CRUD {
 
   upload(data: File, fileName: string){
     const formData = new FormData()
-    formData.append("image", data, fileName)
+    formData.append('image', data, fileName)
     return this.http.post(`${this._url}/image`, formData, { reportProgress: true , observe: 'events'})
   }
 
@@ -82,7 +82,7 @@ export class UserService implements CRUD {
   }
 
   store(res: Observable<any>): void{
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
       this._user = res['user']
       window.localStorage.setItem('token',  this._user?.token )
     }

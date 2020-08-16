@@ -8,7 +8,7 @@ import { ValidationService } from '../../services/validation/validation.service'
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
 import { SeoService } from '../../services/seo/seo.service';
-import { empty } from 'rxjs';
+import { empty, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -16,13 +16,13 @@ import { empty } from 'rxjs';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  protected subs = empty().subscribe();
-  loginForm : FormGroup;
-  errors:any[] = [];
+  protected subs: Subscription[] = []
+  loginForm: FormGroup;
+  errors: any[] = [];
   loading = false;
 
   constructor(
-    private formBuilder: FormBuilder, 
+    private formBuilder: FormBuilder,
     private userService: UserService,
     private validationService: ValidationService,
     private router: Router,
@@ -48,41 +48,42 @@ export class LoginFormComponent implements OnInit {
       ]
     });
   }
-      
+
   submit(data: User){
     this.analyticsService.event('engagement', 'login', 'method', this.loginForm.valid ? 1 : 0)
-    
-    if(this.loginForm.invalid) return;
+
+    if (this.loginForm.invalid) { return; }
     this.showLoader();
-    this.subs.add(this.userService.login(data).subscribe( 
-      _ => 
+    const loginSub = this.userService.login(data).subscribe(
+      _ =>
       {
-      this.alertService.success("تسجيل دخول المستخدم بنجاح");
-      setTimeout(() => this.router.navigate(["/"]), 2000)
+      this.alertService.success('تسجيل دخول المستخدم بنجاح');
+      setTimeout(() => this.router.navigate(['/']), 2000)
     },
     err => {
       this.hideLoader();
       this.alertService.danger('حدث خطأ');
-      if(err.status == 422){
-        this.errors = err.error['errors'];
+      if (err.status == 422){
+        this.errors = err.error.errors;
       }
-    }))
+    })
+    this.subs.push(loginSub)
   }
 
   showPassword(e: Event){
-    if(isPlatformBrowser(this.platform)){
+    if (isPlatformBrowser(this.platform)){
           e.preventDefault()
           const passwordElement = document.getElementById('password') as HTMLInputElement
           const passwordStatusElement = document.getElementById('password_status')
-          
-          if(passwordElement.type === "text"){
+
+          if (passwordElement.type === 'text'){
               passwordElement.setAttribute('type', 'password')
-              passwordStatusElement.classList.remove( "fa-eye-slash" )
-              passwordStatusElement.classList.add( "fa-eye" )
-          }else if(passwordElement.type == "password"){
+              passwordStatusElement.classList.remove( 'fa-eye-slash' )
+              passwordStatusElement.classList.add( 'fa-eye' )
+          }else if (passwordElement.type == 'password'){
               passwordElement.setAttribute('type', 'text')
-              passwordStatusElement.classList.add( "fa-eye-slash" )
-              passwordStatusElement.classList.remove( "fa-eye" )
+              passwordStatusElement.classList.add( 'fa-eye-slash' )
+              passwordStatusElement.classList.remove( 'fa-eye' )
           }
     }
   }
@@ -96,6 +97,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

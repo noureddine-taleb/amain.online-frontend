@@ -1,24 +1,24 @@
 TODO :
-    - animation look noisy
-    - Add stuck/total quantity field to report 
-    - verify registered users
-    - add more helpfull info to project table
-    - add chart dashboard
-    - progressive enhancement (notification, badge, bg sync ...)
     - Study web dev practices 
+    - progressive enhancement (notification, badge, bg sync ...)
     - enable mongo monit
+    - add chart dashboard
+    - verify registered users
+    - disable errors until press submit
+    - animation look noisy
+    - add more helpfull info to project table
 
     - IMP:
         - better i18n support
         - badge of n of new bill on user profile icon
     - FIX:
-        # - disable errors until press submit
-        - unsubscribe from obs when you finish
 
 IN PROGRESS :
 
 
 DONE :
+    - Add stuck/total quantity field to report 
+    - unsubscribe from obs when you finish
     - partial offline support
     - cache google analytics
     - reload bills after payment

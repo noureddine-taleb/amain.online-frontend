@@ -14,6 +14,12 @@
         <th scope="col">
           التوازن
         </th>
+        <th scope="col">
+          الكمية
+        </th>
+        <th scope="col">
+          عالق
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +28,7 @@
           let report of reports | paginate: { itemsPerPage: 7, currentPage: p }
         "
       >
-        <td>{{ report.project === other ? otherRep : report.project }}</td>
+        <td>{{ report.name === other ? otherRep : report.name }}</td>
         <td [ngStyle]="{ color: 'green' }">{{ report.earn | currency: 'DH' }}</td>
         <td [ngStyle]="{ color: 'red' }">{{ report.lost | currency: 'DH' }}</td>
         <td
@@ -33,6 +39,12 @@
           }"
         >
           {{ report.balance | currency: 'DH' }}
+        </td>
+        <td>
+          {{ report.quantity ? (report.quantity + ' ' + report.unit) : '-' }}
+        </td>
+        <td style="font-weight: bold; color: grey;">
+          {{ (report.stuck | currency: 'DH') || '-' }}
         </td>
       </tr>
     </tbody>

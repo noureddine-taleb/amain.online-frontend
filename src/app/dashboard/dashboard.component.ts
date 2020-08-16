@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user/user.service';
-import { empty } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +8,20 @@ import { empty } from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  protected subs = empty().subscribe();
+  protected subs: Subscription[] = []
   constructor(
     private _userService: UserService,
   ) { }
 
   ngOnInit(): void {
-    this.subs.add(this._userService.getUser().subscribe())
+    const usrSub = this._userService.getUser().subscribe()
+    this.subs.push(usrSub
+      )
   }
 
   public ngOnDestroy() {
-    this.subs.unsubscribe(); 
+    for (const s of this.subs) {
+      s.unsubscribe()
+    }
   }
 }

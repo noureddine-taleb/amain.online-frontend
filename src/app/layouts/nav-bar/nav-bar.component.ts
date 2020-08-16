@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
   constructor(
     public userService: UserService,
     public _router: Router,
-    @Inject(PLATFORM_ID) private platform: Object, 
+    @Inject(PLATFORM_ID) private platform: Object,
     ) { }
 
   ngOnInit(): void {
@@ -27,18 +27,18 @@ export class NavBarComponent implements OnInit {
   }
 
   activateNavElement(e?: Event){
-    if(isPlatformBrowser(this.platform)){
-      for(const el of window.document.getElementsByTagName('a')){
+    if (isPlatformBrowser(this.platform)){
+      for (const el of window.document.getElementsByTagName('a')){
         el.classList.remove('active')
       }
-  
-      for(const el of window.document.getElementsByTagName('a')){
-        if(el.pathname === this._router.url){
+
+      for (const el of window.document.getElementsByTagName('a')){
+        if (el.pathname === this._router.url){
           el.classList.add('active')
         }
       }
     }
-    
+
   }
 
 }
