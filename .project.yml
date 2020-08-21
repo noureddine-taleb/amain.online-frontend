@@ -3,10 +3,22 @@ TODO :
     - progressive enhancement (notification, badge, bg sync ...)
     - enable mongo monit
     - add chart dashboard
-    - verify registered users
     - disable errors until press submit
     - animation look noisy
     - add more helpfull info to project table
+    - Make content seo friendly
+    - Use pipes instead of function in view 
+    - NgZone
+    - TrackBy
+    - https://www.npmjs.com/package/webpack-bundle-analyzer
+    - Switch to tailwind 
+    - Brotli compression
+    - Cache responses in nginx
+    - Use critical Webpack plugging 
+    - Instruments app with user timing api
+    - Pappeteer for automation
+    - Ngrx
+    - Ngmaterial
 
     - IMP:
         - better i18n support
@@ -14,9 +26,23 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-
+    - Put dashboard on a separate module 
+    - Improve web vitals metrics 
+    - Codes split
+    - Lazy load components 
+    - Onpush change detection in some components 
+    - Async pipe 
+    - Use template el 
+    - Use visibility with errs to mitigate CLS
+    - Leverage angular build api
+    - Upgrade to angular 10
+    - Angular quick links for prefetching 
+    - Google search console 
+    - verify registered users
 
 DONE :
+    - Check evergreen google bot in logs
+    - Test shdow dom in ng
     - Add stuck/total quantity field to report 
     - unsubscribe from obs when you finish
     - partial offline support
