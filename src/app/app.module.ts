@@ -3,7 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, LOCALE_ID } from '@angu
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  HTTP_INTERCEPTORS } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './core/interceptors/interceptor.interceptor';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
@@ -29,6 +29,7 @@ import { TreasuryService } from './services/treasury/treasury.service';
 import { ReportService } from './services/report/report.service';
 import { ValidationService } from './services/validation/validation.service';
 import { IsNotAuthGuard } from './core/guards/is-not-auth.guard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeFr);
 
@@ -42,12 +43,10 @@ registerLocaleData(localeFr);
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
-    NgxSpinnerModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
-    DashboardModule,
-    AuthModule
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    
+    HttpClientModule,
   ],
   providers: [
     UserService,

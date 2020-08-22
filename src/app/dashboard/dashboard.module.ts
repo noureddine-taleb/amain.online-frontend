@@ -29,6 +29,7 @@ import { BillTableComponent } from './layouts/bill-table/bill-table.component';
 import { EmptyCardComponent } from './layouts/empty-card/empty-card.component';
 import { DashboardComponent } from './dashboard.component';
 import { AppComponent } from '../app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,12 +47,12 @@ import { AppComponent } from '../app.component';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
-    NgxSpinnerModule,
     NgxPaginationModule,
     DashboardRoutingModule,
+
+    ReactiveFormsModule,
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
+    NgxSpinnerModule,
   ], 
   exports: [
     DashboardComponent,

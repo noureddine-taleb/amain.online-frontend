@@ -11,6 +11,10 @@ import { AnalyticsService } from '../services/analytics/analytics.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IsNotAuthGuard } from '../core/guards/is-not-auth.guard';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { AlertModule } from 'ngx-alerts';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -21,8 +25,11 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     AuthRoutingModule,
+
+    ReactiveFormsModule,
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
+    NgxSpinnerModule,
   ],
   exports:[
     AuthComponent
