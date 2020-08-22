@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.cover {
+    height: 1280px;
+}
+
 .title {
     position: absolute;
     margin: 0;

@@ -12,4 +12,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  resetHeight(e: Event){
+    ( window.document.getElementsByTagName('img')[0] as HTMLImageElement).classList.remove('cover')
+  }
 }
