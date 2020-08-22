@@ -1,67 +1,79 @@
 <div class="table-responsive">
-    <table class="table table-striped table-active">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">
-            اسم
-          </th>
-          <th scope="col">
-            مشروع
-          </th>
-          <th scope="col">
-            تاريخ
-          </th>
-          <th scope="col">
-            كمية
-          </th>
-          <th scope="col">
-            السعر
-          </th>
-          <th scope="col">
-            الحالة
-          </th>
-          <th scope="col">
-            المهام
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
-          "
+  <table class="table table-striped table-active">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">
+          اسم
+        </th>
+        <th scope="col">
+          مشروع
+        </th>
+        <th scope="col">
+          تاريخ
+        </th>
+        <th scope="col">
+          كمية
+        </th>
+        <th scope="col">
+          السعر
+        </th>
+        <th scope="col">
+          الحالة
+        </th>
+        <th scope="col">
+          المهام
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
+        "
+      >
+        <th scope="row">{{ bill._id }}</th>
+        <td>{{ bill.userID?.name }}</td>
+        <td>{{ bill.projectID?.name }}</td>
+        <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
+        <td>{{ bill.quantity + " " + bill.projectID?.unit }}</td>
+        <td>
+          {{
+            bill.paymentID?.amount || bill.quantity * bill.projectID?.fees
+              | currency: "DH"
+          }}
+        </td>
+        <td
+          [ngStyle]="{
+            color: bill.paymentID ? 'green' : 'red',
+            fontWeight: 'bold'
+          }"
         >
-          <th scope="row">{{ bill._id }}</th>
-          <td>{{ bill.userID?.name }}</td>
-          <td>{{ bill.projectID?.name }}</td>
-          <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
-          <td>{{ bill.quantity + ' ' + bill.projectID?.unit }}</td>
-          <td>{{ bill.paymentID?.amount || (bill.quantity * bill.projectID?.fees) | currency: 'DH' }}</td>
-            <td [ngStyle]="{ color: bill.paymentID ? 'green' : 'red', fontWeight: 'bold' }">{{ bill.paymentID ? 'تم دفعها' : 'ليس بعد' }}</td>
-          <td class="functions">
-            <i
-              class="fa fa-print mr-3"
-              (click)="downloadBill(bill)"
-              data-toggle="modal"
-              data-target="#bill-pdf"
-              aria-label="print"
-              role="button"
-            ></i>
-            <i
-              *ngIf="from != 'profile' && !bill.paymentID"
-              class="fa fa-money"
-              (click)="saveBill(bill)"
-              data-toggle="modal"
-              data-target="#payment-form"
-            ></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          {{ bill.paymentID ? "تم دفعها" : "ليس بعد" }}
+        </td>
+        <td class="functions">
+          <i
+            class="fa fa-print mr-3"
+            (click)="downloadBill(bill)"
+            data-toggle="modal"
+            data-target="#bill-pdf"
+            aria-label="print"
+            role="button"
+          ></i>
+          <i
+            *ngIf="from != 'profile' && !bill.paymentID"
+            class="fa fa-money"
+            (click)="saveBill(bill)"
+            data-toggle="modal"
+            data-target="#payment-form"
+          ></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <div class="pagination-div">
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <!-- Modal -->

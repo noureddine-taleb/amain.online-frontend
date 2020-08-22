@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserService } from '../services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class IsAdminGuard implements CanActivate {
         return true
       }
 
-      this._router.navigate(['/'])
+      this._router.navigate(['dashboard'])
       return false
   }
 

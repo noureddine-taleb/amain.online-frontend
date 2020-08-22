@@ -1,61 +1,72 @@
-<div id="typed-strings2" style="display: none;">
-  <p>شراء بعض المعدات</p>
-  <p>بناء الطريق</p>
-  <p>صيانة المساجد</p>
-  <p>الاعمال الخيرية</p>
-</div>
+<template id="typed-strings2">
+  <p>
+    شراء المعدات
+  </p>
+  <p>
+    بناء الطرق
+  </p>
+  <p>
+    صيانة المسجد
+  </p>
+  <p>
+    الاعمال الخيرية
+  </p>
+</template>
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <form [formGroup]="treasuryForm" (ngSubmit)="submit(treasuryForm.value)" autocomplete="on">
+      <form
+        [formGroup]="treasuryForm"
+        (ngSubmit)="submit(treasuryForm.value)"
+        autocomplete="on"
+      >
         <div class="form-group">
           <label for="name">
             اسم
           </label>
-          <select 
-            formControlName="name" 
-            name="name" 
-            id="name" 
+          <select
+            formControlName="name"
+            name="name"
+            id="name"
             class="form-control"
-            (change)="treasuryForm.patchValue({projectID: $event?.target?.options[$event?.target?.selectedIndex]?.id })"
+            (change)="
+              treasuryForm.patchValue({
+                projectID:
+                  ($event?.target?.options)[$event?.target?.selectedIndex]?.id
+              })
+            "
           >
             <option id="" value="<other>">
               &lt;آخر&gt;
             </option>
-            <option
-              *ngFor="let p of projects"
-              [value]="p.name"
-              [id]="p._id"
+            <option *ngFor="let p of projects" [value]="p.name" [id]="p._id"
               >{{ p.name }}
-            </option
-            >
+            </option>
           </select>
-          <!-- <input type="text" class="form-control" formControlName="name" placeholder="water project"> -->
           <div
-            *ngIf="treasuryForm.get('name')?.hasError('required')"
+            [ngStyle]="{ visibility: treasuryForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             مطلوب اسم
           </div>
           <div
-            *ngIf="treasuryForm.get('name').hasError('minlength')"
+            [ngStyle]="{ visibility: treasuryForm.controls.name.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             يجب أن يكون الاسم بطول 5 أحرف
           </div>
         </div>
-        <input 
-          type="hidden" 
+        <input
+          type="hidden"
           name="projectID"
           id="projectID"
-          formControlName="projectID" 
-        >
+          formControlName="projectID"
+        />
         <div class="form-group">
           <label for="desc">
             وصف
-
           </label>
           <textarea
             type="text"
@@ -67,14 +78,14 @@
           >
           </textarea>
           <div
-            *ngIf="treasuryForm.get('desc')?.hasError('required')"
+            [ngStyle]="{ visibility: treasuryForm.controls.desc.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             الوصف مطلوب
           </div>
           <div
-            *ngIf="treasuryForm.get('desc')?.hasError('minlength')"
+            [ngStyle]="{ visibility: treasuryForm.controls.desc.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -85,33 +96,41 @@
           <label class="sr-only" for="amount">الرسوم</label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
-              <div 
-                class="input-group-text" 
-                [ngStyle]="{ 'backgroundColor': (fee.value ? fee.value < 0 ? '#dc3545' : '#28a745' : '#fff') }" 
-                role="status" 
-                aria-label="status" 
+              <div
+                class="input-group-text"
+                [ngStyle]="{
+                  backgroundColor: fee.value
+                    ? fee.value < 0
+                      ? '#dc3545'
+                      : '#28a745'
+                    : '#fff'
+                }"
+                role="status"
+                aria-label="status"
               ></div>
             </div>
-            <input 
-            #fee
-            autocomplete="off"
-            type="number"
-            class="form-control"
-            formControlName="amount"
-            name="amount"
-            id="amount"
-            placeholder="500"
-            >
+            <input
+              #fee
+              autocomplete="off"
+              type="number"
+              class="form-control"
+              formControlName="amount"
+              name="amount"
+              id="amount"
+              placeholder="500"
+            />
             <div class="input-group-prepend">
-              <div 
-                style="border-radius: .25rem;"
-                class="input-group-text" 
-                role="status" 
-                aria-label="status" 
-              >DH</div>
+              <div
+                style="border-radius: 0.25rem;"
+                class="input-group-text"
+                role="status"
+                aria-label="status"
+              >
+                DH
+              </div>
             </div>
           </div>
-        <!-- </div> -->
+          <!-- </div> -->
         </div>
 
         <button
@@ -124,7 +143,7 @@
           }"
           [ngStyle]="{ marginRight: '15px' }"
         >
-        حفظ الصفقة
+          حفظ الصفقة
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
           <span class="sr-only">
@@ -153,7 +172,7 @@
     </div>
     <div class="col-lg-6 container">
       <img
-        src="/assets/images/treasury.svg"
+        src="assets/images/treasury.svg"
         alt="404"
         class="img-fluid"
         [ngStyle]="{ maxWidth: '100%' }"

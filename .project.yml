@@ -19,6 +19,9 @@ TODO :
     - Pappeteer for automation
     - Ngrx
     - Ngmaterial
+    - Async pipe 
+    - Onpush change detection in some components 
+    - verify registered users
 
     - IMP:
         - better i18n support
@@ -26,21 +29,19 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-    - Put dashboard on a separate module 
-    - Improve web vitals metrics 
-    - Codes split
-    - Lazy load components 
-    - Onpush change detection in some components 
-    - Async pipe 
-    - Use template el 
-    - Use visibility with errs to mitigate CLS
-    - Leverage angular build api
-    - Upgrade to angular 10
     - Angular quick links for prefetching 
     - Google search console 
-    - verify registered users
 
 DONE :
+    - Leverage angular build api
+    - Use visibility with errs to mitigate CLS
+    - Use template el 
+    - Put dashboard on a separate module 
+    - Put auth on a separate module 
+    - Improve web vitals metrics (CLS)
+    - Codes split
+    - Lazy load components 
+    - Upgrade to angular 10
     - Check evergreen google bot in logs
     - Test shdow dom in ng
     - Add stuck/total quantity field to report 

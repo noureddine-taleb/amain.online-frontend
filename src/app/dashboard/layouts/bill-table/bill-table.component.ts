@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, PLATFORM_ID, Inject, Output, EventEmitter } from '@angular/core';
-import { Bill } from '../../models/bill/bill';
-import { BillService } from '../../services/bill/bill.service';
+import { Bill } from '../../../core/models/bill/bill';
+import { BillService } from '../../../services/bill/bill.service';
 import { AlertService } from 'ngx-alerts';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { PaymentService } from '../../services/payment/payment.service';
-import { AnalyticsService } from '../../services/analytics/analytics.service';
+import { PaymentService } from '../../../services/payment/payment.service';
+import { AnalyticsService } from '../../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
-import { Payment } from '../../models/payment/payment';
-import { UserService } from '../../services/user/user.service';
+import { Payment } from '../../../core/models/payment/payment';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-bill-table',

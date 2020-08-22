@@ -8,9 +8,9 @@ import {
 } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { UserService } from '../services/user/user.service';
+import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../../environments/environment.prod';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
@@ -35,7 +35,7 @@ export class Interceptor implements HttpInterceptor {
 
           if (err.status == 401){
             this.userService.logout()
-            router.navigate(['/', 'auth', 'login'])
+            router.navigate(['auth'])
           }
         }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Project } from '../../models/project/project';
+import { Project } from '../../core/models/project/project';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
 

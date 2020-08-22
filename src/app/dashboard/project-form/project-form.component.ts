@@ -4,7 +4,7 @@ import { ProjectService } from '../../services/project/project.service';
 import { AlertService } from 'ngx-alerts';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Project } from '../../models/project/project';
+import { Project } from '../../core/models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
@@ -64,7 +64,7 @@ export class ProjectFormComponent implements OnInit {
     .subscribe(
     _ => {
       this.alertService.success('تم إنشاء المشروع بنجاح');
-      setTimeout(() => this.router.navigate(['/', 'projects']), 2000);
+      setTimeout(() => this.router.navigate(['dashboard', 'projects']), 2000);
     }, (err: HttpErrorResponse) => {
       this.hideLoader();
       this.alertService.danger('حدث خطأ');

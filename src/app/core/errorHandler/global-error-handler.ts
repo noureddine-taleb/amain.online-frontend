@@ -1,5 +1,5 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { AnalyticsService } from '../services/analytics/analytics.service';
+import { AnalyticsService } from '../../services/analytics/analytics.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,90 +1,147 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <form [formGroup]="loginForm" (ngSubmit)="submit(loginForm.value)" autocomplete="on">
-          <div class="form-group">
-            <label for="phone">
-              رقم الهاتف
-            </label>
-            <input autofocus name="phone" type="tel" class="form-control" id="phone" aria-describedby="phoneHelp" formControlName="phone">
-            <div *ngIf="loginForm.controls.phone.errors?.required" class="invalid-feedback" role="alert">
-              رقم الهاتف مطلوب
-
-            </div>
-            <div *ngIf="loginForm.controls.phone.errors?.pattern" class="invalid-feedback" role="alert">
-              يجب أن يظهر رقم الهاتف بالشكل 0612345678
-
-            </div>
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="submit(loginForm.value)"
+        autocomplete="on"
+      >
+        <div class="form-group">
+          <label for="phone">
+            رقم الهاتف
+          </label>
+          <input
+            autofocus
+            name="phone"
+            type="tel"
+            class="form-control"
+            id="phone"
+            aria-describedby="phoneHelp"
+            formControlName="phone"
+          />
+          <div
+            [ngStyle]="{
+              visibility: loginForm.controls.phone.errors?.required
+                ? 'visible'
+                : 'hidden'
+            }"
+            class="invalid-feedback"
+            role="alert"
+          >
+            رقم الهاتف مطلوب
           </div>
+          <div
+            [ngStyle]="{ visibility: loginForm.controls.phone.errors?.pattern ? 'visible': 'hidden' }"
+            class="invalid-feedback"
+            role="alert"
+          >
+            يجب أن يظهر رقم الهاتف بالشكل 0612345678
+          </div>
+        </div>
 
-
-            <div class="form-group">
-              <label for="password">
-                كلمه السر
-              </label>              
-              <div class="input-group" id="show_hide_password">
-                <input type="password" class="form-control" id="password" formControlName="password" name="password">
-                <div class="input-group-prepend">
-                  <div 
-                    (click)="showPassword($event)"
-                    class="input-group-text" 
-                    role="status" 
-                    aria-label="status" 
-                  ><i class="fa fa-eye" id="password_status" aria-hidden="true"></i>
-                </div>
-                </div>
+        <div class="form-group">
+          <label for="password">
+            كلمه السر
+          </label>
+          <div class="input-group" id="show_hide_password">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              name="password"
+            />
+            <div class="input-group-prepend">
+              <div
+                (click)="showPassword($event)"
+                class="input-group-text"
+                role="status"
+                aria-label="status"
+              >
+                <i
+                  class="fa fa-eye"
+                  id="password_status"
+                  aria-hidden="true"
+                ></i>
               </div>
-              <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback" role="alert">
-                كلمة المرور مطلوبة
-              </div>
             </div>
-
-          <!-- <div class="form-group">
-            <label for="password">
-              كلمه السر
-
-            </label>
-            <input type="password" class="form-control" id="password" formControlName="password" name="password">
-            <div *ngIf="loginForm.controls.password.errors?.required" class="invalid-feedback" role="alert">
-              كلمة المرور مطلوبة
-
-            </div>
-          </div> -->
-          
-          <div class="form-group form-check">
-            <input type="checkbox" checked class="form-check-input" id="remember-me" formControlName="rememberme" name="rememberme">
-            <label class="form-check-label" for="remember-me">
-              تذكرنى
-            </label>
           </div>
-          <button [disabled]="loading" type="submit" class="btn" [ngClass]="{'btn-danger': loginForm.invalid, 'btn-success': loginForm.valid}" [ngStyle]="{'marginRight': '15px'}">
-            تسجيل الدخول
-
-          </button>
-          <div *ngIf="loading" class="spinner-border text-primary" role="status">
-            <span class="sr-only">
-              جار التحميل...
-
-            </span>
+          <div
+            [ngStyle]="{
+              visibility: loginForm.controls.password.errors?.required
+                ? 'visible'
+                : 'hidden'
+            }"
+            class="invalid-feedback"
+            role="alert"
+          >
+            كلمة المرور مطلوبة
           </div>
+        </div>
+
+        <div class="form-group form-check">
+          <input
+            type="checkbox"
+            checked
+            class="form-check-input"
+            id="remember-me"
+            formControlName="rememberme"
+            name="rememberme"
+          />
+          <label class="form-check-label" for="remember-me">
+            تذكرنى
+          </label>
+        </div>
+        <button
+          [disabled]="loading"
+          type="submit"
+          class="btn"
+          [ngClass]="{
+            'btn-danger': loginForm.invalid,
+            'btn-success': loginForm.valid
+          }"
+          [ngStyle]="{ marginRight: '15px' }"
+        >
+          تسجيل الدخول
+        </button>
+        <div *ngIf="loading" class="spinner-border text-primary" role="status">
+          <span class="sr-only">
+            جار التحميل...
+          </span>
+        </div>
       </form>
-      
-      <br>
-      <p>
-        ليس لديك حساب ، <a routerLink="/auth/register"> !إنشاء الآن </a>
-      </p>
 
-      <div class="alert alert-danger alert-dismissible fade show" [ngStyle]="{'marginTop': '20px'}" role="alert" *ngIf="errors?.length">
+      <br />
+      <p>ليس لديك حساب ، <a routerLink="auth/register"> !إنشاء الآن </a></p>
+
+      <br />
+      <p>رجوع إلى<a routerLink="/"> الصفحة الرئيسية </a></p>
+
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        [ngStyle]="{ marginTop: '20px' }"
+        role="alert"
+        *ngIf="errors?.length"
+      >
         <ul>
-          <li *ngFor="let error of errors"> {{ error }} </li>
+          <li *ngFor="let error of errors">{{ error }}</li>
         </ul>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     </div>
     <div class="col-lg-6">
-      <img src="/assets/images/login.svg" alt="login image" class="img-fluid mt-3">
+      <img
+        src="assets/images/login.svg"
+        alt="login image"
+        class="img-fluid mt-3"
+      />
     </div>
   </div>
 </div>

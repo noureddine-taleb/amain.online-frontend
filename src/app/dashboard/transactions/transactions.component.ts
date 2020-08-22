@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Treasury } from '../../models/treasury/treasury';
+import { Treasury } from '../../core/models/treasury/treasury';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { AlertService } from 'ngx-alerts';
 import { TreasuryService } from '../../services/treasury/treasury.service';
 import { ProjectService } from '../../services/project/project.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Project } from '../../models/project/project';
+import { Project } from '../../core/models/project/project';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
@@ -79,7 +79,7 @@ export class TransactionsComponent implements OnInit {
   .subscribe(
   _ => {
     this.alertService.success('تم إنشاء السجل بنجاح')
-    setTimeout(() => this.router.navigate(['/', 'reports']), 2000)
+    setTimeout(() => this.router.navigate(['dashboard', 'reports']), 2000)
   }, (err: HttpErrorResponse) => {
     this.hideLoader()
     this.alertService.danger('حدث خطأ')
@@ -107,7 +107,7 @@ export class TransactionsComponent implements OnInit {
       smartBackspace: true,
       attr: 'placeholder',
       bindInputFocusEvents: true,
-      cursorChar: '|',
+      // cursorChar: '|',
       loop: true,
     };
     new Typed('#desc', options);

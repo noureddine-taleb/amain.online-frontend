@@ -16,14 +16,14 @@
             id="name"
           />
           <div
-            *ngIf="registerForm.controls.name.errors?.required"
+            [ngStyle]="{ visibility: registerForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             مطلوب اسم
           </div>
           <div
-            *ngIf="registerForm.controls.name.errors?.pattern"
+            [ngStyle]="{ visibility: registerForm.controls.name.errors?.pattern ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -49,14 +49,14 @@
             </small
           >
           <div
-            *ngIf="registerForm.controls.phone.errors?.required"
+            [ngStyle]="{ visibility: registerForm.controls.phone.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             رقم الهاتف مطلوب
           </div>
           <div
-            *ngIf="registerForm.controls.phone.errors?.pattern"
+            [ngStyle]="{ visibility: registerForm.controls.phone.errors?.pattern ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -93,21 +93,21 @@
           </div>
           <!-- /progress -->
           <div
-            *ngIf="registerForm.controls.image.errors?.required"
+            [ngStyle]="{ visibility: registerForm.controls.image.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             الصورة مطلوبة
           </div>
           <div
-            *ngIf="registerForm.controls.image.errors?.mime"
+            [ngStyle]="{ visibility: registerForm.controls.image.errors?.mime ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             الملفات المقبولة هي صور فقط على سبيل المثال: image.jpg ، image.jpeg
           </div>
           <div
-            *ngIf="registerForm.controls.image.errors?.size"
+            [ngStyle]="{ visibility: registerForm.controls.image.errors?.size ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -118,7 +118,7 @@
           <label for="dob">Date</label>
           <input type="date" class="form-control" formControlName="dob" name="dob" id="dob"  />
           <div
-            *ngIf="registerForm.controls.dob.errors?.required"
+            [ngStyle]="{ visibility: registerForm.controls.dob.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -151,14 +151,14 @@
           </div>
 
           <div
-            *ngIf="registerForm.controls.password.errors?.required"
+            [ngStyle]="{ visibility: registerForm.controls.password.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             كلمة المرور مطلوبة
           </div>
           <div
-            *ngIf="registerForm.controls.password.errors?.minlength"
+            [ngStyle]="{ visibility: registerForm.controls.password.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -212,7 +212,7 @@
           />
           <label class="form-check-label" for="terms_and_conditions"
             >أوافق على
-            <a routerLink="/terms-and-conditions"> 
+            <a routerLink="terms-and-conditions"> 
               الأحكام والشروط</a> من
             هذا التطبيق
             </label
@@ -246,7 +246,7 @@
 
       <br>
       <p>
-          لديك حساب بالفعل ، <a routerLink="/auth/login"> تسجيل الدخول </a>
+          لديك حساب بالفعل ، <a routerLink="auth/login"> تسجيل الدخول </a>
       </p>
 
       <div
@@ -270,7 +270,7 @@
     </div>
     <div class="col-lg-6">
       <img
-        src="/assets/images/register.svg"
+        src="assets/images/register.svg"
         class="img-fluid mt-3"
         alt="register img"
       />

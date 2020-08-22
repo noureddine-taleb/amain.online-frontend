@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { UserService } from '../../services/user/user.service';
-import { isPlatformServer, isPlatformBrowser } from '@angular/common';
+import { UserService } from '../../../services/user/user.service';
+import { isPlatformBrowser } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Bill } from '../../models/bill/bill';
+import { Bill } from '../../core/models/bill/bill';
 import { SeoService } from '../../services/seo/seo.service';
 import { empty, Subscription } from 'rxjs';
 

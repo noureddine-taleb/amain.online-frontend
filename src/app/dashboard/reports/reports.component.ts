@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Report } from '../../models/report/report';
+import { Report } from '../../core/models/report/report';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ReportService } from '../../services/report/report.service';
 import { SeoService } from '../../services/seo/seo.service';

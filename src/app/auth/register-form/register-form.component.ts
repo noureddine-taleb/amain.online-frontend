@@ -102,7 +102,7 @@ export class RegisterFormComponent implements OnInit
     const registerSub = combineLatest([imageObs, userObs])
     .subscribe(_ => {
       this.alertService.success('تم إنشاء المستخدم بنجاح')
-      setTimeout(() => this.router.navigate(['/', 'auth', 'login']), 2000)
+      setTimeout(() => this.router.navigate(['auth']), 2000)
     },
     _ => {
       this.hideLoader();

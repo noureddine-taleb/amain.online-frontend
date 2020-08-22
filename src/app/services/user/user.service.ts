@@ -2,9 +2,9 @@ import { Injectable, Injector, Inject, PLATFORM_ID } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { User } from '../../models/user/user'
+import { User } from '../../core/models/user/user'
 import { Observable } from 'rxjs'
-import { CRUD } from '../../models/crud/crud'
+import { CRUD } from '../../core/models/crud/crud'
 import { isPlatformBrowser } from '@angular/common'
 import { AnalyticsService } from '../analytics/analytics.service'
 
@@ -40,7 +40,7 @@ export class UserService implements CRUD {
   }
 
   isAuth(): boolean{
-    return this.getAuthorizationToken() ? true : false
+    return !!this.getAuthorizationToken()
   }
 
   isAdmin(): boolean{
@@ -55,7 +55,7 @@ export class UserService implements CRUD {
     if (isPlatformBrowser(this.platform)){
       this.analyticsService.event('engagement', 'log_out', 'method')
       window.localStorage.removeItem('token')
-      this.injector.get(Router).navigate(['auth', 'login'])
+      this.injector.get(Router).navigate(['auth'])
     }
   }
 

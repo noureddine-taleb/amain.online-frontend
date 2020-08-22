@@ -1,9 +1,17 @@
-<div id="typed-strings1" style="display: none;">
-  <p>مشروع مائي</p>
-  <p>مشروع الطاقة الشمسية</p>
-  <p>الاشتراك</p>
-  <p>أنشطة اجتماعية (a7wach، كرة القدم ...)</p>
-</div>
+<template id="typed-strings1">
+  <p>
+    مشروع الماء الصالح للشرب 
+  </p>
+  <p>
+    مشروع الطاقة الشمسية
+  </p>
+  <p>
+    الانخراط
+  </p>
+  <p>  
+    ...أنشطة اجتماعية: احواش, كرة القدم  
+  </p>
+</template>
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
@@ -20,14 +28,14 @@
             id="name"
           />
           <div
-            *ngIf="projectForm.controls.name.errors?.required"
+            [ngStyle]="{ visibility: projectForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             اسم المشروع مطلوب
           </div>
           <div
-            *ngIf="projectForm.controls.name.errors?.minlength"
+            [ngStyle]="{ visibility: projectForm.controls.name.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -45,19 +53,19 @@
             formControlName="desc"
             name="desc"
             id="desc"
-            placeholder="مشروع المياه هو bla bla bla ..."
+            placeholder="... مشروع المياه هو"
             rows="3"
           >
           </textarea>
           <div
-            *ngIf="projectForm.controls.desc.errors?.required"
+            [ngStyle]="{ visibility: projectForm.controls.desc.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             وصف المشروع مطلوب
           </div>
           <div
-            *ngIf="projectForm.controls.desc.errors?.minlength"
+            [ngStyle]="{ visibility: projectForm.controls.desc.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -89,14 +97,14 @@
           </div>
           </div>
           <div
-            *ngIf="projectForm.controls.fees.errors?.required"
+            [ngStyle]="{ visibility: projectForm.controls.fees.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
             رسوم المشروع مطلوبة
           </div>
           <div
-            *ngIf="projectForm.controls.fees.errors?.min"
+            [ngStyle]="{ visibility: projectForm.controls.fees.errors?.min ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -117,14 +125,14 @@
             placeholder="ton"
           />
           <div
-            *ngIf="projectForm.controls.unit.errors?.required"
+            [ngStyle]="{ visibility: projectForm.controls.unit.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
           الوحدة مطلوبة
           </div>
           <div
-            *ngIf="projectForm.controls.unit.hasError('maxlength')"
+            [ngStyle]="{ visibility: projectForm.controls.unit.errors?.maxlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
           >
@@ -171,7 +179,7 @@
     </div>
     <div class="col-lg-6 container">
       <img
-        src="/assets/images/project.svg"
+        src="assets/images/project.svg"
         alt="404"
         class="img-fluid"
         [ngStyle]="{ maxWidth: '100%' }"

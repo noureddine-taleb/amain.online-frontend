@@ -26,7 +26,7 @@
             let user of users | paginate: { itemsPerPage: 3, currentPage: p }
           "
         >
-          <td (click)="billsList(user)" [ngStyle]="{ cursor: 'pointer' }">
+        <td >
             <img
               class="img-fluid usr-img"
               [src]="getSafeUrl(user)"
@@ -34,23 +34,22 @@
             />
           </td>
           <th
-            (click)="billsList(user)"
             [ngStyle]="{ cursor: 'pointer' }"
             class="align-middle"
             scope="row"
           >
+          <a routerLink="/dashboard/users/{{user._id}}/bills">
             {{ user.name }}
+          </a>
           </th>
           <td
-            (click)="billsList(user)"
-            [ngStyle]="{ cursor: 'pointer' }"
+            
             class="align-middle"
           >
             {{ user.phone }}
           </td>
           <td
-            (click)="billsList(user)"
-            [ngStyle]="{ cursor: 'pointer' }"
+            
             class="align-middle"
           >
             {{ user.dob | date: "dd/MM/yyy" }}
@@ -58,7 +57,6 @@
           <td class="functions">
             <i
               class="fa fa-plus-circle mr-3"
-              [ngStyle]="{ cursor: 'pointer' }"
               (click)="addBill(user)"
               data-toggle="modal"
               data-target="#bill-form"
@@ -74,7 +72,7 @@
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <app-empty-card label="مستخدمين" ></app-empty-card>
+  <app-empty-card label="مستخدمين"></app-empty-card>
 </ng-template>
 
 <!-- Modal -->
@@ -92,7 +90,6 @@
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
           نموذج الفاتورة
-
         </h5>
         <button
           type="button"
@@ -105,7 +102,11 @@
       </div>
       <div class="row">
         <div class="col-lg-6">
-          <form [formGroup]="billForm" (ngSubmit)="submit(billForm.value)" autocomplete="off">
+          <form
+            [formGroup]="billForm"
+            (ngSubmit)="submit(billForm.value)"
+            autocomplete="off"
+          >
             <div class="modal-body">
               <div class="form-group">
                 <label for="user">
@@ -128,18 +129,22 @@
                   id="projectID"
                   name="projectID"
                   formControlName="projectID"
-                  (change)="unit = $event?.target?.options[$event?.target?.selectedIndex]?.title "
-
+                  (change)="
+                    unit =
+                      ($event?.target?.options)[$event?.target?.selectedIndex]
+                        ?.title
+                  "
                 >
                   <option
                     *ngFor="let project of projects"
                     [title]="project.unit"
                     [value]="project._id"
-                    >{{ project.name }}</option
+                  >
+                    {{ project.name }}</option
                   >
                 </select>
                 <div
-                  *ngIf="billForm.controls.projectID.errors?.required"
+                  [ngStyle]="{ visibility: billForm.controls.projectID.errors?.required ? 'visible': 'hidden' }"
                   class="invalid-feedback"
                 >
                   المشروع مطلوب
@@ -148,11 +153,10 @@
               <div class="form-group">
                 <label for="quantity">
                   كمية
-
                 </label>
 
                 <div class="input-group mb-2">
-                    <input
+                  <input
                     type="number"
                     class="form-control"
                     id="quantity"
@@ -161,23 +165,25 @@
                     placeholder="2.5"
                   />
                   <div class="input-group-prepend">
-                    <div 
-                      style="border-radius: .25rem;"
-                      class="input-group-text" 
-                      role="status" 
-                      aria-label="status" 
-                    >{{ unit }}</div>
+                    <div
+                      style="border-radius: 0.25rem;"
+                      class="input-group-text"
+                      role="status"
+                      aria-label="status"
+                    >
+                      {{ unit }}
+                    </div>
                   </div>
-                  </div>
+                </div>
 
                 <div
-                  *ngIf="billForm.controls.quantity.errors?.required"
+                  [ngStyle]="{ visibility: billForm.controls.quantity.errors?.required ? 'visible': 'hidden' }"
                   class="invalid-feedback"
                 >
                   الكمية مطلوبة
                 </div>
                 <div
-                  *ngIf="billForm.controls.quantity.errors?.min"
+                  [ngStyle]="{ visibility: billForm.controls.quantity.errors?.min ? 'visible': 'hidden' }"
                   class="invalid-feedback"
                 >
                   يجب أن تكون الكمية أكبر من 0
@@ -192,7 +198,6 @@
               >
                 <span class="sr-only">
                   جار التحميل...
-
                 </span>
               </div>
               <button
@@ -220,7 +225,7 @@
           </form>
         </div>
         <div class="col-lg-6">
-          <img src="/assets/images/bill.svg" alt="404" class="img-fluid mt-5" />
+          <img src="assets/images/bill.svg" alt="404" class="img-fluid mt-5" />
         </div>
       </div>
     </div>

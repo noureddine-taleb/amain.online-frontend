@@ -11,9 +11,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from '../../../environments/environment';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { User } from '../../models/user/user';
-import { Project } from '../../models/project/project';
-import { Bill } from '../../models/bill/bill';
+import { User } from '../../core/models/user/user';
+import { Project } from '../../core/models/project/project';
+import { Bill } from '../../core/models/bill/bill';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
@@ -81,7 +81,7 @@ export class UserListComponent implements OnInit {
   }
 
   billsList(user: User){
-    this.router.navigate([ '/', 'users', user._id, 'bills']);
+    this.router.navigate(['dashboard', 'users', user._id, 'bills']);
   }
 
   addBill(user: User){

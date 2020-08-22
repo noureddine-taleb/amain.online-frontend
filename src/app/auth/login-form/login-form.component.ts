@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { Router } from '@angular/router';
 import { AlertService } from 'ngx-alerts';
-import { User } from '../../models/user/user';
+import { User } from '../../core/models/user/user';
 import { ValidationService } from '../../services/validation/validation.service';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
       _ =>
       {
       this.alertService.success('تسجيل دخول المستخدم بنجاح');
-      setTimeout(() => this.router.navigate(['/']), 2000)
+      setTimeout(() => this.router.navigate(['dashboard']), 2000)
     },
     err => {
       this.hideLoader();

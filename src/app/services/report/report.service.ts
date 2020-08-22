@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CRUD } from '../../models/crud/crud';
+import { CRUD } from '../../core/models/crud/crud';
 
 @Injectable({
   providedIn: 'root'
