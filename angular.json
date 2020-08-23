@@ -32,13 +32,33 @@
               "src/robots.txt"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "src/styles.css"
+              {
+                "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
+                "lazy": true,
+                "bundleName": "bootstrap.min.css"
+              },
+              {
+                "input": "node_modules/font-awesome/css/font-awesome.min.css",
+                "lazy": true,
+                "bundleName": "font-awesome.min.css"
+              },
+              {
+                "input": "src/styles.css",
+                "lazy": true,
+                "bundleName": "styles.min.css"
+              }
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              {
+                "input": "node_modules/jquery/dist/jquery.min.js",
+                "lazy": true,
+                "bundleName": "jquery.min.js"
+              },
+              {
+                "input": "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                "lazy": true,
+                "bundleName": "bootstrap.min.js"
+              }
             ]
           },
           "configurations": {

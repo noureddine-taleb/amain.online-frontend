@@ -46,7 +46,10 @@ registerLocaleData(localeFr);
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     HttpClientModule,
+    // ReactiveFormsModule,
+    // NgxSpinnerModule,
   ],
   providers: [
     UserService,

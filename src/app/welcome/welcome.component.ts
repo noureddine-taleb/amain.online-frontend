@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-welcome',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    @Inject(PLATFORM_ID) private platform: object 
+  ) { }
 
   ngOnInit(): void {
   }
 
   resetHeight(e: Event){
-    ( window.document.getElementsByTagName('img')[0] as HTMLImageElement).classList.remove('cover')
+    if(isPlatformBrowser(this.platform)){
+      ( window.document.getElementsByTagName('img')[0] as HTMLImageElement).classList.remove('cover')
+    }
   }
 }

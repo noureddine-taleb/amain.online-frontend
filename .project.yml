@@ -23,6 +23,16 @@ TODO :
     - Onpush change detection in some components 
     - verify registered users
 
+    - 11ty
+    - Nodejs serverless
+    - Covid19.ca.gov lighthouse 
+    - Static site generator for angular 
+    - Pagespeed insights
+    - Angular scully
+    - Tensorflow js
+    - Worker
+    - Webassembly
+
     - IMP:
         - better i18n support
         - badge of n of new bill on user profile icon
@@ -31,8 +41,10 @@ TODO :
 IN PROGRESS :
     - Angular quick links for prefetching 
     - Google search console 
+    - Infinite scroll instead of pagination 
 
 DONE :
+    - Defer css/js load 
     - Leverage angular build api
     - Use visibility with errs to mitigate CLS
     - Use template el 
