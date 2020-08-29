@@ -12,13 +12,10 @@ import { environment } from '../environments/environment';
 import { GlobalErrorHandler } from './core/errorHandler/global-error-handler';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { AuthModule } from './auth/auth.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AnalyticsService } from './services/analytics/analytics.service';
 import { SeoService } from './services/seo/seo.service';
 import { AlertModule } from 'ngx-alerts';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { UserService } from './services/user/user.service';
 import { ProjectService } from './services/project/project.service';
 import { BillService } from './services/bill/bill.service';
@@ -29,7 +26,7 @@ import { TreasuryService } from './services/treasury/treasury.service';
 import { ReportService } from './services/report/report.service';
 import { ValidationService } from './services/validation/validation.service';
 import { IsNotAuthGuard } from './core/guards/is-not-auth.guard';
-import { ReactiveFormsModule } from '@angular/forms';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 registerLocaleData(localeFr);
 
@@ -48,8 +45,7 @@ registerLocaleData(localeFr);
     
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     HttpClientModule,
-    // ReactiveFormsModule,
-    // NgxSpinnerModule,
+    QuicklinkModule
   ],
   providers: [
     UserService,
@@ -64,9 +60,7 @@ registerLocaleData(localeFr);
     AnalyticsService,
     SeoService,
     IsNotAuthGuard,
-    [
-      { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
-    ],
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     { provide: LOCALE_ID, useValue: 'fr-FR'},
   ],

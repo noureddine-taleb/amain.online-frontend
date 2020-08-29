@@ -5,7 +5,7 @@ import { Page500Component } from './page500/page500.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: QuicklinkStrategy })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

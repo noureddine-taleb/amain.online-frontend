@@ -27,8 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     AuthRoutingModule,
 
-    ReactiveFormsModule,
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
+    ReactiveFormsModule,
     NgxSpinnerModule,
   ],
   exports:[

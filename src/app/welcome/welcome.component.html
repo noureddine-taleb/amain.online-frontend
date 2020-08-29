@@ -1,9 +1,16 @@
 <div class="_container">
-    <img src="/assets/photos/11021330_1548909295358742_6707359898118341222_o.jpg" class="img-fluid cover" alt="cover" (load)="resetHeight($event)">
-    <div class="title">
-مرحبا بكم في برنامج أماين الرسمي لإدارة المال العام    
-    </div>
-    <div class="body">
-       <a routerLink="/auth"> <button class="btn btn-success" >تسجيل الدخول</button></a>
-    </div>
+    <img src="/assets/photos/11021330_1548909295358742_6707359898118341222_o.jpg" class="img-fluid" alt="cover" (load)="resetHeight($event)">
+
 </div>
+
+<template>
+    <!-- test -->
+    <div class="overlay">
+        <div class="title">
+            مرحبا بكم في برنامج أماين الرسمي لإدارة المال العام    
+        </div>
+        <div class="body">
+                   <a routerLink="/auth"> <button class="btn btn-success" >تسجيل الدخول</button></a>
+        </div>
+    </div>
+</template>

@@ -17,7 +17,9 @@ export class WelcomeComponent implements OnInit {
 
   resetHeight(e: Event){
     if(isPlatformBrowser(this.platform)){
-      ( window.document.getElementsByTagName('img')[0] as HTMLImageElement).classList.remove('cover')
+      const container = window.document.querySelector("._container")
+      const overlay = window.document.querySelector("template")
+      container.appendChild(overlay.firstElementChild)
     }
   }
 }

@@ -7,6 +7,8 @@ import 'zone.js/dist/zone-node';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { join } from 'path';
+// import expressStaticGzip from 'express-static-gzip';
+const expressStaticGzip = require('express-static-gzip');
 
 import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
@@ -26,12 +28,17 @@ export function app() {
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
+  // Use plugin to serve Brotli files if browser supports them or fallback to Gzip
+  server.use('/', expressStaticGzip(distFolder, {
+    enableBrotli: true
+  }));
+
   // Example Express Rest API endpoints
   // app.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get('*.*', express.static(distFolder, {
-    maxAge: '1y'
-  }));
+  // server.get('*.*', express.static(distFolder, {
+  //   maxAge: '1y'
+  // }));
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {

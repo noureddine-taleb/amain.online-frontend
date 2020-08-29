@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.img-fluid, .img-thumbnail {
+.img-fluid {
     max-width: 100%;
     height: auto;
 }
@@ -34,10 +34,6 @@
     border-color: #28a745;
 }
 
-.cover {
-    height: 1280px;
-}
-
 .title {
     position: absolute;
     margin: 0;
@@ -50,7 +46,6 @@
     color: #fff;
     font-size: 3rem;
 }
-
 
 .body {
     position: absolute;

@@ -26,12 +26,14 @@ TODO :
     - 11ty
     - Nodejs serverless
     - Covid19.ca.gov lighthouse 
-    - Static site generator for angular 
+    - Static site generator for angular (Angular scully)
     - Pagespeed insights
-    - Angular scully
     - Tensorflow js
     - Worker
     - Webassembly
+    - Google search console 
+    - Infinite scroll instead of pagination 
+    - preserve view state with urls (sharing)
 
     - IMP:
         - better i18n support
@@ -39,11 +41,15 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-    - Angular quick links for prefetching 
-    - Google search console 
-    - Infinite scroll instead of pagination 
+    - progressive enhancement
 
 DONE :
+    - compress assets on server to improve pr
+    - implement performance budgeting
+    - reduce CLS on first page load
+    - performance (lighthouse) for front page
+    - Angular quick links for prefetching 
+    - extractCss option
     - Defer css/js load 
     - Leverage angular build api
     - Use visibility with errs to mitigate CLS

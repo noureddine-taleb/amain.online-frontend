@@ -19,6 +19,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "extractCss": true,
             "outputPath": "dist/angular/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -35,29 +36,29 @@
               {
                 "input": "node_modules/bootstrap/dist/css/bootstrap.min.css",
                 "lazy": true,
-                "bundleName": "bootstrap.min.css"
+                "bundleName": "bootstrap.min"
               },
               {
                 "input": "node_modules/font-awesome/css/font-awesome.min.css",
                 "lazy": true,
-                "bundleName": "font-awesome.min.css"
+                "bundleName": "font-awesome.min"
               },
               {
                 "input": "src/styles.css",
                 "lazy": true,
-                "bundleName": "styles.min.css"
+                "bundleName": "styles.min"
               }
             ],
             "scripts": [
               {
                 "input": "node_modules/jquery/dist/jquery.min.js",
                 "lazy": true,
-                "bundleName": "jquery.min.js"
+                "bundleName": "jquery.min"
               },
               {
                 "input": "node_modules/bootstrap/dist/js/bootstrap.min.js",
                 "lazy": true,
-                "bundleName": "bootstrap.min.js"
+                "bundleName": "bootstrapjs.min"
               }
             ]
           },

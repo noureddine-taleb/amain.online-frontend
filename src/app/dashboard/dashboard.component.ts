@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '../services/user/user.service';
 import { Subscription } from 'rxjs';
-import { isPlatformBrowser } from '@angular/common';
 import { LazyLoadResourcesService } from '../services/lazy-load-resources/lazy-load-resources.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(environment)
     this._lazyLoadResourcesService.loadDashboardModuleResources()
     const usrSub = this._userService.getUser().subscribe()
     this.subs.push(usrSub)
