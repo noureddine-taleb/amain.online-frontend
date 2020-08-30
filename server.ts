@@ -29,16 +29,16 @@ export function app() {
   server.set('views', distFolder);
 
   // Use plugin to serve Brotli files if browser supports them or fallback to Gzip
-  server.use('/', expressStaticGzip(distFolder, {
-    enableBrotli: true
-  }));
+  // server.use('/', expressStaticGzip(distFolder, {
+  //   enableBrotli: true
+  // }));
 
   // Example Express Rest API endpoints
   // app.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  // server.get('*.*', express.static(distFolder, {
-  //   maxAge: '1y'
-  // }));
+  server.get('*.*', express.static(distFolder, {
+    maxAge: '1y'
+  }));
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
