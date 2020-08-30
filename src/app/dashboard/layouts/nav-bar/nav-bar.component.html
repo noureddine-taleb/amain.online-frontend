@@ -6,39 +6,39 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a i18n class="nav-link" routerLink="./">
-            الصفحة الرئيسية
+          <a class="nav-link" routerLink="./" i18n>
+            Homepage
             <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item" >
-          <a  class="nav-link" routerLink="./projects" id="userNavbar" role="button" >
-            المشاريع
+          <a  class="nav-link" routerLink="./projects" id="userNavbar" role="button" i18n>
+            Projects
           </a>
         </li>
         <li *ngIf="userService.isAdmin()" class="nav-item" >
-          <a i18n class="nav-link" routerLink="./users" id="userNavbar" role="button" >
-            المستخدمون
+          <a class="nav-link" routerLink="./users" id="userNavbar" role="button"  i18n>
+            Users
           </a>
         </li>
         <li *ngIf="userService.isAdmin()" class="nav-item" >
-          <a i18n class="nav-link" routerLink="./projects/create" id="userNavbar" role="button" >
-            أدخل المشروع
+          <a class="nav-link" routerLink="./projects/create" id="userNavbar" role="button"  i18n>
+            Enter the project
           </a>
         </li>
         <li class="nav-item" >
-          <a i18n *ngIf="userService.isAdmin()" class="nav-link" routerLink="./transactions" id="userNavbar" role="button" >
-            المعاملات
+          <a *ngIf="userService.isAdmin()" class="nav-link" routerLink="./transactions" id="userNavbar" role="button"  i18n>
+            Transactions
           </a>
         </li>
         <li class="nav-item" >
-          <a i18n class="nav-link" routerLink="./reports" id="userNavbar" role="button" >
-            التقارير
+          <a class="nav-link" routerLink="./reports" id="userNavbar" role="button"  i18n>
+            Reports
           </a>
         </li>
       </ul>
-        <button i18n class="btn btn-danger my-2 my-sm-0"  (click)="userService.logout()">
-          تسجيل خروج
+        <button class="btn btn-danger my-2 my-sm-0"  (click)="userService.logout()" i18n>
+          Logoff
         </button>
     </div>
   </nav>

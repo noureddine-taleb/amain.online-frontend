@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { SeoService } from '../../services/seo/seo.service';
+import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-register-form',
@@ -30,9 +31,9 @@ export class RegisterFormComponent implements OnInit
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private validationService: ValidationService,
-    @Inject(PLATFORM_ID) private platform,
+    @Inject(PLATFORM_ID) private platform: object,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
   )
@@ -94,19 +95,18 @@ export class RegisterFormComponent implements OnInit
       else if (res.type === HttpEventType.Response){
 
         this.uploadStatus.status = false;
-        // this.alertService.success('file uploaded successfully');
       }
     })
     )
 
     const registerSub = combineLatest([imageObs, userObs])
     .subscribe(_ => {
-      this.alertService.success('تم إنشاء المستخدم بنجاح')
+      this.alertService.success("#register-success")
       setTimeout(() => this.router.navigate(['auth']), 2000)
     },
     _ => {
       this.hideLoader();
-      this.alertService.danger('حدث خطأ')
+      this.alertService.danger("#register-danger")
     })
     this.subs.push(registerSub)
   }

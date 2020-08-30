@@ -17,7 +17,6 @@ TODO :
     - Use critical Webpack plugging 
     - Instruments app with user timing api
     - Pappeteer for automation
-    - Ngrx
     - Ngmaterial
     - Async pipe 
     - Onpush change detection in some components 
@@ -36,12 +35,16 @@ TODO :
     - preserve view state with urls (sharing)
 
     - IMP:
-        - better i18n support
         - badge of n of new bill on user profile icon
+        - make compress algo more intellegente (access sub folders)
     - FIX:
 
 IN PROGRESS :
+    - better i18n support( translate site to en and add i18n attr > xi18n > translate blocks)
     - progressive enhancement
+    - Ngrx
+    - Unit tests
+    - travis ci
 
 DONE :
     - compress assets on server to improve pr

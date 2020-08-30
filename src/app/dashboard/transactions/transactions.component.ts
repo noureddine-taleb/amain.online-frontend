@@ -13,6 +13,7 @@ import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
+import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-transactions',
@@ -30,7 +31,7 @@ export class TransactionsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private treasuryService: TreasuryService,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private projectService: ProjectService,
     private spinnerService: NgxSpinnerService,
     private router: Router,
@@ -78,11 +79,11 @@ export class TransactionsComponent implements OnInit {
     const treasSub = this.treasuryService.create(new Treasury(data.name, data.desc, data.amount, data.projectID, this.userService.getUserID()))
   .subscribe(
   _ => {
-    this.alertService.success('تم إنشاء السجل بنجاح')
+    this.alertService.success("#transaction-success")
     setTimeout(() => this.router.navigate(['dashboard', 'reports']), 2000)
   }, (err: HttpErrorResponse) => {
     this.hideLoader()
-    this.alertService.danger('حدث خطأ')
+    this.alertService.danger("#transaction-danger")
     if (err.status == 422){
       this.errors = err.error.errors
     }

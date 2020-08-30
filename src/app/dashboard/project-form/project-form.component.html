@@ -1,24 +1,35 @@
 <template id="typed-strings1">
-  <p>
-    مشروع الماء الصالح للشرب 
+  <p i18n>
+    Drinking water project
   </p>
-  <p>
-    مشروع الطاقة الشمسية
+  <p i18n>
+    Solar project
   </p>
-  <p>
-    الانخراط
+  <p i18n>
+    Get involvedlved
   </p>
-  <p>  
-    ...أنشطة اجتماعية: احواش, كرة القدم  
+  <p i18n>  
+    ... Social activities: thrash, footballll
   </p>
 </template>
+
+
+<template id="project-success" i18n>
+  The project has been successfully created
+</template>
+
+<template id="project-danger" i18n>
+  an error occurred
+</template>
+
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
       <form [formGroup]="projectForm" (ngSubmit)="submit(projectForm.value)" autocomplete="on">
         <div class="form-group">
-          <label for="name">
-            اسم المشروع
+          <label for="name" i18n>
+            project namee
           </label>
           <input
             type="text"
@@ -31,20 +42,20 @@
             [ngStyle]="{ visibility: projectForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            اسم المشروع مطلوب
+           i18n>
+            Project name is requiredequired
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.name.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون اسم المشروع بطول 5 أحرف
+           i18n>
+            Project name must be 5 characters longong
           </div>
         </div>
         <div class="form-group">
-          <label for="desc">
-            وصف المشروع
+          <label for="desc" i18n>
+            Project Descriptioncription
 
           </label>
           <textarea
@@ -53,7 +64,8 @@
             formControlName="desc"
             name="desc"
             id="desc"
-            placeholder="... مشروع المياه هو"
+            i18n-placeholder
+            placeholder="the water project is ..."
             rows="3"
           >
           </textarea>
@@ -61,20 +73,20 @@
             [ngStyle]="{ visibility: projectForm.controls.desc.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            وصف المشروع مطلوب
+           i18n>
+            Project description is requiredon is required
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.desc.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون وصف المشروع بطول 20 حرفًا
+           i18n>
+            Project description must be 20 characters longters long
           </div>
         </div>
         <div class="form-group">
-          <label for="fees">
-            رسوم المشروع
+          <label for="fees" i18n>
+            Project fees
 
           </label>
           <div class="input-group mb-2">
@@ -93,27 +105,29 @@
               class="input-group-text" 
               role="status" 
               aria-label="status" 
-            >DH</div>
+            >
+            DH
+          </div>
           </div>
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.fees.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            رسوم المشروع مطلوبة
+           i18n>
+            Project fees are requiredquired
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.fees.errors?.min ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن تكون رسوم المشروع أكبر من 0
+           i18n>
+            The project fee must be greater than 0an 0
           </div>
         </div>
         <div class="form-group">
-          <label for="fees">
-            وحدة قياس
+          <label for="fees" i18n>
+            measuring unit unit
 
           </label>
           <input
@@ -128,15 +142,15 @@
             [ngStyle]="{ visibility: projectForm.controls.unit.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-          الوحدة مطلوبة
+           i18n>
+          Unit required
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.unit.errors?.maxlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-           يجب أن تحتوي الوحدة على أقل من 5 فحم
+           i18n>
+           The unit must contain less than 5 coalsals
           </div>
         </div>
         <button
@@ -148,12 +162,12 @@
             'btn-success': projectForm.valid
           }"
           [ngStyle]="{ marginRight: '15px' }"
-        >
-          حفظ المشروع
+         i18n>
+          Save the projectoject
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
 
           </span>
         </div>

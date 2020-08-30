@@ -9,6 +9,7 @@ import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { isPlatformBrowser } from '@angular/common';
 import { SeoService } from '../../services/seo/seo.service';
 import { empty, Subscription } from 'rxjs';
+import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-login-form',
@@ -27,7 +28,7 @@ export class LoginFormComponent implements OnInit {
     private validationService: ValidationService,
     private router: Router,
     @Inject(PLATFORM_ID) private platform,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
     ) {}
@@ -53,18 +54,18 @@ export class LoginFormComponent implements OnInit {
     this.analyticsService.event('engagement', 'login', 'method', this.loginForm.valid ? 1 : 0)
 
     if (this.loginForm.invalid) { return; }
-    this.showLoader();
+    this.showLoader()
     const loginSub = this.userService.login(data).subscribe(
       _ =>
       {
-      this.alertService.success('تسجيل دخول المستخدم بنجاح');
+      this.alertService.success("#login-success")
       setTimeout(() => this.router.navigate(['dashboard']), 2000)
     },
     err => {
       this.hideLoader();
-      this.alertService.danger('حدث خطأ');
+      this.alertService.danger('#login-danger');
       if (err.status == 422){
-        this.errors = err.error.errors;
+        this.errors = err.error.errors
       }
     })
     this.subs.push(loginSub)

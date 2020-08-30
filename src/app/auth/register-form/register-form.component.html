@@ -1,10 +1,17 @@
+<template id="register-success" i18n>
+  User created successfully
+</template>
+<template id="register-danger" i18n>
+  an error occurred
+</template>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
       <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm.value)" autocomplete="on">
         <div class="form-group">
-          <label for="name">
-            الاسم الكامل
+          <label for="name" i18n>
+            Full name
           </label>
           <input
             autofocus
@@ -19,20 +26,20 @@
             [ngStyle]="{ visibility: registerForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            مطلوب اسم
+           i18n>
+            Name is required
           </div>
           <div
             [ngStyle]="{ visibility: registerForm.controls.name.errors?.pattern ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يحتوي الاسم على أحرف فقط
+           i18n>
+            Name must contain letters only
           </div>
         </div>
         <div class="form-group">
-          <label for="phone">
-            رقم الهاتف
+          <label for="phone" i18n>
+            Telephone number
           </label>
           <input
             type="tel"
@@ -44,23 +51,23 @@
           />
           <small class="form-text text-muted"
           role="note"
-            >
-            لن نشارك هاتفك مع أي شخص آخر.
+             i18n>
+            We will never share your phone with anyone else.
             </small
           >
           <div
             [ngStyle]="{ visibility: registerForm.controls.phone.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            رقم الهاتف مطلوب
+           i18n>
+            Phone number is required
           </div>
           <div
             [ngStyle]="{ visibility: registerForm.controls.phone.errors?.pattern ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066
+           i18n>
+            The phone number must consist of 10 numbers such as: 0691016066
           </div>
         </div>
         <div class="custom-file form-group" [ngClass]="{ 'ng-invalid': registerForm.controls.image.invalid, 'ng-valid': registerForm.controls.image.valid }">
@@ -74,8 +81,8 @@
             id="image"
             (input)="upload($event)"
           />
-          <label class="custom-file-label" for="image">
-            الصورة الشخصية
+          <label class="custom-file-label" for="image" i18n>
+            personal picture
           </label>
           <!-- progress -->
           <div 
@@ -96,38 +103,40 @@
             [ngStyle]="{ visibility: registerForm.controls.image.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            الصورة مطلوبة
+           i18n>
+            Photo is required
           </div>
           <div
             [ngStyle]="{ visibility: registerForm.controls.image.errors?.mime ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            الملفات المقبولة هي صور فقط على سبيل المثال: image.jpg ، image.jpeg
+           i18n>
+            Accepted files are images only. Example: image.jpg, image.jpeg
           </div>
           <div
             [ngStyle]="{ visibility: registerForm.controls.image.errors?.size ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون حجم الملف أقل من 3 ميغا بايت
+           i18n>
+            File size must be less than 3MB
           </div>
         </div>
         <div class="form-group">
-          <label for="dob">Date</label>
+          <label for="dob" i18n>
+            date
+          </label>
           <input type="date" class="form-control" formControlName="dob" name="dob" id="dob"  />
           <div
             [ngStyle]="{ visibility: registerForm.controls.dob.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            تاريخ الميلاد مطلوب
+           i18n>
+            Date of birth is required
           </div>
         </div>
         <div class="form-group">
-          <label for="password">
-            كلمه السر
+          <label for="password" i18n>
+            password
           </label>
           
           <div class="input-group" id="show_hide_password">
@@ -154,20 +163,20 @@
             [ngStyle]="{ visibility: registerForm.controls.password.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            كلمة المرور مطلوبة
+           i18n>
+            Password is required
           </div>
           <div
             [ngStyle]="{ visibility: registerForm.controls.password.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون طول كلمة المرور أكثر من 5 أحرف
+           i18n>
+            Password length must be more than 5 characters
           </div>
         </div>
         <div class="form-group">
-          <label for="password_confirmation">
-            تأكيد كلمة المرور
+          <label for="password_confirmation" i18n>
+            confirm password
           </label>
           <input
             autocomplete="off"
@@ -181,8 +190,8 @@
             *ngIf="registerForm.controls.password_confirmation.errors?.required"
             class="invalid-feedback"
             role="alert"
-          >
-            مطلوب تأكيد كلمة المرور
+           i18n>
+            Password confirmation is required
           </div>
           <div
             *ngIf="
@@ -190,15 +199,15 @@
             "
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون طول تأكيد كلمة المرور أكثر من 5 أحرف
+           i18n>
+            Password confirmation must be more than 5 characters long
           </div>
           <div
             *ngIf="registerForm.controls.password_confirmation.errors?.match"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يتطابق تأكيد كلمة المرور مع كلمة المرور
+           i18n>
+            Password confirmation and password must match
           </div>
         </div>
         <div class="form-group form-check">
@@ -211,18 +220,24 @@
             checked
           />
           <label class="form-check-label" for="terms_and_conditions"
-            >أوافق على
-            <a routerLink="terms-and-conditions"> 
-              الأحكام والشروط</a> من
-            هذا التطبيق
+            >
+            <div i18n>
+                I agree to
+            </div>
+            <a routerLink="terms-and-conditions" i18n> 
+              terms and conditions
+            </a> 
+            <div i18n>
+                From this app
+            </div>
             </label
           >
           <div
             *ngIf="registerForm.controls.terms_and_conditions.errors?.required"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن توافق على شروطنا
+           i18n>
+            You must agree to our terms
           </div>
         </div>
         <button
@@ -234,19 +249,24 @@
             'btn-success': registerForm.valid
           }"
           [ngStyle]="{ marginRight: '15px' }"
-        >
-          إنشاء حساب
+         i18n>
+          Create an account
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
           </span>
         </div>
       </form>
 
       <br>
       <p>
-          لديك حساب بالفعل ، <a routerLink="/auth"> تسجيل الدخول </a>
+         <span i18n>
+            You already have an account,
+         </span> 
+          <a routerLink="/auth" i18n> 
+            sign in
+          </a>
       </p>
 
       <div

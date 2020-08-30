@@ -1,3 +1,11 @@
+<template id="login-success" i18n>
+  User logged in successfully
+</template>
+
+<template id="login-danger" i18n>
+  an error occurred
+</template>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
@@ -7,8 +15,8 @@
         autocomplete="on"
       >
         <div class="form-group">
-          <label for="phone">
-            رقم الهاتف
+          <label for="phone" i18n>
+            Telephone number
           </label>
           <input
             autofocus
@@ -27,21 +35,21 @@
             }"
             class="invalid-feedback"
             role="alert"
-          >
-            رقم الهاتف مطلوب
+           i18n>
+            Phone number is required
           </div>
           <div
             [ngStyle]="{ visibility: loginForm.controls.phone.errors?.pattern ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يظهر رقم الهاتف بالشكل 0612345678
+           i18n>
+            The phone number should appear as 0612345678
           </div>
         </div>
 
         <div class="form-group">
-          <label for="password">
-            كلمه السر
+          <label for="password" i18n>
+            password
           </label>
           <div class="input-group" id="show_hide_password">
             <input
@@ -74,8 +82,8 @@
             }"
             class="invalid-feedback"
             role="alert"
-          >
-            كلمة المرور مطلوبة
+           i18n>
+            Password is required
           </div>
         </div>
 
@@ -88,8 +96,8 @@
             formControlName="rememberme"
             name="rememberme"
           />
-          <label class="form-check-label" for="remember-me">
-            تذكرنى
+          <label class="form-check-label" for="remember-me" i18n>
+            Remember me
           </label>
         </div>
         <button
@@ -101,21 +109,36 @@
             'btn-success': loginForm.valid
           }"
           [ngStyle]="{ marginRight: '15px' }"
-        >
-          تسجيل الدخول
+         i18n>
+          sign in
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
           </span>
         </div>
       </form>
 
       <br />
-      <p>ليس لديك حساب ، <a routerLink="/auth/register"> !إنشاء الآن </a></p>
+      <p>
+        <span i18n>
+          You do not have an account,
+        </span> 
+        <a routerLink="/auth/register" i18n> 
+            Create now
+        </a>
+      </p>
+
 
       <br />
-      <p>رجوع إلى<a routerLink="/"> الصفحة الرئيسية </a></p>
+      <p>
+        <span i18n>
+          Back to
+        </span>
+        <a routerLink="/" i18n>
+           Homepage
+         </a>
+      </p>
 
       <div
         class="alert alert-danger alert-dismissible fade show"

@@ -1,22 +1,30 @@
+<template id="invoice-success" i18n>
+  The invoice was created successfully
+</template>
+
+<template id="invoice-danger" i18n>
+  an error occurred
+</template>
+
 <ng-container *ngIf="users.length; else elseTemplate">
   <div class="table-responsive">
     <table class="table table-striped table-hover">
       <thead>
         <tr class="table-success">
-          <th scope="col">
-            صورة
+          <th scope="col" i18n>
+            picture
           </th>
-          <th scope="col">
-            اسم
+          <th scope="col" i18n>
+            Noun
           </th>
-          <th scope="col">
-            هاتف
+          <th scope="col" i18n>
+            Phone
           </th>
-          <th scope="col">
-            تاريخ الولادة
+          <th scope="col" i18n>
+            date of Birth
           </th>
-          <th scope="col">
-            المهام
+          <th scope="col" i18n>
+            mission
           </th>
         </tr>
       </thead>
@@ -72,7 +80,7 @@
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <app-empty-card label="مستخدمين"></app-empty-card>
+  <app-empty-card i18n-label label="Users"></app-empty-card>
 </ng-template>
 
 <!-- Modal -->
@@ -88,8 +96,8 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          نموذج الفاتورة
+        <h5 class="modal-title" id="exampleModalLabel" i18n>
+          Invoice form
         </h5>
         <button
           type="button"
@@ -109,8 +117,8 @@
           >
             <div class="modal-body">
               <div class="form-group">
-                <label for="user">
-                  اختر المستخدم
+                <label for="user" i18n>
+                  Choose the user
                 </label>
                 <input
                   class="form-control"
@@ -121,8 +129,8 @@
                 />
               </div>
               <div class="form-group">
-                <label for="projectID">
-                  حدد المشروع
+                <label for="projectID" i18n>
+                  Select the project
                 </label>
                 <select
                   class="form-control"
@@ -146,13 +154,13 @@
                 <div
                   [ngStyle]="{ visibility: billForm.controls.projectID.errors?.required ? 'visible': 'hidden' }"
                   class="invalid-feedback"
-                >
-                  المشروع مطلوب
+                 i18n>
+                  Project is required
                 </div>
               </div>
               <div class="form-group">
-                <label for="quantity">
-                  كمية
+                <label for="quantity" i18n>
+                  Quantity
                 </label>
 
                 <div class="input-group mb-2">
@@ -179,14 +187,14 @@
                 <div
                   [ngStyle]="{ visibility: billForm.controls.quantity.errors?.required ? 'visible': 'hidden' }"
                   class="invalid-feedback"
-                >
-                  الكمية مطلوبة
+                 i18n>
+                  Quantity is required
                 </div>
                 <div
                   [ngStyle]="{ visibility: billForm.controls.quantity.errors?.min ? 'visible': 'hidden' }"
                   class="invalid-feedback"
-                >
-                  يجب أن تكون الكمية أكبر من 0
+                 i18n>
+                  Quantity must be greater than 0
                 </div>
               </div>
             </div>
@@ -196,8 +204,8 @@
                 class="spinner-border text-primary"
                 role="status"
               >
-                <span class="sr-only">
-                  جار التحميل...
+                <span class="sr-only" i18n>
+                  loading...
                 </span>
               </div>
               <button
@@ -209,8 +217,8 @@
                   'btn-success': billForm.valid
                 }"
                 [ngStyle]="{ marginRight: '15px' }"
-              >
-                حفظ الفاتورة
+               i18n>
+                Save the bill
               </button>
               <button
                 #closeModal
@@ -218,8 +226,8 @@
                 type="button"
                 class="btn btn-secondary"
                 data-dismiss="modal"
-              >
-                إلغاء
+               i18n>
+                Cancellation
               </button>
             </div>
           </form>

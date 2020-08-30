@@ -1,28 +1,39 @@
+<template id="payment-success" i18n>
+  Payment added successfully
+</template>
+
+<template id="download-danger" i18n>
+  Download failed
+</template>
+
+<template id="payment-danger" i18n>
+  Fail to add payment
+</template>
 <div class="table-responsive">
   <table class="table table-striped table-active">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">
-          اسم
+        <th scope="col" i18n>
+          Nounn
         </th>
-        <th scope="col">
-          مشروع
+        <th scope="col" i18n>
+          Projectct
         </th>
-        <th scope="col">
-          تاريخ
+        <th scope="col" i18n>
+          Historyry
         </th>
-        <th scope="col">
-          كمية
+        <th scope="col" i18n>
+          Quantitytity
         </th>
-        <th scope="col">
-          السعر
+        <th scope="col" i18n>
+          price
         </th>
-        <th scope="col">
-          الحالة
+        <th scope="col" i18n>
+          Status
         </th>
-        <th scope="col">
-          المهام
+        <th scope="col" i18n>
+          missionn
         </th>
       </tr>
     </thead>
@@ -88,8 +99,8 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          تحميل PDF
+        <h5 class="modal-title" id="exampleModalLabel" i18n>
+          Download PDFPDF
         </h5>
         <button
           type="button"
@@ -111,13 +122,13 @@
       </div>
       <div class="modal-footer">
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
           </span>
         </div>
         <a [href]="url" download="facture.pdf"
-          ><button [disabled]="loading" type="button" class="btn btn-success">
-            تحميل
+          ><button [disabled]="loading" type="button" class="btn btn-success" i18n>
+            Downloadoad
           </button></a
         >
         <button
@@ -126,8 +137,8 @@
           class="btn btn-secondary"
           data-dismiss="modal"
           (click)="modalClosed()"
-        >
-          إلغاء
+         i18n>
+          Cancellationllation
         </button>
       </div>
     </div>
@@ -146,8 +157,8 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          تأكيد الدفعة
+        <h5 class="modal-title" id="exampleModalLabel" i18n>
+          Confirm the paymentpayment
         </h5>
         <button
           type="button"
@@ -160,15 +171,15 @@
       </div>
       <div class="modal-body">
         <div>
-          <p>
-            أنت تؤكد حقًا الدفع لا يمكنك التراجع عن هذا ؟؟؟
+          <p i18n>
+            You really confirm the payment You can't undo this ???his ???
           </p>
         </div>
       </div>
       <div class="modal-footer">
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
           </span>
         </div>
         <button
@@ -177,16 +188,16 @@
           class="btn btn-primary"
           (click)="paymentConfirmation()"
           data-dismiss="modal"
-        >
-          تأكيد الدفع
+         i18n>
+          Confirm the payment payment
         </button>
         <button
           id="close-modal1"
           type="button"
           class="btn btn-secondary"
           data-dismiss="modal"
-        >
-          إلغاء
+         i18n>
+          Cancellationllation
         </button>
       </div>
     </div>

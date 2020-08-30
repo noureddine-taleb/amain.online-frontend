@@ -8,6 +8,7 @@ import { AnalyticsService } from '../../../services/analytics/analytics.service'
 import { isPlatformBrowser } from '@angular/common';
 import { Payment } from '../../../core/models/payment/payment';
 import { UserService } from '../../../services/user/user.service';
+import { SeoAlertService } from '../../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-bill-table',
@@ -28,7 +29,7 @@ export class BillTableComponent implements OnInit {
 
   constructor(
     private billService: BillService,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private sanitizer: DomSanitizer,
     private paymentService: PaymentService,
     private analyticsService: AnalyticsService,
@@ -50,7 +51,7 @@ export class BillTableComponent implements OnInit {
       this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.__url);
     }, () => {
       this.hideLoader();
-      this.alertService.danger('فشل التنزيل');
+      this.alertService.danger("#download-danger");
     });
   }
 
@@ -68,11 +69,11 @@ export class BillTableComponent implements OnInit {
         if (isPlatformBrowser(this.platform)) {
           window.document.getElementById('close-modal1').click();
         }
-        this.alertService.success('تمت إضافة الدفع بنجاح');
+        this.alertService.success("#payment-success");
         this.newPaymentEvent.emit()
       }, () => {
         this.hideLoader();
-        this.alertService.danger('تفشل في إضافة الدفع');
+        this.alertService.danger("#payment-danger");
       });
     }
   }

@@ -1,17 +1,26 @@
 <template id="typed-strings2">
-  <p>
-    شراء المعدات
+  <p i18n>
+    Purchase of equipmentequipment
   </p>
-  <p>
-    بناء الطرق
+  <p i18n>
+    Road constructionruction
   </p>
-  <p>
-    صيانة المسجد
+  <p i18n>
+    Mosque maintenanceenance
   </p>
-  <p>
-    الاعمال الخيرية
+  <p i18n>
+    Charity
   </p>
 </template>
+
+<template id="transaction-success" i18n>
+  Record created successfully
+</template>
+
+<template id="transaction-danger" i18n>
+  an error occurred
+</template>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
@@ -21,8 +30,8 @@
         autocomplete="on"
       >
         <div class="form-group">
-          <label for="name">
-            اسم
+          <label for="name" i18n>
+            Nounn
           </label>
           <select
             formControlName="name"
@@ -36,8 +45,8 @@
               })
             "
           >
-            <option id="" value="<other>">
-              &lt;آخر&gt;
+            <option id="" value="<other>" i18n>
+              &lt;else&gt;
             </option>
             <option *ngFor="let p of projects" [value]="p.name" [id]="p._id"
               >{{ p.name }}
@@ -47,15 +56,15 @@
             [ngStyle]="{ visibility: treasuryForm.controls.name.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            مطلوب اسم
+           i18n>
+            Name is requiredequired
           </div>
           <div
             [ngStyle]="{ visibility: treasuryForm.controls.name.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون الاسم بطول 5 أحرف
+           i18n>
+            The name must be 5 characters long long
           </div>
         </div>
         <input
@@ -65,8 +74,8 @@
           formControlName="projectID"
         />
         <div class="form-group">
-          <label for="desc">
-            وصف
+          <label for="desc" i18n>
+            Describecribe
           </label>
           <textarea
             type="text"
@@ -81,19 +90,21 @@
             [ngStyle]="{ visibility: treasuryForm.controls.desc.errors?.required ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            الوصف مطلوب
+           i18n>
+            Description is required is required
           </div>
           <div
             [ngStyle]="{ visibility: treasuryForm.controls.desc.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
-          >
-            يجب أن يكون الوصف بطول 20 حرفًا
+           i18n>
+            Description must be 20 characters longrs long
           </div>
         </div>
         <div class="form-group">
-          <label class="sr-only" for="amount">الرسوم</label>
+          <label class="sr-only" for="amount" i18n>
+            Fees
+          </label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <div
@@ -142,12 +153,12 @@
             'btn-success': treasuryForm.valid
           }"
           [ngStyle]="{ marginRight: '15px' }"
-        >
-          حفظ الصفقة
+         i18n>
+          Save the dealeal
         </button>
         <div *ngIf="loading" class="spinner-border text-primary" role="status">
-          <span class="sr-only">
-            جار التحميل...
+          <span class="sr-only" i18n>
+            loading...
           </span>
         </div>
       </form>

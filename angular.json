@@ -63,6 +63,14 @@
             ]
           },
           "configurations": {
+            "ar": {
+              "aot": true,
+              "outputPath": "dist/under-construction-ar/",
+              "i18nFile": "src/locale/messages.ar.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "ar",
+              "i18nMissingTranslation": "error"
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -103,6 +111,9 @@
           "configurations": {
             "production": {
               "browserTarget": "angular:build:production"
+            },
+            "ar": {
+              "browserTarget": "angular:build:ar"
             }
           }
         },

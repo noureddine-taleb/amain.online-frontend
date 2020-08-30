@@ -17,6 +17,7 @@ import { Bill } from '../../core/models/bill/bill';
 import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
+import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-user-list',
@@ -43,7 +44,7 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private sanitizer: DomSanitizer,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private spinnerService: NgxSpinnerService,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
@@ -96,7 +97,7 @@ export class UserListComponent implements OnInit {
     this.showLoader();
     const billSub = this.billService.create(new Bill(data.userID, data.projectID, data.quantity, this.userService.getUserID()))
   .subscribe((data) => {
-    this.alertService.success('تم إنشاء الفاتورة بنجاح');
+    this.alertService.success("#invoice-success");
     if (isPlatformBrowser(this.platform)) {
       window.document.getElementById('close-modal').click();
     }
@@ -105,7 +106,7 @@ export class UserListComponent implements OnInit {
   },
     (err: HttpErrorResponse) => {
       this.hideLoader();
-      this.alertService.danger('حدث خطأ');
+      this.alertService.danger("#invoice-danger");
       if (err.status == 422){
         this.errors = err.error.errors;
       }

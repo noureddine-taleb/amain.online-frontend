@@ -1,15 +1,9 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BillService } from '../../services/bill/bill.service';
-import { PaymentService } from '../../services/payment/payment.service';
-import { AlertService } from 'ngx-alerts';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Bill } from '../../core/models/bill/bill';
-import { Payment } from '../../core/models/payment/payment';
-import { AnalyticsService } from '../../services/analytics/analytics.service';
-import { isPlatformBrowser } from '@angular/common';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
 

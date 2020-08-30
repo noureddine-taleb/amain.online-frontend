@@ -10,6 +10,7 @@ import Typed from 'typed.js';
 import { UserService } from '../../services/user/user.service';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
+import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
 
 @Component({
   selector: 'app-project-form',
@@ -27,7 +28,7 @@ export class ProjectFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private projectService: ProjectService,
     private userService: UserService,
-    private alertService: AlertService,
+    private alertService: SeoAlertService,
     private router: Router,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
@@ -63,11 +64,11 @@ export class ProjectFormComponent implements OnInit {
     const projSub = this.projectService.create(new Project(data.name, data.desc, data.fees, data.unit, this.userService.getUserID()))
     .subscribe(
     _ => {
-      this.alertService.success('تم إنشاء المشروع بنجاح');
+      this.alertService.success("#project-success");
       setTimeout(() => this.router.navigate(['dashboard', 'projects']), 2000);
     }, (err: HttpErrorResponse) => {
       this.hideLoader();
-      this.alertService.danger('حدث خطأ');
+      this.alertService.danger("#project-danger");
       if (err.status == 422){
         this.errors = err.error.errors;
       }
