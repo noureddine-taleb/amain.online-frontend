@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
-
     <body>
       <trans-unit id="243c3cc3173b7cacf5c60af657d85616c28a0550" datatype="html">
         <source>
-        Sorry, an error has occured, Requested page not found!
-        </source>
-        <target>
-        عذرا ، لقد حدث خطأ ، الصفحة المطلوبة غير موجودة!
-        </target>
+                    Sorry, an error has occured, Requested page not found!
+                </source>
+				<target>عذرا ، لقد حدث خطأ ، الصفحة المطلوبة غير موجودة!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page404/page404.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="29b9d9b7a155dc2e34aec38c9cf67e28d13b34ca" datatype="html">
-        <source>
-          Take Me Home 
-        </source>
-        <target>
-          خذنى إلى المنزلزل   
-        </target>
+        <source>Take Me Home </source>
+				<target>خذنى إلى المنزل</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page404/page404.component.html</context>
           <context context-type="linenumber">12</context>
@@ -33,35 +26,27 @@
       </trans-unit>
       <trans-unit id="b884d7f0ba292482f0bbcf240a9b67035b118e2a" datatype="html">
         <source>
-        Sorry, an error has occured!
-        </source>
-        <target>
-        عذرا ، لقد حدث خطأ!
-        </target>
+                    Sorry, an error has occured!
+                </source>
+				<target>عذرا ، لقد حدث خطأ!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page500/page500.component.html</context>
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bab4c44e7da2b7297fe07bc9ffad5fbac1f845a9" datatype="html">
+      <trans-unit id="d53b4dceb0c428d4ad3075f6cd0bcd2e72323e82" datatype="html">
         <source>
-        Welcome to the official AMINE public money management program
+            Welcome to the official AMAIN public money management system        
         </source>
-        <target>
-        مرحبًا بكم في برنامج أمين العام لإدارة الأموال العامة
-        </target>
+				<target>مرحبًا بكم في نظام اماين الرسمي لإدارة الأموال العامة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/welcome/welcome.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2177c841bf548bc76db5b969b789f3a03c93c83f" datatype="html">
-        <source>
-        sign in
-        </source>
-        <target>
-        تسجيل الدخوللدخول
-        </target>
+      <trans-unit id="411ca58f59b00246e15b161e07409df55b5eb6db" datatype="html">
+        <source>Discover</source>
+				<target>اكتشف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/welcome/welcome.component.html</context>
           <context context-type="linenumber">13</context>
@@ -69,11 +54,9 @@
       </trans-unit>
       <trans-unit id="ce76096c118019a645e226e603106298c6bf792e" datatype="html">
         <source>
-        User logged in successfully
-        </source>
-        <target>
-        قام المستخدم بتسجيل الدخول بنجاحبنجاح
-        </target>
+  User logged in successfully
+</source>
+				<target>قام المستخدم بتسجيل الدخول بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">1</context>
@@ -81,11 +64,9 @@
       </trans-unit>
       <trans-unit id="6e2691baef92420db5313a2f50f5992d0c567bb7" datatype="html">
         <source>
-        an error occurred
-        </source>
-        <target>
-        حدث خطأ
-        </target>
+  an error occurred
+</source>
+				<target>حدث خطأ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">5</context>
@@ -109,11 +90,9 @@
       </trans-unit>
       <trans-unit id="78c6db48a82962ad87887348871d2e2ce4bc9038" datatype="html">
         <source>
-        Telephone number
-        </source>
-        <target>
-        رقم هاتف
-        </target>
+            Telephone number
+          </source>
+				<target>رقم هاتف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">18</context>
@@ -125,11 +104,9 @@
       </trans-unit>
       <trans-unit id="dbdb5e8a3161bd5a892682ea57f4fd0476691cf4" datatype="html">
         <source>
-        Phone number is required
-        </source>
-        <target>
-        رقم الهاتف مطلوب
-        </target>
+            Phone number is required
+          </source>
+				<target>رقم الهاتف مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">38</context>
@@ -141,11 +118,9 @@
       </trans-unit>
       <trans-unit id="c401a896021c487e4ca60056eee499a0da4fc446" datatype="html">
         <source>
-        The phone number should appear as 0612345678
-        </source>
-        <target>
-        يجب أن يظهر رقم الهاتف كـ 0612345678
-        </target>
+            The phone number should appear as 0612345678
+          </source>
+				<target>يجب أن يظهر رقم الهاتف كـ 0612345678</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">45</context>
@@ -153,11 +128,9 @@
       </trans-unit>
       <trans-unit id="b673ca7ad49d04f674cfb9fd67d35384e148afc8" datatype="html">
         <source>
-        password
-        </source>
-        <target>
-        كلمه السرر
-        </target>
+            password
+          </source>
+				<target>كلمه السر</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">51</context>
@@ -169,11 +142,9 @@
       </trans-unit>
       <trans-unit id="6aa718b685a4471ec95fde0b37fedda6a26f8110" datatype="html">
         <source>
-        Password is required
-        </source>
-        <target>
-        كلمة المرور مطلوبة
-        </target>
+            Password is required
+          </source>
+				<target>كلمة المرور مطلوبة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">85</context>
@@ -185,11 +156,9 @@
       </trans-unit>
       <trans-unit id="0832b0768a1b2d0e1f069e44349248f64f39cef3" datatype="html">
         <source>
-        Remember me
-        </source>
-        <target>
-        تذكرنى
-        </target>
+            Remember me
+          </source>
+				<target>تذكرنى</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">99</context>
@@ -197,11 +166,9 @@
       </trans-unit>
       <trans-unit id="fbb6fa605b77aec2be7d18efd59a30a7bcf24794" datatype="html">
         <source>
-        sign in
+          sign in
         </source>
-        <target>
-        تسجيل الدخوللدخول
-        </target>
+				<target>تسجيل الدخول</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">112</context>
@@ -209,11 +176,9 @@
       </trans-unit>
       <trans-unit id="e925b6f5da1e657f1737208f40275723c1f5139b" datatype="html">
         <source>
-        loading...
-        </source>
-        <target>
-        جار التحميل...ل...
-        </target>
+            loading...
+          </source>
+				<target>جار التحميل...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">116</context>
@@ -237,35 +202,29 @@
       </trans-unit>
       <trans-unit id="3f3fa5e4eb76c8a7ff4a12250bdef7298658772a" datatype="html">
         <source>
-        You do not have an account,
+          You do not have an account,
         </source>
-        <target>
-        لا يوجد لديك حساب،
-        </target>
+				<target>لا يوجد لديك حساب،</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2d3eff69f6c3d2baf3e7604f0452c57fd862f94f" datatype="html">
-        <source>
-        Create now
+        <source> 
+            Create now
         </source>
-        <target>
-        انشئ الأن
-        </target>
+				<target>انشئ الأن</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5ab743e9b75bc83c09fe40401bc2fee782fde5b7" datatype="html">
+      <trans-unit id="2e120d365b2392b736188bdf2203ebac3edf3959" datatype="html">
         <source>
-        Back to ...
+          Back to
         </source>
-        <target>
-        ارجع الى ....
-        </target>
+				<target>ارجع ل</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">135</context>
@@ -273,11 +232,9 @@
       </trans-unit>
       <trans-unit id="3127515d80e349db732a52e48f711329e1ff3d98" datatype="html">
         <source>
-        Homepage
-        </source>
-        <target>
-        الصفحة الرئيسيةلرئيسية
-        </target>
+           Homepage
+         </source>
+				<target>الصفحة الرئيسية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login-form/login-form.component.html</context>
           <context context-type="linenumber">138</context>
@@ -285,11 +242,9 @@
       </trans-unit>
       <trans-unit id="418c1101256fd288109bdb9bf7f3ce2edc4b4ec4" datatype="html">
         <source>
-        User created successfully
-        </source>
-        <target>
-        تم إنشاء المستخدم بنجاح
-        </target>
+  User created successfully
+</source>
+				<target>تم إنشاء المستخدم بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">1</context>
@@ -297,11 +252,9 @@
       </trans-unit>
       <trans-unit id="875d3f65a04dc20de4b6ddee5b1f860582103a0f" datatype="html">
         <source>
-        Full name
-        </source>
-        <target>
-        الاسم الكاملامل
-        </target>
+            Full name
+          </source>
+				<target>الاسم الكامل</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">13</context>
@@ -309,23 +262,23 @@
       </trans-unit>
       <trans-unit id="a67c2981091ae8ad9c1210a85443c8eb1e605ccf" datatype="html">
         <source>
-        Name is required
-        </source>
-        <target>
-        مطلوب اسم
-        </target>
+            Name is required
+          </source>
+				<target>مطلوب اسم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">29</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="2901255ccb6ae48e66d8559bc2dda41a0f6fccf2" datatype="html">
         <source>
-        Name must contain letters only
-        </source>
-        <target>
-        يجب أن يحتوي الاسم على أحرف فقطط
-        </target>
+            Name must contain letters only
+          </source>
+				<target>يجب أن يحتوي الاسم على أحرف فقط</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">36</context>
@@ -333,11 +286,9 @@
       </trans-unit>
       <trans-unit id="4bad7a1dd0f84dd106ce416347db5ad7e1e71a1a" datatype="html">
         <source>
-        We will never share your phone with anyone else.
-        </source>
-        <target>
-        لن نشارك هاتفك مع أي شخص آخر.
-        </target>
+            We will never share your phone with anyone else.
+            </source>
+				<target>لن نشارك هاتفك مع أي شخص آخر.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">54</context>
@@ -345,11 +296,9 @@
       </trans-unit>
       <trans-unit id="772d324400173a7cc5363ad681788b3aded53e39" datatype="html">
         <source>
-        The phone number must consist of 10 numbers such as: 0691016066
-        </source>
-        <target>
-        يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066
-        </target>
+            The phone number must consist of 10 numbers such as: 0691016066
+          </source>
+				<target>يجب أن يتكون رقم الهاتف من 10 أرقام مثل: 0691016066</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">69</context>
@@ -357,11 +306,9 @@
       </trans-unit>
       <trans-unit id="78fff8f3d389935da64e14d79ab805ffec3bdda4" datatype="html">
         <source>
-        personal picture
-        </source>
-        <target>
-        الصورة الشخصية
-        </target>
+            personal picture
+          </source>
+				<target>الصورة الشخصية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">84</context>
@@ -369,11 +316,9 @@
       </trans-unit>
       <trans-unit id="8d2cbcba68e8fee7aeb5c9b3ad75a192f9c640b2" datatype="html">
         <source>
-        Photo is required
-        </source>
-        <target>
-        الصورة مطلوبة
-        </target>
+            Photo is required
+          </source>
+				<target>الصورة مطلوبة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">106</context>
@@ -381,11 +326,9 @@
       </trans-unit>
       <trans-unit id="7faf491b0d861c95ddd68173ae725dd86c4dd687" datatype="html">
         <source>
-        Accepted files are images only. Example: image.jpg, image.jpeg
-        </source>
-        <target>
-        الملفات المقبولة هي صور فقط. مثال: image.jpg ، image.jpeg
-        </target>
+            Accepted files are images only. Example: image.jpg, image.jpeg
+          </source>
+				<target>الملفات المقبولة هي صور فقط. مثال: image.jpg ، image.jpeg</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">113</context>
@@ -393,11 +336,9 @@
       </trans-unit>
       <trans-unit id="35c3feaa99717897c1cf76224ff58d3d1cffd468" datatype="html">
         <source>
-        File size must be less than 3MB
-        </source>
-        <target>
-        يجب أن يكون حجم الملف أقل من 3 ميغا بايتميغا بايت
-        </target>
+            File size must be less than 3MB
+          </source>
+				<target>يجب أن يكون حجم الملف أقل من 3 ميغا بايت</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">120</context>
@@ -405,11 +346,9 @@
       </trans-unit>
       <trans-unit id="2b67c9324df81050f194d0467d322a675d7c8689" datatype="html">
         <source>
-        date
-        </source>
-        <target>
-        تاريخخ
-        </target>
+            date
+          </source>
+				<target>تاريخ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">125</context>
@@ -417,11 +356,9 @@
       </trans-unit>
       <trans-unit id="3ef67012e0d9d37356e931a06e7c17c23b98ecfb" datatype="html">
         <source>
-        Date of birth is required
-        </source>
-        <target>
-        تاريخ الميلاد مطلوب
-        </target>
+            Date of birth is required
+          </source>
+				<target>تاريخ الميلاد مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">133</context>
@@ -429,11 +366,9 @@
       </trans-unit>
       <trans-unit id="a3033d0e141d5e36df1e8a5dbb1d327008557b95" datatype="html">
         <source>
-        Password length must be more than 5 characters
-        </source>
-        <target>
-        يجب أن يكون طول كلمة المرور أكثر من 5 أحرف
-        </target>
+            Password length must be more than 5 characters
+          </source>
+				<target>يجب أن يكون طول كلمة المرور أكثر من 5 أحرف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">173</context>
@@ -441,11 +376,9 @@
       </trans-unit>
       <trans-unit id="e4aead38fbf4629ec3d61d8da1c8cbeabc0b76fc" datatype="html">
         <source>
-        confirm password
-        </source>
-        <target>
-        تأكيد كلمة المرورر
-        </target>
+            confirm password
+          </source>
+				<target>تأكيد كلمة المرور</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">178</context>
@@ -453,11 +386,9 @@
       </trans-unit>
       <trans-unit id="bbd0bb7bfe042fe4c309bfaed97275e5530570fa" datatype="html">
         <source>
-        Password confirmation is required
-        </source>
-        <target>
-        مطلوب تأكيد كلمة المرور
-        </target>
+            Password confirmation is required
+          </source>
+				<target>مطلوب تأكيد كلمة المرور</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">193</context>
@@ -465,11 +396,9 @@
       </trans-unit>
       <trans-unit id="5e6c9251340a68bdadef5244cd8106607ea8b2d3" datatype="html">
         <source>
-        Password confirmation must be more than 5 characters long
-        </source>
-        <target>
-        يجب أن يكون تأكيد كلمة المرور أكثر من 5 أحرف
-        </target>
+            Password confirmation must be more than 5 characters long
+          </source>
+				<target>يجب أن يكون تأكيد كلمة المرور أكثر من 5 أحرف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">202</context>
@@ -477,11 +406,9 @@
       </trans-unit>
       <trans-unit id="37dee9ec06d8db61dc77c135ed078aebb3e73ad6" datatype="html">
         <source>
-        Password confirmation and password must match
-        </source>
-        <target>
-        يجب أن يتطابق تأكيد كلمة المرور وكلمة المرور
-        </target>
+            Password confirmation and password must match
+          </source>
+				<target>يجب أن يتطابق تأكيد كلمة المرور وكلمة المرور</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">209</context>
@@ -489,23 +416,19 @@
       </trans-unit>
       <trans-unit id="b05669ed597fb23e6107c21d031cb19abdefbbbe" datatype="html">
         <source>
-        I agree to
-        </source>
-        <target>
-        أوافق على
-        </target>
+                I agree to
+            </source>
+				<target>أوافق على</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="95acc11843cbf41b418cee000ff728b77fe2364c" datatype="html">
-        <source>
-        terms and conditions
-        </source>
-        <target>
-        الأحكام والشروط
-        </target>
+        <source> 
+              terms and conditions
+            </source>
+				<target>الأحكام والشروط</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">227</context>
@@ -513,11 +436,9 @@
       </trans-unit>
       <trans-unit id="fea5831c33888fcf215fe2f036552ab2bf3e23cf" datatype="html">
         <source>
-        From this app
-        </source>
-        <target>
-        من هذا التطبيقق
-        </target>
+                From this app
+            </source>
+				<target>من هذا التطبيق</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">230</context>
@@ -525,11 +446,9 @@
       </trans-unit>
       <trans-unit id="466553fc6842b3732d67bdeda0460e412254de80" datatype="html">
         <source>
-        You must agree to our terms
-        </source>
-        <target>
-        يجب أن توافق على شروطنا
-        </target>
+            You must agree to our terms
+          </source>
+				<target>يجب أن توافق على شروطنا</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">239</context>
@@ -537,11 +456,9 @@
       </trans-unit>
       <trans-unit id="751e060bf689b631a2e08f3ac5ef418c1679b3d2" datatype="html">
         <source>
-        Create an account
+          Create an account
         </source>
-        <target>
-        انشئ حساب
-        </target>
+				<target>انشئ حساب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">252</context>
@@ -549,35 +466,27 @@
       </trans-unit>
       <trans-unit id="ff635ffd9ba3cf8230d64334c40db15290c90b6f" datatype="html">
         <source>
-        You already have an account,
-        </source>
-        <target>
-        لديك حساب بالفعل،
-        </target>
+            You already have an account,
+         </source>
+				<target>لديك حساب بالفعل،</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="b8e7dfb49f8f312fb2ffc9feec925108e4c6ec4c" datatype="html">
-        <source>
-        sign in
-        </source>
-        <target>
-        تسجيل الدخوللدخول
-        </target>
+        <source> 
+            sign in
+          </source>
+				<target>تسجيل الدخول</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/register-form/register-form.component.html</context>
           <context context-type="linenumber">267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="268a63311a400adb655a25d6b6dbb2da287c1e6b" datatype="html">
-        <source>
-        Invoices
-        </source>
-        <target>
-        الفواتير
-        </target>
+        <source>Invoices</source>
+				<target>الفواتير</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/profile/profile.component.html</context>
           <context context-type="linenumber">5</context>
@@ -589,11 +498,9 @@
       </trans-unit>
       <trans-unit id="ada9a3cbbdbc0a04b8651157b0ec680c15212cc7" datatype="html">
         <source>
-        The project
+          The project
         </source>
-        <target>
-        المشروع
-        </target>
+				<target>المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">5</context>
@@ -601,23 +508,19 @@
       </trans-unit>
       <trans-unit id="e0dc8537f9225e11016916e8a63c4f0fd90573a2" datatype="html">
         <source>
-        Gains
+          Gains
         </source>
-        <target>
-        مكاسب
-        </target>
+				<target>مكاسب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="834d0391dc579ba8a9932045c04bed221a10c948" datatype="html">
+      <trans-unit id="c2e4827d0d2bbea0df78d714ffd922c4785f5d9d" datatype="html">
         <source>
-        loss
+          Loss
         </source>
-        <target>
-        خسارةة
-        </target>
+				<target>خسارة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">11</context>
@@ -625,11 +528,9 @@
       </trans-unit>
       <trans-unit id="6e7780b0d1097d6660cc98dc17dcfcf975f80f6e" datatype="html">
         <source>
-        Balance
+          Balance
         </source>
-        <target>
-        توازن
-        </target>
+				<target>توازن</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">14</context>
@@ -637,61 +538,51 @@
       </trans-unit>
       <trans-unit id="7f4f60bc6cb5ee89a952c6e5de27cf858ba54183" datatype="html">
         <source>
-        Quantity
+          Quantity
         </source>
-        <target>
-        كمية
-        </target>
+				<target>كمية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="4afead31b109483fb72aabe746662be3d76087c6" datatype="html">
+      <trans-unit id="e931a84903ad39d48a612dbb3cd6665b76ddb25e" datatype="html">
         <source>
-        stuck
+          Stuck
         </source>
-        <target>
-        عالق
-        </target>
+				<target>عالق</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a30807bc2d53489292cc943e158e21f00751ad70" datatype="html">
-        <source>
-        Total:
-        <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;" />
-        <target>
-        مجموع:
-        <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;" />
-        <x id="INTERPOLATION" equiv-text="{{ total | currency: &apos;DH&apos; }}" />
-        </target>
+      <trans-unit id="e657507a4e9ff27ce501080e9e0b93cf6811a185" datatype="html">
+        <source>Total:</source>
+				<target>مجموع:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/reports/reports.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="023f03ec132bb07af33c4a7b72201eb6c447548d" datatype="html">
+      <trans-unit id="ee99d9c167be073929024553c1471283f60fbac7" datatype="html">
         <source>
-        Purchase of equipmentequipment
-        </source>
-        <target>
-        شراء المعدات
-        </target>
+    Purchase of equipement
+  </source>
+				<target>شراء معدات</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8fe3c4e3bb8ba99d7cc364217863743bbd2b1a23" datatype="html">
+      <trans-unit id="2dd80049a2818d227462b503bb4cc89cc9e695c5" datatype="html">
         <source>
-        Road constructionruction
-        </source>
-        <target>
-        شق الطرق
-        </target>
+    Road construction
+  </source>
+				<target>بناء الطرق</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">5</context>
@@ -699,11 +590,9 @@
       </trans-unit>
       <trans-unit id="1120c990078e71ffc122a0c4dacbe1f22ee794b7" datatype="html">
         <source>
-        Mosque maintenanceenance
-        </source>
-        <target>
-        صيانة المساجد
-        </target>
+    Mosque maintenanceenance
+  </source>
+				<target>صيانة المساجد</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">8</context>
@@ -711,11 +600,9 @@
       </trans-unit>
       <trans-unit id="abae161c7dae5e324e8cd05509fa5f1656d59ee1" datatype="html">
         <source>
-        Charity
-        </source>
-        <target>
-        الاعمال الخيرية الخيرية
-        </target>
+    Charity
+  </source>
+				<target>الاعمال الخيرية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">11</context>
@@ -723,23 +610,19 @@
       </trans-unit>
       <trans-unit id="6b36a01973885a199c8af8576bb5badbff53516f" datatype="html">
         <source>
-        Record created successfully
-        </source>
-        <target>
-        تم إنشاء السجل بنجاح
-        </target>
+  Record created successfully
+</source>
+				<target>تم إنشاء السجل بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a361c606a657617b6694ee2892539e906c0560e5" datatype="html">
+      <trans-unit id="70e35bd6de02e7d5cab1125ec2d7d224a4ce829c" datatype="html">
         <source>
-        Nounn
-        </source>
-        <target>
-        نون
-        </target>
+            Project
+          </source>
+				<target>مشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">33</context>
@@ -747,71 +630,53 @@
       </trans-unit>
       <trans-unit id="ae381d45a5b843948e20978ff7f39908b0c7d7fa" datatype="html">
         <source>
-        &lt;else&gt;
-        </source>
-        <target>
-        & lt ؛ آخر & GT. GT.
-        </target>
+              &lt;else&gt;
+            </source>
+				<target>& lt ؛ آخر & GT.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="77717f58e270d0d2f9e3d702aac2cd3ac7b767bd" datatype="html">
+      <trans-unit id="3184e1925d22315f7b6b93d052260036d774a0e8" datatype="html">
         <source>
-        Name is requiredequired
-        </source>
-        <target>
-        الاسم مطلوب
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
-          <context context-type="linenumber">59</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5f064bba41604bc882f0b75594b5f5c262c6bac7" datatype="html">
-        <source>
-        The name must be 5 characters long long
-        </source>
-        <target>
-        يجب أن يتكون الاسم من 5 أحرف
-        </target>
+            The name must be 5 characters long
+          </source>
+				<target>يجب أن يتكون الاسم من 5 أحرف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e8b463f1266d947f39794239e7f54cc9383e0982" datatype="html">
+      <trans-unit id="51ca888ac08cb4f6151b6b1a1d43012198d56948" datatype="html">
         <source>
-        Describecribe
-        </source>
-        <target>
-        وصف
-        </target>
+            Description
+          </source>
+				<target>وصف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">77</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="ae140988e866bba8d932f693d5d9264bb686b7c0" datatype="html">
+      <trans-unit id="65e911bc2bae8fd77070305f70dd6f659f337459" datatype="html">
         <source>
-        Description is required is required
-        </source>
-        <target>
-        الوصف مطلوب
-        </target>
+            Description is required
+          </source>
+				<target>الوصف مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="29fc703c1286b4b22f91ba35d3104072886f7106" datatype="html">
+      <trans-unit id="c62fa81e7b11e01cf4dbfc5b9dd5a98e8cbfda75" datatype="html">
         <source>
-        Description must be 20 characters longrs long
-        </source>
-        <target>
-        يجب أن يبلغ طول الوصف 20 حرفًا
-        </target>
+            Description must be 20 characters long
+          </source>
+				<target>يجب أن يكون الوصف 20 حرفًا</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">100</context>
@@ -819,11 +684,9 @@
       </trans-unit>
       <trans-unit id="85517420e9c29a817f3c9bcf1c244bb839765ff1" datatype="html">
         <source>
-        Fees
-        </source>
-        <target>
-        الرسوموم
-        </target>
+            Fees
+          </source>
+				<target>الرسوم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">105</context>
@@ -833,25 +696,21 @@
           <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="069f1661f98f9b9193e15d6e44a29b7341d563e2" datatype="html">
+      <trans-unit id="b770f8557534b6ebf4a539a835c2c7800e6d1d19" datatype="html">
         <source>
-        Save the dealeal
+          Save the transaction
         </source>
-        <target>
-        احفظ الصفقة
-        </target>
+				<target>احفظ المعاملة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/transactions/transactions.component.html</context>
           <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="a53ad7f5d35189c5d981ac093d073ad277b90891" datatype="html">
+      <trans-unit id="13778a9d7012d26638d3fc85eb6232c096b3d392" datatype="html">
         <source>
-        Noun
-        </source>
-        <target>
-        يارب
-        </target>
+            Name
+          </source>
+				<target>اسم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
           <context context-type="linenumber">7</context>
@@ -861,49 +720,29 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e86d838fb54a07ceb83b3f41adb0e1904b412d93" datatype="html">
-        <source>
-        Describe
-        </source>
-        <target>
-        وصف
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="8659fa5fb7c1fa01380776a7234c5d3b3a7c2865" datatype="html">
         <source>
-        History
-        </source>
-        <target>
-        التاريخ
-        </target>
+            History
+          </source>
+				<target>التاريخ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c5ceb33096cef8aa38a19777979c80fc1b4e7a60" datatype="html">
+      <trans-unit id="690c2f6d958d3c2801b926d57ebb4cc6dca5f721" datatype="html">
         <source>
-        Alone
-        </source>
-        <target>
-        وحده
-        </target>
+            Unit
+          </source>
+				<target>وحدة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d2a7deb7096cada2c3177157652680fe7e6de0ed" datatype="html">
-        <source>
-        Projects
-        </source>
-        <target>
-        المشاريع
-        </target>
+        <source>Projects</source>
+				<target>المشاريع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-list/project-list.component.html</context>
           <context context-type="linenumber">47</context>
@@ -911,11 +750,9 @@
       </trans-unit>
       <trans-unit id="41e195299fa32d567f129bfb8bc3c8ac819afc1e" datatype="html">
         <source>
-        Drinking water project
-        </source>
-        <target>
-        مشروع مياه الشرب
-        </target>
+    Drinking water project
+  </source>
+				<target>مشروع مياه الشرب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">2</context>
@@ -923,35 +760,29 @@
       </trans-unit>
       <trans-unit id="8b0465835f89505934ea255e4ea65a4fd46dec5b" datatype="html">
         <source>
-        Solar project
-        </source>
-        <target>
-        مشروع الطاقة الشمسيةالشمسية
-        </target>
+    Solar project
+  </source>
+				<target>مشروع الطاقة الشمسية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8b79b21be3430909051e8f77f21a5156b3e147a4" datatype="html">
+      <trans-unit id="9712642b2e0f1b67b9676903ebd489a1e8420698" datatype="html">
         <source>
-        Get involvedlved
-        </source>
-        <target>
-        شارك
-        </target>
+    Subscription
+  </source>
+				<target>الاشتراك</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="abaf2b5b718a8f7c8b01433f998c3354705ba911" datatype="html">
-        <source>
-        ... Social activities: thrash, footballll
-        </source>
-        <target>
-        ... الأنشطة الاجتماعية: thrash، soccerll
-        </target>
+      <trans-unit id="b554e081f89e7908b47dcf3b1ef39ab0fae8c251" datatype="html">
+        <source>  
+    Social activities: ahwach, footbal ...
+  </source>
+				<target>الأنشطة الاجتماعية: أهواش ، كرة القدم ...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">11</context>
@@ -959,95 +790,78 @@
       </trans-unit>
       <trans-unit id="1e06aa46f3cf8544cab7caf98b999116c78541c9" datatype="html">
         <source>
-        The project has been successfully created
-        </source>
-        <target>
-        تم إنشاء المشروع بنجاح
-        </target>
+  The project has been successfully created
+</source>
+				<target>تم إنشاء المشروع بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0216cd6034a8ef84e78729165b1cb7d0362a29e8" datatype="html">
+      <trans-unit id="9cfe49199add303438f89c43f2d0cd7959b5ac95" datatype="html">
         <source>
-        project namee
-        </source>
-        <target>
-        اسم المشروع
-        </target>
+            project name
+          </source>
+				<target>اسم المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bc5e516d2a9a1e9897e60afa169e09745cad5fa1" datatype="html">
+      <trans-unit id="d69290e37b512acda97343fae6c3a42e3ee60e77" datatype="html">
         <source>
-        Project name is requiredequired
-        </source>
-        <target>
-        اسم المشروع مطلوب
-        </target>
+            Project name is required
+          </source>
+				<target>اسم المشروع مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="af2b47e28b057164144a1d163b045a85f4db6b08" datatype="html">
+      <trans-unit id="f728093e0ee7d4fa04f2208f4e419e43e9ddf970" datatype="html">
         <source>
-        Project name must be 5 characters longong
-        </source>
-        <target>
-        يجب أن يتكون اسم المشروع من 5 أحرف
-        </target>
+            Project name must be 5 characters long
+          </source>
+				<target>يجب أن يتكون اسم المشروع من 5 أحرف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b82628e505e2801b432515522dcc886879e1434d" datatype="html">
+      <trans-unit id="d62cd7b892470e73b084358327ec167f32f1070b" datatype="html">
         <source>
-        Project Descriptioncription
-        <target>
-        وصف المشروع
+            Project Description
 
-        </target>
+          </source>
+				<target>وصف المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f4f8b8f0825424fd50fb6773c381d522cf93506e" datatype="html">
-        <source>
-        the water project is ...
-        </source>
-        <target>
-        مشروع المياه ...
-        </target>
+        <source>the water project is ...</source>
+				<target>مشروع المياه ...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3a873c7af511235e55f42a318144d444239b3445" datatype="html">
+      <trans-unit id="4b403f103dcbb9f1ec970cacf9ab1c93c93fe169" datatype="html">
         <source>
-        Project description is requiredon is required
-        </source>
-        <target>
-        وصف المشروع مطلوب مطلوب
-        </target>
+            Project description is required
+          </source>
+				<target>وصف المشروع مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">76</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bf5de729ceb7b0b8af4e5708a21924556140a13d" datatype="html">
+      <trans-unit id="22d2a6afe3535df99ed4c9d4278757412de37dc9" datatype="html">
         <source>
-        Project description must be 20 characters longters long
-        </source>
-        <target>
-        يجب أن يكون وصف المشروع أطول من 20 حرفًا
-        </target>
+            Project description must be 20 characters long
+          </source>
+				<target>يجب أن يتكون وصف المشروع من 20 حرفًا</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">83</context>
@@ -1055,47 +869,41 @@
       </trans-unit>
       <trans-unit id="147df4e39fc3add653ec8a71384b75c5e6f0d575" datatype="html">
         <source>
-        Project fees
-        <target>
-        رسوم المشروع
+            Project fees
 
-        </target>
+          </source>
+				<target>رسوم المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">88</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0683b481b24dd9916bbb9bd9dc0ef11e817c96e9" datatype="html">
+      <trans-unit id="34d9e78994f2b380995af3b49bab93b6f85f2e73" datatype="html">
         <source>
-        Project fees are requiredquired
-        </source>
-        <target>
-        رسوم المشروع مطلوبة
-        </target>
+            Project fees are required
+          </source>
+				<target>رسوم المشروع مطلوبة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="415746c3c0b169acb2e754a4fa85a56f68c7039e" datatype="html">
+      <trans-unit id="f631fd3beb1c6fa6475caf00906afcf7c3b288fd" datatype="html">
         <source>
-        The project fee must be greater than 0an 0
-        </source>
-        <target>
-        يجب أن تكون رسوم المشروع أكبر من 0an 0
-        </target>
+            The project fee must be greater than 0dh
+          </source>
+				<target>يجب أن تكون رسوم المشروع أكبر من 0 درهم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="373e83403a8205df15351a028e2d0404c6f216f8" datatype="html">
+      <trans-unit id="488f19cf461eea93e6bd5eea7533ccfed831e4e3" datatype="html">
         <source>
-        measuring unit unit
-        <target>
-        وحدة قياس
+            measuring unit
 
-        </target>
+          </source>
+				<target>وحدة القياس</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">129</context>
@@ -1103,23 +911,19 @@
       </trans-unit>
       <trans-unit id="7dda551345c566ff651f2ea911437b0bc813b198" datatype="html">
         <source>
-        Unit required
-        </source>
-        <target>
-        الوحدة المطلوبةبة
-        </target>
+          Unit required
+          </source>
+				<target>الوحدة المطلوبة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b30fb2e7cbb603009768b3208dd094ac5c51315e" datatype="html">
+      <trans-unit id="e89c4f38aa6e3980309840089bf90df88fa027f4" datatype="html">
         <source>
-        The unit must contain less than 5 coalsals
-        </source>
-        <target>
-        يجب أن تحتوي الوحدة على أقل من 5 أنواع من الفحمالفحم
-        </target>
+           The unit must contain less than 5 characters
+          </source>
+				<target>يجب أن تحتوي الوحدة على أقل من 5 أحرف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">152</context>
@@ -1127,11 +931,9 @@
       </trans-unit>
       <trans-unit id="5571208695d2448d56dcf08e576db0a417125b3d" datatype="html">
         <source>
-        Save the projectoject
+          Save the projectoject
         </source>
-        <target>
-        احفظ المشروع
-        </target>
+				<target>احفظ المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">165</context>
@@ -1139,11 +941,10 @@
       </trans-unit>
       <trans-unit id="7e8142f08935cf84c6f13d06980b03b3af6da2ff" datatype="html">
         <source>
-        loading...
-        <target>
-        جار التحميل...ل...
+            loading...
 
-        </target>
+          </source>
+				<target>جار التحميل...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/project-form/project-form.component.html</context>
           <context context-type="linenumber">169</context>
@@ -1151,23 +952,19 @@
       </trans-unit>
       <trans-unit id="26461d325782bca2e10207ffa325ae69c80c8906" datatype="html">
         <source>
-        The invoice was created successfully
-        </source>
-        <target>
-        تم إنشاء الفاتورة بنجاح
-        </target>
+  The invoice was created successfully
+</source>
+				<target>تم إنشاء الفاتورة بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4d5aa37fd133d8af61a8ca3917d81696c38673db" datatype="html">
+      <trans-unit id="031e7010228c4a33f2f6faaa80367d0bba2a43dd" datatype="html">
         <source>
-        picture
-        </source>
-        <target>
-        صورة
-        </target>
+            Picture
+          </source>
+				<target>صورة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">14</context>
@@ -1175,47 +972,37 @@
       </trans-unit>
       <trans-unit id="3b4daabe5bf0b219b010c7e53ba093d4d3bc5cb6" datatype="html">
         <source>
-        Phone
-        </source>
-        <target>
-        هاتف
-        </target>
+            Phone
+          </source>
+				<target>هاتف</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5fb2efb44d4cfc77f97a6313c77c2b9bccca9ffa" datatype="html">
+      <trans-unit id="07d433a4ddf94cb982aff4e84d23faac5171c040" datatype="html">
         <source>
-        date of Birth
-        </source>
-        <target>
-        تاريخ الولادة
-        </target>
+            Date of Birth
+          </source>
+				<target>تاريخ الولادة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="eec46209140de57d877705ea12cfeda5d6ca5b38" datatype="html">
+      <trans-unit id="2fdeab745e8c651a465c9cd4f515f9365ef7699b" datatype="html">
         <source>
-        mission
-        </source>
-        <target>
-        مهمة
-        </target>
+            Functions
+          </source>
+				<target>المهام</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4d13a9cd5ed3dcee0eab22cb25198d43886942be" datatype="html">
-        <source>
-        Users
-        </source>
-        <target>
-        المستخدمونخدمون
-        </target>
+        <source>Users</source>
+				<target>المستخدمون</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">83</context>
@@ -1223,11 +1010,9 @@
       </trans-unit>
       <trans-unit id="ad83a6e8e7ff3999684e9e563b7df1f2169abdc2" datatype="html">
         <source>
-        Invoice form
+          Invoice form
         </source>
-        <target>
-        نموذج الفاتورةرة
-        </target>
+				<target>نموذج الفاتورة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">99</context>
@@ -1235,11 +1020,9 @@
       </trans-unit>
       <trans-unit id="f5f9bcbe6e46db9cca603d514d046a8785df8d88" datatype="html">
         <source>
-        Choose the user
-        </source>
-        <target>
-        اختر المستخدم
-        </target>
+                  Choose the user
+                </source>
+				<target>اختر المستخدم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">120</context>
@@ -1247,11 +1030,9 @@
       </trans-unit>
       <trans-unit id="2229f99674f6c3481704c18bc1f15a8414ffda65" datatype="html">
         <source>
-        Select the project
-        </source>
-        <target>
-        حدد المشروع
-        </target>
+                  Select the project
+                </source>
+				<target>حدد المشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">132</context>
@@ -1259,11 +1040,9 @@
       </trans-unit>
       <trans-unit id="3cafbaeefef9f5243c1700a05911b29e08cb6138" datatype="html">
         <source>
-        Project is required
-        </source>
-        <target>
-        المشروع مطلوب
-        </target>
+                  Project is required
+                </source>
+				<target>المشروع مطلوب</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">157</context>
@@ -1271,11 +1050,9 @@
       </trans-unit>
       <trans-unit id="9c074696f71130a81a11a80036c9ace388a83be1" datatype="html">
         <source>
-        Quantity
-        </source>
-        <target>
-        كمية
-        </target>
+                  Quantity
+                </source>
+				<target>كمية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">162</context>
@@ -1283,11 +1060,9 @@
       </trans-unit>
       <trans-unit id="448c3e7ab9cac6ca91b732e7296653b407afceba" datatype="html">
         <source>
-        Quantity is required
-        </source>
-        <target>
-        الكمية مطلوبة
-        </target>
+                  Quantity is required
+                </source>
+				<target>الكمية مطلوبة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">190</context>
@@ -1295,11 +1070,9 @@
       </trans-unit>
       <trans-unit id="65b76aab4f6aad081f53b700ca71da15c624da87" datatype="html">
         <source>
-        Quantity must be greater than 0
-        </source>
-        <target>
-        يجب أن تكون الكمية أكبر من 0
-        </target>
+                  Quantity must be greater than 0
+                </source>
+				<target>يجب أن تكون الكمية أكبر من 0</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">196</context>
@@ -1307,11 +1080,9 @@
       </trans-unit>
       <trans-unit id="a0dc868e860adef68035767171c10f2be78bd3ee" datatype="html">
         <source>
-        loading...
-        </source>
-        <target>
-        جار التحميل...ل...
-        </target>
+                  loading...
+                </source>
+				<target>جار التحميل...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">207</context>
@@ -1319,49 +1090,37 @@
       </trans-unit>
       <trans-unit id="7f927b36aec82906bc1199cf28c9251370048354" datatype="html">
         <source>
-        Save the bill
-        </source>
-        <target>
-        احفظ الفاتورة
-        </target>
+                Save the bill
+              </source>
+				<target>احفظ الفاتورة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">220</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="621a4542dd425d016a3bb244cf93d2be28abc627" datatype="html">
+      <trans-unit id="9aceddede3df163c645ac1a9bd54ceffa05b72a0" datatype="html">
         <source>
-        Cancellation
-        </source>
-        <target>
-        إلغاء
-        </target>
+                Cancel
+              </source>
+				<target>إلغاء</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/user-list/user-list.component.html</context>
           <context context-type="linenumber">229</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5f67d18ff38503793d94a8f41c11872b7c06888f" datatype="html">
-        <source>
-        Homepage
-        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;" />(current)
-        <target>
-        الصفحة الرئيسيةلرئيسية
-        <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;" />(current)
-        <x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;" />
-        </target>
+      <trans-unit id="1cb86e649ad2e5cfc86efb2d28c06b1d959f8aa6" datatype="html">
+        <source>Homepage</source>
+				<target>الصفحة الرئيسية</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="93cfa58b9b981c7d93cb724af513fffce77ef862" datatype="html">
         <source>
-        Projects
-        </source>
-        <target>
-        المشاريع
-        </target>
+            Projects
+          </source>
+				<target>المشاريع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">15</context>
@@ -1369,23 +1128,19 @@
       </trans-unit>
       <trans-unit id="026e17d7321db8d67b0d0700db62ce47c12c94cd" datatype="html">
         <source>
-        Users
-        </source>
-        <target>
-        المستخدمونخدمون
-        </target>
+            Users
+          </source>
+				<target>المستخدمون</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="def837de96a17cbc84fda52388675468fb9c9385" datatype="html">
+      <trans-unit id="5bc80162d63695f50342da99b2fdd0aceab6c2aa" datatype="html">
         <source>
-        Enter the project
-        </source>
-        <target>
-        أدخل المشروع
-        </target>
+            New project
+          </source>
+				<target>مشروع جديد</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">25</context>
@@ -1393,11 +1148,9 @@
       </trans-unit>
       <trans-unit id="cb5c62b2bc69cc954ed9e114d9445b9cf08e89ea" datatype="html">
         <source>
-        Transactions
-        </source>
-        <target>
-        المعاملات
-        </target>
+            Transactions
+          </source>
+				<target>المعاملات</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">30</context>
@@ -1405,23 +1158,19 @@
       </trans-unit>
       <trans-unit id="705101d9f1311b9da277d43a5bf50c4942986fa8" datatype="html">
         <source>
-        Reports
-        </source>
-        <target>
-        التقاريرر
-        </target>
+            Reports
+          </source>
+				<target>التقارير</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7b4b13e76d6692cf151f55cd029fd0cefafa542e" datatype="html">
+      <trans-unit id="81b491d7421432b9d702b83db0e276964f90fbaf" datatype="html">
         <source>
-        Logoff
+          Log out
         </source>
-        <target>
-        إطفاء
-        </target>
+				<target>تسجيل خروج</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/nav-bar/nav-bar.component.html</context>
           <context context-type="linenumber">40</context>
@@ -1429,11 +1178,9 @@
       </trans-unit>
       <trans-unit id="2c1ded3b203d652aa34f96039953edf303c2d24a" datatype="html">
         <source>
-        Payment added successfully
-        </source>
-        <target>
-        تمت إضافة الدفع بنجاح
-        </target>
+  Payment added successfully
+</source>
+				<target>تمت إضافة الدفع بنجاح</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">1</context>
@@ -1441,11 +1188,9 @@
       </trans-unit>
       <trans-unit id="562b837fb94a54a5c17a52fc50cc23064b69d454" datatype="html">
         <source>
-        Download failed
-        </source>
-        <target>
-        التحميل فشل
-        </target>
+  Download failed
+</source>
+				<target>التحميل فشل</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">5</context>
@@ -1453,71 +1198,49 @@
       </trans-unit>
       <trans-unit id="ca8b82b976273eff951175406644badaec8e4e40" datatype="html">
         <source>
-        Fail to add payment
-        </source>
-        <target>
-        فشل في إضافة الدفع
-        </target>
+  Fail to add payment
+</source>
+				<target>فشل في إضافة الدفع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f3bacc08282242e686773e1ecb949c56bda74abd" datatype="html">
+      <trans-unit id="dc7e9ce244026bb6007e82e04f4d1f6e909f28a3" datatype="html">
         <source>
-        Nounn
+          Name
         </source>
-        <target>
-        نون
-        </target>
+				<target>اسم</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="54a5c645f679a1f00efe4d97fd66193f42a46557" datatype="html">
+      <trans-unit id="fea559684f001b78c255481b33cce3261af84335" datatype="html">
         <source>
-        Projectct
+          Project
         </source>
-        <target>
-        بروجيكت
-        </target>
+				<target>مشروع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0f1bc5c599b0df84ee2e9a50cbb58e707ddd14da" datatype="html">
+      <trans-unit id="09b10f01c821308d8fbffafb681775c8ea1df32a" datatype="html">
         <source>
-        Historyry
+          History
         </source>
-        <target>
-        التاريخ
-        </target>
+				<target>التاريخ</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="512199a66bad0c24d0e9a26c7417dc5b5ddbeb29" datatype="html">
+      <trans-unit id="0d9a122d1c481ed1358205d00e20f46601de85af" datatype="html">
         <source>
-        Quantitytity
+          Price
         </source>
-        <target>
-        الكمية
-        </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="d302ff7c7cd4eb79f25b67c3814506717b9084ba" datatype="html">
-        <source>
-        price
-        </source>
-        <target>
-        السعر
-        </target>
+				<target>السعر</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">29</context>
@@ -1525,59 +1248,49 @@
       </trans-unit>
       <trans-unit id="7f21ba4266d3045d262cb608a6f5961e21ff19ec" datatype="html">
         <source>
-        Status
+          Status
         </source>
-        <target>
-        الحالة
-        </target>
+				<target>الحالة</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="520d568533ceb5e71ffe7a8100b71052c7fe4bd0" datatype="html">
+      <trans-unit id="708daaf7358e0587dcf370d9469c70a2ebd347f8" datatype="html">
         <source>
-        missionn
+          Functions
         </source>
-        <target>
-        مهمة
-        </target>
+				<target>المهام</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="38629a61638d97a9d8ee272b7b55f4da754a442a" datatype="html">
+      <trans-unit id="7c2e8a44cd7877d5b53fa50547e7d00f9926871f" datatype="html">
         <source>
-        Download PDFPDF
+          Download PDF
         </source>
-        <target>
-        تنزيل PDFPDF
-        </target>
+				<target>تحميل PDF</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">102</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c37830696ebad2448d067505381ac1ea27a33dfd" datatype="html">
+      <trans-unit id="fad85383494ea6786de81484aacd1bca6c6d323a" datatype="html">
         <source>
-        Downloadoad
-        </source>
-        <target>
-        تحميل
-        </target>
+            Download
+          </source>
+				<target>تحميل</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">130</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1c61b8dd69a4032075be1a8eb6f3155f01d2bff9" datatype="html">
+      <trans-unit id="fb8aad312b72bbb7e5a1e2cc0b55fae8962bf0fb" datatype="html">
         <source>
-        Cancellationllation
+          Cancel
         </source>
-        <target>
-        الإلغاء
-        </target>
+				<target>إلغاء</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">140</context>
@@ -1587,37 +1300,31 @@
           <context context-type="linenumber">199</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5439928b8c71b30eb59ad6a91a9cf83cd0f8a628" datatype="html">
+      <trans-unit id="b6a9f79f213e9f6bafacb59851e9867e24aeaf71" datatype="html">
         <source>
-        Confirm the paymentpayment
+          Confirm the payment
         </source>
-        <target>
-        قم بتأكيد الدفع
-        </target>
+				<target>التأكد من الدفع</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">160</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c6d89e05644d0b4678dc7e0ac53f0a24d3e8b54a" datatype="html">
+      <trans-unit id="3a48744f33f2c0dfa52f0319725f1c4820c14963" datatype="html">
         <source>
-        You really confirm the payment You can&apos;t undo this ???his ???
-        </source>
-        <target>
-        أنت تؤكد حقًا الدفع لا يمكنك التراجع عن هذا ؟؟؟
-        </target>
+            Do you really confirm the payment you can&apos;t undo this ???
+          </source>
+				<target>هل تؤكد حقًا الدفعة التي لا يمكنك التراجع عنها ؟؟؟</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">174</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0724b2924536c60e2ac3c5929823fcd5712e1294" datatype="html">
+      <trans-unit id="8e4ee1fceb1e8003171a07b3158b61a38d77243a" datatype="html">
         <source>
-        Confirm the payment payment
+          Confirm
         </source>
-        <target>
-        قم بتأكيد الدفع
-        </target>
+				<target>تؤكد</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/bill-table/bill-table.component.html</context>
           <context context-type="linenumber">191</context>
@@ -1625,11 +1332,9 @@
       </trans-unit>
       <trans-unit id="684214e50e4a407aa8ef3fc5d5d405db8e6d83ba" datatype="html">
         <source>
-        Empty!
-        </source>
-        <target>
-        فارغة!
-        </target>
+      Empty!
+    </source>
+				<target>فارغة!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/empty-card/empty-card.component.html</context>
           <context context-type="linenumber">2</context>
@@ -1637,11 +1342,9 @@
       </trans-unit>
       <trans-unit id="63bf10cbdd8b7305aeb898779e8d350434f65412" datatype="html">
         <source>
-        Not found
-        </source>
-        <target>
-        لا يوجد لا تجدا تجد
-        </target>
+      Not found 
+    </source>
+				<target>لا يوجد لا تجد</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/dashboard/layouts/empty-card/empty-card.component.html</context>
           <context context-type="linenumber">5</context>

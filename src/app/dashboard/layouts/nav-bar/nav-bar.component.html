@@ -6,8 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="./" i18n>
-            Homepage
+          <a class="nav-link" routerLink="./" >
+            <div i18n>Homepage</div> 
             <span class="sr-only">(current)</span>
           </a>
         </li>
@@ -23,7 +23,7 @@
         </li>
         <li *ngIf="userService.isAdmin()" class="nav-item" >
           <a class="nav-link" routerLink="./projects/create" id="userNavbar" role="button"  i18n>
-            Enter the project
+            New project
           </a>
         </li>
         <li class="nav-item" >
@@ -38,7 +38,7 @@
         </li>
       </ul>
         <button class="btn btn-danger my-2 my-sm-0"  (click)="userService.logout()" i18n>
-          Logoff
+          Log out
         </button>
     </div>
   </nav>

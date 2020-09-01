@@ -39,6 +39,7 @@ export class LazyLoadResourcesService {
   public loadDashboardModuleResources(){
     if(isPlatformBrowser(this.platform)){
       !this._ResourceExists(this._gtagJs) && this._loadResource(this._gtagJs)
+      !this._ResourceExists(this._stylesCss) && this._loadResource(this._stylesCss)
       !this._ResourceExists(this._bootstrapCss) && this._loadResource(this._bootstrapCss)
       !this._ResourceExists(this._fontAwesomeCss) && this._loadResource(this._fontAwesomeCss)
       !this._ResourceExists(this._jqueryJs) && this._loadResource(this._jqueryJs)

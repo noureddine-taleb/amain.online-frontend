@@ -6,10 +6,10 @@
     Solar project
   </p>
   <p i18n>
-    Get involvedlved
+    Subscription
   </p>
   <p i18n>  
-    ... Social activities: thrash, footballll
+    Social activities: ahwach, footbal ...
   </p>
 </template>
 
@@ -29,7 +29,7 @@
       <form [formGroup]="projectForm" (ngSubmit)="submit(projectForm.value)" autocomplete="on">
         <div class="form-group">
           <label for="name" i18n>
-            project namee
+            project name
           </label>
           <input
             type="text"
@@ -43,19 +43,19 @@
             class="invalid-feedback"
             role="alert"
            i18n>
-            Project name is requiredequired
+            Project name is required
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.name.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
            i18n>
-            Project name must be 5 characters longong
+            Project name must be 5 characters long
           </div>
         </div>
         <div class="form-group">
           <label for="desc" i18n>
-            Project Descriptioncription
+            Project Description
 
           </label>
           <textarea
@@ -74,14 +74,14 @@
             class="invalid-feedback"
             role="alert"
            i18n>
-            Project description is requiredon is required
+            Project description is required
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.desc.errors?.minlength ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
            i18n>
-            Project description must be 20 characters longters long
+            Project description must be 20 characters long
           </div>
         </div>
         <div class="form-group">
@@ -115,19 +115,19 @@
             class="invalid-feedback"
             role="alert"
            i18n>
-            Project fees are requiredquired
+            Project fees are required
           </div>
           <div
             [ngStyle]="{ visibility: projectForm.controls.fees.errors?.min ? 'visible': 'hidden' }"
             class="invalid-feedback"
             role="alert"
            i18n>
-            The project fee must be greater than 0an 0
+            The project fee must be greater than 0dh
           </div>
         </div>
         <div class="form-group">
           <label for="fees" i18n>
-            measuring unit unit
+            measuring unit
 
           </label>
           <input
@@ -150,7 +150,7 @@
             class="invalid-feedback"
             role="alert"
            i18n>
-           The unit must contain less than 5 coalsals
+           The unit must contain less than 5 characters
           </div>
         </div>
         <button

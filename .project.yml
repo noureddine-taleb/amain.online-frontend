@@ -40,13 +40,13 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-    - better i18n support( translate site to en and add i18n attr > xi18n > translate blocks)
     - progressive enhancement
     - Ngrx
     - Unit tests
     - travis ci
 
 DONE :
+    - better i18n support( translate site to en and add i18n attr > xi18n > translate blocks)
     - compress assets on server to improve pr
     - implement performance budgeting
     - reduce CLS on first page load

@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:ar": "ng serve --configuration=ar",
     "build": "ng build && npm run compress",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,6 +12,7 @@
     "dev:ssr": "ng run angular:serve-ssr",
     "serve:ssr": "node dist/angular/server/main.js",
     "build:ssr": "ng build --prod && ng run angular:server:production && npm run compress",
+    "build:ssr:ar": "ng build --prod --configuration=ar && ng run angular:server:production && npm run compress",
     "prerender": "ng run angular:prerender",
     "compress": "ts-node compress.ts"
   },

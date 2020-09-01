@@ -4,27 +4,27 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 form.ng-invalid {
-    border-color: white;
-    box-shadow:none;
-    padding-right: none;
+    border-color: white !important;
+    box-shadow:none !important;
+    padding-right: none !important;
 }
 
 form.ng-valid {
-    border-color: white;
-    box-shadow:none;
-    padding-right: none;
+    border-color: white !important;
+    box-shadow:none !important;
+    padding-right: none !important;
 }
 
 .ng-invalid {
-    border-color: #dc3545;
-    box-shadow:0 0 0 .2rem rgba(220,53,69,.25);
-    padding-right: calc(1.5em + .75rem);
+    border-color: #dc3545 !important;
+    box-shadow:0 0 0 .2rem rgba(220,53,69,.25) !important;
+    padding-right: calc(1.5em + .75rem) !important;
 }
 
 .ng-valid {
-    border-color: #28a745;
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
-    padding-right: calc(1.5em + .75rem);
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+    padding-right: calc(1.5em + .75rem) !important;
 }
 
 
@@ -51,5 +51,5 @@ form.ng-valid {
 }
 
 .fa {
-    cursor: pointer;
+    cursor: pointer !important;
 }
