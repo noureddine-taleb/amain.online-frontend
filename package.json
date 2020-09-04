@@ -11,8 +11,8 @@
     "e2e": "ng e2e",
     "dev:ssr": "ng run angular:serve-ssr",
     "serve:ssr": "node dist/angular/server/main.js",
-    "build:ssr": "ng build --prod && ng run angular:server:production && npm run compress",
-    "build:ssr:ar": "ng build --prod --configuration=ar --source-map && ng run angular:server:production && npm run compress",
+    "build:ssr": "ng build --prod --configuration=ar --source-map && ng run angular:server:production && npm run compress",
+    "build:ssr:en": "ng build --prod --source-map && ng run angular:server:production && npm run compress",
     "prerender": "ng run angular:prerender",
     "postinstall": "ngcc",
     "compress": "ts-node compress.ts"

@@ -65,7 +65,6 @@
           "configurations": {
             "ar": {
               "aot": true,
-              "outputPath": "dist/under-construction-ar/",
               "i18nFile": "src/locale/messages.ar.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "ar",

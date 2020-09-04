@@ -40,7 +40,7 @@ function compressFolderFiles(distFolder: string) {
         else
             return
         
-        console.log(distFolder + file)
+        console.log('compress: ', distFolder + file)
         await AllCompression(distFolder + file, brotliSettings)
     });
 }
