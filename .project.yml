@@ -1,3 +1,9 @@
+- PRPL : 
+    - Push: (or preload) the most important resources
+    - Render: the initial route as soon as possible
+    - Pre-cache: remaining assets
+    - Lazy load: other routes and non-critical assets
+
 TODO :
     - Study web dev practices 
     - progressive enhancement (notification, badge, bg sync ...)
@@ -40,12 +46,20 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-    - progressive enhancement
+    - infinite scroll
     - Ngrx
+
+    - progressive enhancement
     - Unit tests
     - travis ci
 
 DONE :
+    - style is not loaded directly when navigate to dashboard 
+    - custom pipe
+    - async pipe
+    - overlay shadow for text
+    - implement graphql
+    - preload resources
     - better i18n support( translate site to en and add i18n attr > xi18n > translate blocks)
     - compress assets on server to improve pr
     - implement performance budgeting

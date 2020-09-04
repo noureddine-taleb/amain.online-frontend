@@ -18,6 +18,7 @@ import { AnalyticsService } from '../../services/analytics/analytics.service';
 import { SeoService } from '../../services/seo/seo.service';
 import { Subscription } from 'rxjs';
 import { SeoAlertService } from '../../services/AlertServiceSeo/alert-service-seo.service';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-user-list',
@@ -48,22 +49,64 @@ export class UserListComponent implements OnInit {
     private spinnerService: NgxSpinnerService,
     private analyticsService: AnalyticsService,
     private seoService: SeoService,
+    private apollo: Apollo
   ) {}
 
   ngOnInit(): void {
     this.seoService.setTitleDesc('table of users', 'show subscribed users')
     this.spinnerService.show();
-    const usrSub = this.userService.getAll().subscribe(res => {
-  this.spinnerService.hide();
-  this.users = res['users'];
-   }, () => this.spinnerService.hide())
+
+    //graphql call
+    const usrSub = this.apollo
+    .watchQuery({
+      query: gql`
+        {
+          users {
+            _id
+            name
+            phone
+            dob
+            image
+          }
+        }
+      `,
+    })
+    .valueChanges.subscribe(result => {
+      this.spinnerService.hide()
+      this.users = result.data['users']
+    },
+      _ => this.spinnerService.hide()
+    );
+
+    // const usrSub = this.userService.getAll().subscribe(res => {
+    //   this.spinnerService.hide();
+    //   this.users = res['users'];
+    // }, () => this.spinnerService.hide())
+    
     this.subs.push(usrSub
      )
 
-    const projSub = this.projectService.getAll()
-   .subscribe(res => (this.projects = res['projects']) )
-    this.subs.push(projSub
-    )
+     //graphql call
+    const projSub = this.apollo
+    .watchQuery({
+      query: gql`
+        {
+          projects {
+            _id
+            name
+            unit
+          }
+        }
+      `,
+    })
+    .valueChanges.subscribe(result => {
+      this.projects = result.data['projects']
+    });
+
+  //   const projSub = this.projectService.getAll()
+  //  .subscribe(res => (this.projects = res['projects']) )
+    
+   this.subs.push(projSub)
 
     this.billForm = this.formBuilder.group({
       userID: [

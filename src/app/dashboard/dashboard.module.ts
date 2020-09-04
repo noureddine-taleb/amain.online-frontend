@@ -14,22 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertModule } from 'ngx-alerts';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ProjectService } from '../services/project/project.service';
-import { BillService } from '../services/bill/bill.service';
-import { PaymentService } from '../services/payment/payment.service';
-import { IsAuthGuard } from '../core/guards/is-auth.guard';
-import { IsAdminGuard } from '../core/guards/is-admin.guard';
-import { TreasuryService } from '../services/treasury/treasury.service';
-import { ReportService } from '../services/report/report.service';
-import { ValidationService } from '../services/validation/validation.service';
-import { SeoService } from '../services/seo/seo.service';
-import { AnalyticsService } from '../services/analytics/analytics.service';
 import { NavBarComponent } from './layouts/nav-bar/nav-bar.component';
 import { BillTableComponent } from './layouts/bill-table/bill-table.component';
 import { EmptyCardComponent } from './layouts/empty-card/empty-card.component';
 import { DashboardComponent } from './dashboard.component';
-import { AppComponent } from '../app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
+import {HttpLink} from 'apollo-angular/http';
+import { APOLLO_OPTIONS } from 'apollo-angular';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [
@@ -46,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EmptyCardComponent,
   ],
   imports: [
+    HttpClientModule, 
     CommonModule,
     NgxPaginationModule,
     DashboardRoutingModule,
@@ -57,8 +50,5 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   exports: [
     DashboardComponent,
   ],
-  entryComponents: [
-    AppComponent
-  ]
 })
 export class DashboardModule { }

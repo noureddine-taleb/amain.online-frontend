@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(environment)
     this._lazyLoadResourcesService.loadDashboardModuleResources()
     const usrSub = this._userService.getUser().subscribe()
     this.subs.push(usrSub)

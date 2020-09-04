@@ -55,6 +55,6 @@ export class LazyLoadResourcesService {
   }
   
   private _ResourceExists<T>(res: Resource<T>): boolean{
-    return !!window.document.querySelector(`${res.tag}[${res.attr}="${res.value}"]`)
+    return !!window.document.querySelector(`${res.tag}[${res.attr}="${res.value}"][${res.attr2}="${res.value2}"]`)
   }
 }

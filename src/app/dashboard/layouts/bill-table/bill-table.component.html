@@ -38,29 +38,29 @@
       </tr>
     </thead>
     <tbody>
+      <!-- | paginate: { itemsPerPage: 7, currentPage: p } -->
       <tr
         *ngFor="
-          let bill of bills | paginate: { itemsPerPage: 7, currentPage: p }
-        "
+          let bill of bills"
       >
         <th scope="row">{{ bill._id }}</th>
-        <td>{{ bill.userID?.name }}</td>
-        <td>{{ bill.projectID?.name }}</td>
+        <td>{{ $any(bill.userID)?.name }}</td>
+        <td>{{ $any(bill.projectID)?.name }}</td>
         <td>{{ bill.createdAt | date: "dd/MM/yyyy" }}</td>
-        <td>{{ bill.quantity + " " + bill.projectID?.unit }}</td>
+        <td>{{ bill.quantity + " " + $any(bill.projectID)?.unit }}</td>
         <td>
           {{
-            bill.paymentID?.amount || bill.quantity * bill.projectID?.fees
+            $any(bill).paymentID?.amount || bill.quantity * $any(bill.projectID)?.fees
               | currency: "DH"
           }}
         </td>
         <td
           [ngStyle]="{
-            color: bill.paymentID ? 'green' : 'red',
+            color: $any(bill).paymentID ? 'green' : 'red',
             fontWeight: 'bold'
           }"
         >
-          {{ bill.paymentID ? "تم دفعها" : "ليس بعد" }}
+          {{ $any(bill).paymentID ? "تم دفعها" : "ليس بعد" }}
         </td>
         <td class="functions">
           <i
@@ -72,7 +72,7 @@
             role="button"
           ></i>
           <i
-            *ngIf="from != 'profile' && !bill.paymentID"
+            *ngIf="from != 'profile' && !$any(bill).paymentID"
             class="fa fa-money"
             (click)="saveBill(bill)"
             data-toggle="modal"
@@ -83,8 +83,9 @@
     </tbody>
   </table>
 </div>
-<div class="pagination-div">
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+<div class="pagination-div" id="loading">
+  <!-- loading ... -->
+  <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
 </div>
 
 <!-- Modal -->

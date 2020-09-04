@@ -18,6 +18,7 @@ import { SeoAlertService } from '../../../services/AlertServiceSeo/alert-service
 export class BillTableComponent implements OnInit {
 
   @Input()bills: Bill[]
+  __bills: Bill[] = []
   @Input()from: string
   @Output() newPaymentEvent = new EventEmitter<void>();
   p = 1
@@ -39,6 +40,26 @@ export class BillTableComponent implements OnInit {
   {}
 
   ngOnInit(): void {
+    // if(isPlatformBrowser(this.platform) && this.bills){
+    //     for(let i=0; i < this.bills.length; i++){
+    //       this.__bills[i] = this.bills[i];
+    //     }
+
+    //     const el = window.document.querySelector('.loading')
+        
+    //     // const options = {
+    //     //   root: document.querySelector('html'),
+    //     //   rootMargin: '0px',
+    //     //   threshold: 1.0
+    //     // }
+        
+    //     const observer = new window.IntersectionObserver(_ => {
+
+    //     })
+
+    //     observer.observe(el)
+
+    // }
   }
 
   downloadBill(bill: Bill){

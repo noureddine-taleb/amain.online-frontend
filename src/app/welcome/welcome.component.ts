@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { SeoService } from '../services/seo/seo.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,10 +10,12 @@ import { isPlatformBrowser } from '@angular/common';
 export class WelcomeComponent implements OnInit {
 
   constructor(
-    @Inject(PLATFORM_ID) private platform: object 
+    @Inject(PLATFORM_ID) private platform: object,
+    private seoService: SeoService,
   ) { }
 
   ngOnInit(): void {
+    this.seoService.setTitleDesc('welcome', 'Welcome to the official AMAIN public money management system')
   }
 
   resetHeight(e: Event){

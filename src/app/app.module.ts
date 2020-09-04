@@ -27,7 +27,7 @@ import { ReportService } from './services/report/report.service';
 import { ValidationService } from './services/validation/validation.service';
 import { IsNotAuthGuard } from './core/guards/is-not-auth.guard';
 import { QuicklinkModule } from 'ngx-quicklink';
-
+import { GraphQLModule } from './graphql.module';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -45,7 +45,8 @@ registerLocaleData(localeFr);
     
     AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
     HttpClientModule,
-    QuicklinkModule
+    QuicklinkModule,
+    GraphQLModule
   ],
   providers: [
     UserService,

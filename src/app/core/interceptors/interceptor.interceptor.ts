@@ -21,8 +21,16 @@ export class Interceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
+    let url: string
+
+    if(req.url != "/graphql"){
+      url = `${environment.BACKEND_API_URL}${req.url}`
+    }else {
+      url = `${environment.BACKEND_URL}${req.url}`
+    }
+
     this.newReq = req.clone({
-      url: `${environment.BACKEND_API_URL}${req.url}`,
+      url,
       setHeaders: { Authorization: `Bearer ${this.userService.getAuthorizationToken()}`},
     });
 
