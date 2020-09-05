@@ -1,8 +1,8 @@
 - PRPL : 
-    - Push: (or preload) the most important resources
-    - Render: the initial route as soon as possible
-    - Pre-cache: remaining assets
-    - Lazy load: other routes and non-critical assets
+    - (checked) Push: (or preload) the most important resources
+    - (checked) Render: the initial route as soon as possible
+    - (checked) Pre-cache: remaining assets
+    - (checked) Lazy load: other routes and non-critical assets
 
 TODO :
     - Study web dev practices 
@@ -16,9 +16,7 @@ TODO :
     - Use pipes instead of function in view 
     - NgZone
     - TrackBy
-    - https://www.npmjs.com/package/webpack-bundle-analyzer
     - Switch to tailwind 
-    - Brotli compression
     - Cache responses in nginx
     - Use critical Webpack plugging 
     - Instruments app with user timing api
@@ -27,7 +25,6 @@ TODO :
     - Async pipe 
     - Onpush change detection in some components 
     - verify registered users
-
     - 11ty
     - Nodejs serverless
     - Covid19.ca.gov lighthouse 
@@ -46,14 +43,16 @@ TODO :
     - FIX:
 
 IN PROGRESS :
-    - infinite scroll
     - Ngrx
-
+    - infinite scroll
+    - AMP
+    - remove alerts-spinner-appolo-graphql from first load
     - progressive enhancement
     - Unit tests
     - travis ci
 
 DONE :
+    - Brotli compression
     - style is not loaded directly when navigate to dashboard 
     - custom pipe
     - async pipe
